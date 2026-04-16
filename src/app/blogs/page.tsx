@@ -8,6 +8,14 @@ import AnimatedHeading from "@/components/AnimatedHeading";
 
 const posts = [
   {
+    slug: "the-death-of-the-landing-page",
+    title: "The Death of the Landing Page: Why Storytelling is the Only Metric Left",
+    date: "APR 04, 2024",
+    readTime: "8 MIN READ",
+    tag: "Brand Strategy",
+    image: "https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=1600",
+  },
+  {
     slug: "design-system-efficiency",
     title: "Why Modular Design Systems Fail Without Architecture",
     date: "MAR 12, 2024",
@@ -54,10 +62,10 @@ export default function BlogsIndex() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full flex-col flex gap-8 mb-24 border-b border-border pb-24"
       >
-        <Link href="/blogs/the-death-of-the-landing-page" className="group flex flex-col gap-6">
+        <Link href="/blogs/written-by-rivers" className="group flex flex-col gap-6">
           <div className="relative w-full aspect-[2/1] bg-surface overflow-hidden">
             <Image 
-              src="https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=1600" 
+              src="/blogs/written-by-rivers/hero-aerial.png" 
               fill 
               alt="Featured" 
               className="object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-700 ease-out grayscale group-hover:grayscale-0"
@@ -66,14 +74,14 @@ export default function BlogsIndex() {
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 font-mono text-[11px] text-accent tracking-[0.1em] uppercase">
-              <span>APR 04, 2024</span>
+              <span>APR 16, 2026</span>
               <span>—</span>
-              <span>8 MIN READ</span>
+              <span>10 MIN READ</span>
               <span>—</span>
               <span className="border border-accent px-2 py-[2px] rounded-sm">Featured</span>
             </div>
             <h2 className="font-sans font-medium text-3xl md:text-5xl text-text group-hover:text-accent transition-colors duration-300 w-full max-w-[800px]">
-              The Death of the Landing Page: Why Storytelling is the Only Metric Left
+              Written by Rivers: The Brazilian Amazon's First Brand Identity
             </h2>
           </div>
         </Link>
