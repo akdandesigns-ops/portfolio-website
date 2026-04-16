@@ -1,0 +1,55 @@
+import type { Metadata } from "next";
+import { Bebas_Neue, DM_Sans, DM_Mono } from "next/font/google";
+import CustomCursor from "@/components/CustomCursor";
+import FluidCanvas from "@/components/FluidCanvas";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import "./globals.css";
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas-neue",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["300", "400", "500"],
+});
+
+const dmMono = DM_Mono({
+  weight: ["300", "400"],
+  subsets: ["latin"],
+  variable: "--font-dm-mono",
+});
+
+export const metadata: Metadata = {
+  title: "akdandesigns | Clarity in Brand Design",
+  description: "I design clarity. Stripping away the noise so your true value speaks for itself.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark" value={{ light: "light", dark: "dark" }}>
+          <FluidCanvas />
+          <CustomCursor />
+          <Navigation />
+          <main className="flex-1 w-full relative z-10 pt-[64px]">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
