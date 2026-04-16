@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 
 export function Hero() {
-  const line1 = "WE DESIGN".split(" ");
+  const line1 = "I DESIGN".split(" ");
   const line2 = "BRANDS THAT".split(" ");
   const line3 = "DEFY GRAVITY.".split(" ");
   

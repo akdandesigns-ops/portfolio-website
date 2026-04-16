@@ -14,14 +14,14 @@ const projects = [
   },
   {
     title: "SANS BADMINTON",
-    type: "Brand Identity",
+    type: "Logo Design",
     image: "/works/sans-badminton/sans-09.png",
     href: "/work/sans-badminton",
   },
   {
     title: "SOLSTICE PICK",
-    type: "Package Design",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2000",
+    type: "Logo Design",
+    image: "/works/solstice-pick/solstice pick - mockup 1.png",
     href: "/work/solstice-pick",
   },
   {
