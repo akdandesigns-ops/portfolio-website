@@ -387,12 +387,12 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
           {project.gallery[0] && (
             <motion.section {...fadeIn} className="w-full">
               <div className="w-full px-0 md:px-16 lg:px-24">
-                <div className="relative w-full aspect-[16/9] md:aspect-[2/1] overflow-hidden">
+                <div className={`relative w-full ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[2/1]' : 'aspect-[16/9] md:aspect-[2/1]'} overflow-hidden`}>
                   <Image
                     src={project.gallery[0].src}
                     alt={project.gallery[0].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-4 md:!p-12 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-0 sm:!p-4 md:!p-12 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 100vw"
                     quality={85}
                   />
@@ -413,22 +413,22 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
           {project.gallery[1] && project.gallery[2] && (
             <motion.section {...fadeUp} className="w-full px-6 md:px-16 lg:px-24">
               <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[1]?.aspectRatio || "4/3" }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[1]?.aspectRatio || "4/5" }}>
                   <Image
                     src={project.gallery[1].src}
                     alt={project.gallery[1].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain p-4 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-1 sm:!p-4 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={85}
                   />
                 </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[2]?.aspectRatio || "4/3" }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[2]?.aspectRatio || "4/5" }}>
                   <Image
                     src={project.gallery[2].src}
                     alt={project.gallery[2].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain p-4 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-1 sm:!p-4 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={85}
                   />
@@ -566,12 +566,12 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
           {project.gallery[3] && (
             <motion.section {...fadeIn} className="w-full">
               <div className="w-full px-0 md:px-16 lg:px-24">
-                <div className="relative w-full overflow-hidden max-h-[85vh]" style={{ aspectRatio: project.gallery[3]?.aspectRatio || "16/10" }}>
+                <div className={`relative w-full overflow-hidden max-h-[85vh] ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : ''}`} style={{ aspectRatio: project.imageFit === 'contain' ? undefined : (project.gallery[3]?.aspectRatio || "16/10") }}>
                   <Image
                     src={project.gallery[3].src}
                     alt={project.gallery[3].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-4 md:!p-12 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-0 sm:!p-4 md:!p-12 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 100vw"
                     quality={85}
                   />
@@ -599,7 +599,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[4].src}
                     alt={project.gallery[4].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain p-4 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-1 sm:!p-4 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={85}
                   />
@@ -609,7 +609,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[5].src}
                     alt={project.gallery[5].alt}
                     fill
-                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain p-4 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-1 sm:!p-4 bg-surface/10 rounded-sm' : 'object-cover'}`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={85}
                   />
@@ -643,12 +643,12 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
             <motion.section {...fadeIn} className="w-full">
               <div className="w-full px-6 md:px-16 lg:px-24">
                 <div className="max-w-[1400px] mx-auto">
-                  <div className="relative w-full aspect-[16/10] overflow-hidden">
+                  <div className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : 'aspect-[16/10]'}`}>
                     <Image
                       src={project.gallery[6].src}
                       alt={project.gallery[6].alt}
                       fill
-                      className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain p-4 md:p-12 bg-surface/30 rounded-sm' : 'object-cover'}`}
+                      className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain !p-0 sm:!p-4 md:!p-12 bg-surface/10 rounded-sm' : 'object-cover'}`}
                       sizes="(max-width: 768px) 100vw, 100vw"
                       quality={85}
                     />
@@ -698,8 +698,8 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
         <section className="w-full px-6 md:px-16 lg:px-24 py-16 md:py-32">
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {project.gallery.slice(project.useCuratedGallery ? 8 : 0).map((img, i) => (
-              <motion.div key={i} {...fadeIn} className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'bg-surface/30 rounded-sm' : ''}`} style={{ aspectRatio: img.aspectRatio || "3/4" }}>
-                <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className={project.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={75} loading="lazy" />
+              <motion.div key={i} {...fadeIn} className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'bg-surface/10 rounded-lg' : ''}`} style={{ aspectRatio: img.aspectRatio || "4/5" }}>
+                <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className={project.imageFit === 'contain' ? 'object-contain !p-0 md:!p-4' : 'object-cover'} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={75} loading="lazy" />
               </motion.div>
             ))}
           </div>
