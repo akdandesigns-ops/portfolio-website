@@ -294,7 +294,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
     <div key={slug} className="w-full flex-col flex bg-bg text-text selection:bg-accent selection:text-bg">
 
       {/* ═══════════ FULL-BLEED HERO ═══════════ */}
-      <section className="relative w-full h-[75vh] md:h-screen overflow-hidden">
+      <section className="relative w-full h-[55vh] min-h-[450px] md:h-screen overflow-hidden">
         <Image
           src={project.heroImage}
           alt={project.title}
