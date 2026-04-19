@@ -285,17 +285,17 @@ const idToSlug: Record<string, string> = {
 };
 
 /* ─── Shared animation presets ─── */
-const fadeUp = {
+const fadeUp: any = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-8%" as const },
+  viewport: { once: true, margin: "-8%" },
   transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
 };
 
-const fadeIn = {
+const fadeIn: any = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { once: true, margin: "-5%" as const },
+  viewport: { once: true, margin: "-5%" },
   transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
 };
 
