@@ -305,7 +305,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
   const project = projectDetails[slug] || projectDetails["licet-15"];
 
   return (
-    <div className="w-full flex-col flex bg-bg text-text selection:bg-accent selection:text-bg">
+    <div key={slug} className="w-full flex-col flex bg-bg text-text selection:bg-accent selection:text-bg">
 
       {/* ═══════════ FULL-BLEED HERO ═══════════ */}
       <section className="relative w-full h-[75vh] md:h-screen overflow-hidden">
