@@ -223,8 +223,7 @@ const projectDetails: Record<string, ProjectData> = {
     approach:
       "The goal was not just to create images of shoes, but to capture an entire mood — dramatic lighting, premium textures, and dynamic angles. Each generated image acts as a standalone piece of editorial photography, proving that AI can deliver commercially viable, striking visuals without a studio.",
     heroImage: "/works/footgraphy/08.png",
-    imageFit: "contain",
-    useCuratedGallery: true,
+    useCuratedGallery: false,
     gallery: [
       { src: "/works/footgraphy/09.png", alt: "Cinematic Shoe Photography 1", span: "full", caption: "High-contrast editorial lighting highlighting material texture." },
       { src: "/works/footgraphy/10.png", alt: "AI generated shoe 2", span: "half", aspectRatio: "3/4" },
