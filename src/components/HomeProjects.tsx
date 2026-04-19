@@ -25,12 +25,6 @@ const projects = [
     href: "/work/solstice-pick",
   },
   {
-    title: "WE SAFE",
-    type: "AI Product Photography",
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2000",
-    href: "/work/we-safe",
-  },
-  {
     title: "FOOTGRAPHY",
     type: "AI Product Photography",
     image: "/works/footgraphy/08.png",

@@ -36,15 +36,6 @@ const projects = [
   },
   {
     id: "04",
-    name: "WE SAFE",
-    slug: "we-safe",
-    category: "AI product photography",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200",
-    size: "wide", // wider than half, not full
-  },
-  {
-    id: "05",
     name: "FOOTGRAPHY",
     slug: "footgraphy",
     category: "AI Product Photography",
