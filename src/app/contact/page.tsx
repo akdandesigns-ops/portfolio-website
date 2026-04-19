@@ -229,6 +229,7 @@ export default function ContactPage() {
                   onChange={(e) => setFormData({...formData, type: e.target.value})}
                 >
                   <option value="" disabled className="text-text bg-surface">Select a Project Type</option>
+                  <option value="Landing Page Design" className="text-text bg-surface">Landing Page Design</option>
                   <option value="Logo Design" className="text-text bg-surface">Logo Design</option>
                   <option value="Visual Identity" className="text-text bg-surface">Visual Identity</option>
                   <option value="Brand Identity" className="text-text bg-surface">Brand Identity</option>

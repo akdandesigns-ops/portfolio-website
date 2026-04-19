@@ -23,6 +23,10 @@ const servicesList = [
     description: "Cutting-edge artificial intelligence workflows to place your product in impossible, high-fidelity environments.",
   },
   {
+    title: "Landing Page Design",
+    description: "High-performance landing pages engineered for maximum conversion, blending stunning aesthetics with razor-sharp user experience.",
+  },
+  {
     title: "Branding",
     description: "End-to-end holistic branding that strips away the noise and leaves only pure, devastating clarity.",
   },
