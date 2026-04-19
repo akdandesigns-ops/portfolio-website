@@ -18,7 +18,7 @@ export default function Footer() {
                 <MagneticButton key={label}>
                   <Link
                     href={href}
-                    className="font-mono text-[11px] uppercase tracking-[0.12em] text-text hover:text-accent transition-colors"
+                    className="font-mono text-[13px] uppercase tracking-[0.12em] text-text hover:text-accent transition-colors"
                   >
                     {label}
                   </Link>
@@ -27,7 +27,7 @@ export default function Footer() {
             })}
           </nav>
           
-          <div className="flex gap-6 font-mono text-[11px] tracking-[0.12em] uppercase">
+          <div className="flex gap-6 font-mono text-[13px] tracking-[0.12em] uppercase">
             <MagneticButton>
               <a href="https://www.instagram.com/the_akdan/" target="_blank" rel="noopener noreferrer" className="text-text hover:text-accent transition-colors">IG</a>
             </MagneticButton>
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         <div className="w-full text-center border-t border-border/50 pt-8">
-          <span className="font-mono text-[11px] text-muted tracking-widest uppercase">
+          <span className="font-mono text-[12px] text-muted tracking-widest uppercase">
             © {new Date().getFullYear()} akdandesigns. All rights reserved.
           </span>
         </div>

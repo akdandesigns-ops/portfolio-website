@@ -51,7 +51,7 @@ export default function Navigation() {
                 <MagneticButton key={link.href}>
                   <Link
                     href={link.href}
-                    className={`font-mono text-[11px] uppercase tracking-[0.12em] transition-colors ${
+                    className={`font-mono text-[13px] uppercase tracking-[0.12em] transition-colors ${
                       isActive ? "text-text border-b-2 border-accent pb-[2px]" : "text-text hover:text-accent"
                     }`}
                   >
