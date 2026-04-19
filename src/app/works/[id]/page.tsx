@@ -692,15 +692,64 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
         </>
       )}
 
-      {/* ── Dynamic fallback gallery for remaining images ── */}
+      {/* ── Dynamic fallback gallery matching high-end Fashion Studio staggered layouts ── */}
       {project.gallery.length > (project.useCuratedGallery ? 8 : 0) && !project.colors && (
         <section className="w-full px-6 md:px-16 lg:px-24 py-16 md:py-32">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {project.gallery.slice(project.useCuratedGallery ? 8 : 0).map((img, i) => (
-              <motion.div key={i} {...fadeIn} className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'bg-surface/10 rounded-lg' : ''}`} style={{ aspectRatio: img.aspectRatio || "4/5" }}>
-                <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className={project.imageFit === 'contain' ? 'object-contain !p-0 md:!p-4' : 'object-cover'} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={75} loading="lazy" />
-              </motion.div>
-            ))}
+          <div className="max-w-[1600px] mx-auto flex flex-col gap-24 md:gap-48">
+            {(() => {
+              const elements: React.ReactNode[] = [];
+              let i = project.useCuratedGallery ? 8 : 0;
+              while (i < project.gallery.length) {
+                const img = project.gallery[i];
+                
+                if (img.span === "full") {
+                  elements.push(
+                    <motion.div key={`full-${i}`} {...fadeIn} className="w-full md:w-[75%] lg:w-[65%] mx-auto flex flex-col gap-4">
+                      <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "4/5" }}>
+                        <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 75vw" quality={85} loading={i > 2 ? "lazy" : "eager"} />
+                      </div>
+                      {img.caption && (
+                        <p className="font-sans text-[13px] md:text-[14px] text-text/40 leading-relaxed mx-auto text-center mt-2 max-w-[500px]">
+                          {img.caption}
+                        </p>
+                      )}
+                    </motion.div>
+                  );
+                  i++;
+                } else if (img.span === "half" && i + 1 < project.gallery.length && project.gallery[i + 1].span === "half") {
+                  const img2 = project.gallery[i + 1];
+                  elements.push(
+                    <div key={`half-${i}`} className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-0 items-start">
+                      <motion.div {...fadeUp} className="md:col-span-5 md:col-start-2 flex flex-col gap-3">
+                        <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "3/4" }}>
+                          <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
+                        </div>
+                        {img.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img.caption}</p>}
+                      </motion.div>
+
+                      <motion.div {...fadeUp} className="md:col-span-4 md:col-start-8 flex flex-col gap-3 mt-8 md:mt-48">
+                        <div className="relative w-full overflow-hidden" style={{ aspectRatio: img2.aspectRatio || "4/5" }}>
+                          <Image src={img2.src} alt={img2.alt || `Gallery Image ${i+1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
+                        </div>
+                        {img2.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img2.caption}</p>}
+                      </motion.div>
+                    </div>
+                  );
+                  i += 2;
+                } else {
+                  elements.push(
+                    <motion.div key={`single-${i}`} {...fadeIn} className="w-full md:w-[60%] lg:w-[50%] mr-auto flex flex-col gap-4">
+                      <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "1/1" }}>
+                        <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" quality={85} loading="lazy" />
+                      </div>
+                      {img.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img.caption}</p>}
+                    </motion.div>
+                  );
+                  i++;
+                }
+              }
+              return elements;
+            })()}
           </div>
         </section>
       )}
