@@ -113,7 +113,7 @@ export default function WorkIndex() {
                 viewport={{ once: true, margin: "-5%" }}
                 transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Link href={`/work/${proj.slug}`} className="group block">
+                <Link href={`/works/${proj.slug}`} className="group block">
                   <div
                     className="relative w-full overflow-hidden"
                     style={{ aspectRatio: "4/3" }}
@@ -154,7 +154,7 @@ export default function WorkIndex() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="md:w-[65%]"
           >
-            <Link href={`/work/${p.slug}`} className="group block">
+            <Link href={`/works/${p.slug}`} className="group block">
               <div
                 className="relative w-full overflow-hidden"
                 style={{ aspectRatio: "3/2" }}
@@ -192,7 +192,7 @@ export default function WorkIndex() {
     <div className="w-full flex flex-col gap-16 md:gap-24 mt-8">
       {/* Heading */}
       <AnimatedHeading
-        text="WORK"
+        text="WORKS"
         className="font-bebas text-5xl sm:text-7xl md:text-[120px] text-text leading-none tracking-wide"
       />
 

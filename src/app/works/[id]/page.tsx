@@ -712,7 +712,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
       {/* ═══════════ NEXT PROJECT FOOTER ═══════════ */}
       <div className="w-full min-h-[45vh] md:min-h-[55vh] flex flex-col items-center justify-center border-t border-border group cursor-pointer transition-colors duration-500 hover:bg-surface/50">
         <MagneticButton>
-          <Link href={`/work/${project.nextSlug}`} className="flex flex-col items-center px-6">
+          <Link href={`/works/${project.nextSlug}`} className="flex flex-col items-center px-6">
             <motion.span
               {...fadeUp}
               className="font-mono text-[10px] md:text-[11px] text-text/25 tracking-[0.3em] mb-5 md:mb-6 uppercase"

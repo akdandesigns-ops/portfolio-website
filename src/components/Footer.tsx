@@ -12,7 +12,7 @@ export default function Footer() {
           </div>
           
           <nav className="flex flex-wrap justify-center gap-4 md:gap-12 text-center">
-            {["HOME", "WORK", "BLOGS", "ABOUT", "SERVICES", "BOOK A CALL"].map((label) => {
+            {["HOME", "WORKS", "BLOGS", "ABOUT", "SERVICES", "BOOK A CALL"].map((label) => {
               const href = label === "HOME" ? "/" : label === "BOOK A CALL" ? "/contact" : `/${label.toLowerCase()}`;
               return (
                 <MagneticButton key={label}>
