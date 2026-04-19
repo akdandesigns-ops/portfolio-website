@@ -67,7 +67,7 @@ export default function WorkIndex() {
             viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Link href={`/work/${p.slug}`} className="group block">
+            <Link href={`/works/${p.slug}`} className="group block">
               <div
                 className="relative w-full overflow-hidden"
                 style={{ aspectRatio: "16/9" }}
