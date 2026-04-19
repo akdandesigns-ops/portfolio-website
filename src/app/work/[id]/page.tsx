@@ -32,6 +32,8 @@ interface ProjectData {
   description: string;
   approach?: string;
   heroImage: string;
+  imageFit?: "cover" | "contain";
+  useCuratedGallery?: boolean;
   gallery: { src: string; alt: string; span?: "full" | "half"; caption?: string; aspectRatio?: string }[];
   colors?: ColorSwatch[];
   typography?: TypographyInfo;
@@ -220,6 +222,54 @@ const projectDetails: Record<string, ProjectData> = {
       "AI-powered product photography and visual identity for WE Safe — bringing a safety brand into the modern era with hyper-realistic product renders and a clean, trustworthy visual language.",
     heroImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2000",
     gallery: [],
+    nextSlug: "footgraphy",
+    nextTitle: "FOOTGRAPHY",
+  },
+  "footgraphy": {
+    title: "FOOTGRAPHY",
+    tagline: "Step into the future.\nAI Product Photography.",
+    category: "AI Product Photography",
+    year: "2026",
+    client: "Footgraphy",
+    location: "Global",
+    description:
+      "A comprehensive exploration of AI product photography for 'Footgraphy'. This project demonstrates the power of generative AI to create hyper-realistic, high-fidelity shoe concepts. By crafting precise prompts and leveraging AI rendering, we established a visual narrative that merges cinematic global-fashion aesthetic with modern streetwear.",
+    approach:
+      "The goal was not just to create images of shoes, but to capture an entire mood — dramatic lighting, premium textures, and dynamic angles. Each generated image acts as a standalone piece of editorial photography, proving that AI can deliver commercially viable, striking visuals without a studio.",
+    heroImage: "/works/footgraphy/08.png",
+    imageFit: "contain",
+    useCuratedGallery: true,
+    gallery: [
+      { src: "/works/footgraphy/09.png", alt: "Cinematic Shoe Photography 1", span: "full", caption: "High-contrast editorial lighting highlighting material texture." },
+      { src: "/works/footgraphy/10.png", alt: "AI generated shoe 2", span: "half", aspectRatio: "3/4" },
+      { src: "/works/footgraphy/11.png", alt: "AI generated shoe 3", span: "half", aspectRatio: "3/4" },
+      { src: "/works/footgraphy/12.png", alt: "Cinematic Shoe Photography 4", span: "full", aspectRatio: "16/9", caption: "Vibrant global-fashion aesthetic captured entirely through generative AI." },
+      { src: "/works/footgraphy/13.png", alt: "AI generated shoe 5", span: "half", aspectRatio: "4/5" },
+      { src: "/works/footgraphy/15.png", alt: "AI generated shoe 6", span: "half", aspectRatio: "4/5" },
+      { src: "/works/footgraphy/16.png", alt: "Cinematic Shoe Photography 7", span: "full", aspectRatio: "2/1", caption: "The raw intent of design, crystallized in synthetic light." },
+      { src: "/works/footgraphy/14.png", alt: "AI generated shoe 14", span: "full" },
+      { src: "/works/footgraphy/01.png", alt: "AI generated shoe 01", span: "full" },
+      { src: "/works/footgraphy/02.png", alt: "AI generated shoe 02", span: "half" },
+      { src: "/works/footgraphy/03.png", alt: "AI generated shoe 03", span: "half" },
+      { src: "/works/footgraphy/04.png", alt: "AI generated shoe 04", span: "full" },
+      { src: "/works/footgraphy/05.png", alt: "AI generated shoe 05", span: "half" },
+      { src: "/works/footgraphy/06.png", alt: "AI generated shoe 06", span: "half" },
+      { src: "/works/footgraphy/07.png", alt: "AI generated shoe 07", span: "full" },
+      { src: "/works/footgraphy/17.png", alt: "AI generated shoe 17", span: "half" },
+      { src: "/works/footgraphy/18.png", alt: "AI generated shoe 18", span: "half" },
+      { src: "/works/footgraphy/19.png", alt: "AI generated shoe 19", span: "full" },
+      { src: "/works/footgraphy/20.png", alt: "AI generated shoe 20", span: "half" },
+      { src: "/works/footgraphy/21.png", alt: "AI generated shoe 21", span: "half" },
+      { src: "/works/footgraphy/22.png", alt: "AI generated shoe 22", span: "full" },
+      { src: "/works/footgraphy/23.png", alt: "AI generated shoe 23", span: "half" },
+      { src: "/works/footgraphy/24.png", alt: "AI generated shoe 24", span: "half" },
+      { src: "/works/footgraphy/25.png", alt: "AI generated shoe 25", span: "full" },
+      { src: "/works/footgraphy/26.png", alt: "AI generated shoe 26", span: "half" },
+      { src: "/works/footgraphy/27.png", alt: "AI generated shoe 27", span: "half" },
+      { src: "/works/footgraphy/28.png", alt: "AI generated shoe 28", span: "full" },
+      { src: "/works/footgraphy/29.png", alt: "AI generated shoe 29", span: "half" },
+      { src: "/works/footgraphy/30.png", alt: "AI generated shoe 30", span: "half" }
+    ],
     nextSlug: "licet-15",
     nextTitle: "LICET 15",
   },
@@ -231,6 +281,7 @@ const idToSlug: Record<string, string> = {
   "02": "sans-badminton",
   "03": "solstice-pick",
   "04": "we-safe",
+  "05": "footgraphy",
 };
 
 /* ─── Shared animation presets ─── */
@@ -354,7 +405,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[0].src}
                     alt={project.gallery[0].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="100vw"
                   />
                 </div>
@@ -379,7 +430,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[1].src}
                     alt={project.gallery[1].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="50vw"
                   />
                 </div>
@@ -388,7 +439,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[2].src}
                     alt={project.gallery[2].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="50vw"
                   />
                 </div>
@@ -530,7 +581,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[3].src}
                     alt={project.gallery[3].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="100vw"
                   />
                 </div>
@@ -557,7 +608,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[4].src}
                     alt={project.gallery[4].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="50vw"
                   />
                 </div>
@@ -566,7 +617,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[5].src}
                     alt={project.gallery[5].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="50vw"
                   />
                 </div>
@@ -583,7 +634,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                     src={project.gallery[4].src}
                     alt={project.gallery[4].alt}
                     fill
-                    className="object-cover"
+                    className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                     sizes="50vw"
                   />
                 </div>
@@ -604,7 +655,7 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                       src={project.gallery[6].src}
                       alt={project.gallery[6].alt}
                       fill
-                      className="object-cover"
+                      className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                       sizes="100vw"
                     />
                   </div>
@@ -647,19 +698,19 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
         </>
       )}
 
-      {/* ── Dynamic fallback gallery for projects without curated layout ── */}
-      {project.gallery.length > 0 && !project.colors && (
+      {/* ── Dynamic fallback gallery for projects without curated layout OR for remaining images ── */}
+      {project.gallery.length > (project.useCuratedGallery ? 8 : 0) && !project.colors && (
         <section className="w-full px-6 md:px-16 lg:px-24 py-16 md:py-32">
           <div className="max-w-[1400px] mx-auto flex flex-col gap-6 md:gap-8">
             {(() => {
               const elements: React.ReactNode[] = [];
-              let i = 0;
+              let i = project.useCuratedGallery ? 8 : 0;
               while (i < project.gallery.length) {
                 const img = project.gallery[i];
                 if (img.span === "full") {
                   elements.push(
-                    <motion.div key={i} {...fadeIn} className="w-full relative aspect-[16/9] overflow-hidden">
-                      <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="100vw" />
+                    <motion.div key={i} {...fadeIn} className="w-full relative overflow-hidden" style={{ aspectRatio: img.aspectRatio || "16/9" }}>
+                      <Image src={img.src} alt={img.alt} fill className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'} sizes="100vw" />
                     </motion.div>
                   );
                   i++;
@@ -667,19 +718,19 @@ export default function CaseStudyPage({ params }: { params: { id: string } }) {
                   const img2 = project.gallery[i + 1];
                   elements.push(
                     <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                      <motion.div {...fadeUp} className="relative w-full aspect-[4/3] overflow-hidden">
-                        <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="50vw" />
+                      <motion.div {...fadeUp} className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "4/3" }}>
+                        <Image src={img.src} alt={img.alt} fill className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'} sizes="50vw" />
                       </motion.div>
-                      <motion.div {...fadeUp} className="relative w-full aspect-[4/3] overflow-hidden">
-                        <Image src={img2.src} alt={img2.alt} fill className="object-cover" sizes="50vw" />
+                      <motion.div {...fadeUp} className="relative w-full overflow-hidden" style={{ aspectRatio: img2.aspectRatio || "4/3" }}>
+                        <Image src={img2.src} alt={img2.alt} fill className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'} sizes="50vw" />
                       </motion.div>
                     </div>
                   );
                   i += 2;
                 } else {
                   elements.push(
-                    <motion.div key={i} {...fadeIn} className="w-full relative aspect-[16/9] overflow-hidden">
-                      <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="100vw" />
+                    <motion.div key={i} {...fadeIn} className="w-full relative overflow-hidden" style={{ aspectRatio: img.aspectRatio || "16/9" }}>
+                      <Image src={img.src} alt={img.alt} fill className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'} sizes="100vw" />
                     </motion.div>
                   );
                   i++;

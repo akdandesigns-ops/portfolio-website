@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import MagneticButton from "@/components/MagneticButton";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
@@ -32,25 +33,41 @@ export default function AboutPage() {
       </div>
 
       {/* Philosophy */}
-      <div className="w-full flex justify-end mb-24 md:mb-40">
+      <div className="w-full flex flex-col md:flex-row justify-between mb-24 md:mb-40 gap-12 md:gap-8 items-center md:items-start">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1 }}
+          className="w-full sm:w-[80%] md:w-[40%] aspect-[3/4] relative overflow-hidden bg-surface"
+        >
+          <Image 
+            src="/profile.jpg" 
+            alt="Aswin Kumaaran" 
+            fill 
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+        </motion.div>
+        
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1 }}
-          className="max-w-[720px] w-full flex flex-col gap-6 font-sans font-light text-[16px] md:text-[20px] leading-[1.7] text-text/80"
+          className="max-w-[720px] w-full md:w-[50%] flex flex-col gap-6 font-sans font-light text-[16px] md:text-[20px] leading-[1.7] text-text/80"
         >
           <p>
             I&apos;m Aswin Kumaaran, a self-taught brand identity designer based in Chennai, crafting visual identities that make businesses impossible to ignore.
           </p>
           <p>
-            I got into design the hard way — no classroom, no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I&apos;ve worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.
+            I got into design the hard way, with no formal classroom and no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I&apos;ve worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.
           </p>
           <p>
-            My approach is simple: I don&apos;t have a one-size-fits-all style, because your brand shouldn&apos;t look like everyone else&apos;s. Every project starts with understanding your business, your audience, and what you&apos;re really trying to say — then building a visual identity that says it better than words ever could.
+            My approach is simple: I don&apos;t have a one-size-fits-all style, because your brand shouldn&apos;t look like everyone else&apos;s. Every project starts with understanding your business, your audience, and what you&apos;re really trying to say, so we can build a visual identity that says it better than words ever could.
           </p>
           <p>
-            If you&apos;re starting a new venture, rebranding, or just tired of looking like an amateur — let&apos;s fix that.
+            If you&apos;re starting a new venture, rebranding, or just tired of looking like an amateur, let&apos;s fix that together.
           </p>
         </motion.div>
       </div>
@@ -113,7 +130,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex flex-col gap-2">
             <h4 className="font-bebas text-3xl uppercase">ASWIN KUMAARAN</h4>
-            <span className="font-mono text-[11px] text-accent tracking-[0.1em]">Principal Designer</span>
+            <span className="font-mono text-[11px] text-accent tracking-[0.1em]">Brand Identity Designer</span>
             <p className="font-sans font-light text-[15px] text-text/60 max-w-[400px] mt-4">
               Self-taught brand identity designer with an obsession for clarity, precision, and making brands impossible to ignore.
             </p>

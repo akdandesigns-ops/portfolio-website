@@ -228,11 +228,11 @@ export default function ContactPage() {
                   value={formData.type}
                   onChange={(e) => setFormData({...formData, type: e.target.value})}
                 >
-                  <option value="" disabled className="text-bg bg-surface">Select a Project Type</option>
-                  <option value="Logo Design" className="text-bg bg-surface">Logo Design</option>
-                  <option value="Visual Identity" className="text-bg bg-surface">Visual Identity</option>
-                  <option value="Brand Identity" className="text-bg bg-surface">Brand Identity</option>
-                  <option value="Other" className="text-bg bg-surface">Other</option>
+                  <option value="" disabled className="text-text bg-surface">Select a Project Type</option>
+                  <option value="Logo Design" className="text-text bg-surface">Logo Design</option>
+                  <option value="Visual Identity" className="text-text bg-surface">Visual Identity</option>
+                  <option value="Brand Identity" className="text-text bg-surface">Brand Identity</option>
+                  <option value="Other" className="text-text bg-surface">Other</option>
                 </select>
                 <div className="absolute right-0 top-8 pointer-events-none text-text/50">▼</div>
                 <div className="w-full h-[1px] bg-border" />

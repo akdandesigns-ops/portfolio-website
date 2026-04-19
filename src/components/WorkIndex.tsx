@@ -43,6 +43,16 @@ const projects = [
     image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200",
     size: "wide", // wider than half, not full
   },
+  {
+    id: "05",
+    name: "FOOTGRAPHY",
+    slug: "footgraphy",
+    category: "AI Product Photography",
+    year: "2026",
+    image: "/works/footgraphy/08.png",
+    size: "featured",
+    imageFit: "contain",
+  },
 ];
 
 export default function WorkIndex() {
