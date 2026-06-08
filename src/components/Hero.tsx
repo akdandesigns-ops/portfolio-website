@@ -51,15 +51,15 @@ export function Hero() {
       <div className="flex-1 min-h-[60px]" />
 
       {/* Hero Content Block */}
-      <div className="w-full flex justify-center max-w-[2000px] mx-auto z-10">
-        <div className="flex flex-col items-start gap-1 md:gap-3">
+      <div className="w-full flex justify-start lg:justify-center max-w-[2000px] mx-auto z-10">
+        <div className="flex flex-col items-start gap-2 md:gap-3 w-full">
           {/* Top Left Label */}
-          <div className="hero-label font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-muted pl-1">
+          <div className="hero-label font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-muted pl-1 md:pl-2">
             Independent Designer — Est. 2024
           </div>
 
           {/* Center Huge Text */}
-          <h1 className="hero-heading font-bebas text-[clamp(72px,12vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase">
+          <h1 className="hero-heading font-bebas text-[clamp(48px,13vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase">
             <div className="overflow-hidden pb-2 lg:pb-4 flex gap-[clamp(16px,2.5vw,36px)]">
               I DESIGN
             </div>
@@ -72,7 +72,7 @@ export function Hero() {
           </h1>
 
           {/* Descriptor */}
-          <p className="hero-desc font-sans font-light text-[15px] md:text-[17px] leading-[1.6] max-w-[420px] text-text/80 mt-10 pl-1">
+          <p className="hero-desc font-sans font-light text-[14px] md:text-[17px] leading-[1.6] max-w-[420px] text-text/80 mt-6 md:mt-10 pl-1 md:pl-2">
             akdandesigns crafts identities that rise above the ordinary — strategic, precise, and impossible to ignore.
           </p>
         </div>
