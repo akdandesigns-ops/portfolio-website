@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import MagneticButton from "./MagneticButton";
 import { ThemeToggle } from "./ThemeToggle";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const links = [
   { href: "/", label: "HOME" },
@@ -20,6 +21,9 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  
+  const menuRef = useRef<HTMLDivElement>(null);
+  const { contextSafe } = useGSAP({ scope: menuRef });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +32,18 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      gsap.to(menuRef.current, { autoAlpha: 1, duration: 0.4, ease: "power3.out" });
+      gsap.fromTo(".mobile-link", 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.1, ease: "power3.out" }
+      );
+    } else {
+      gsap.to(menuRef.current, { autoAlpha: 0, duration: 0.4, ease: "power3.in" });
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -93,35 +109,24 @@ export default function Navigation() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[99] bg-bg flex flex-col items-center justify-center"
-          >
-            <nav className="flex flex-col items-center gap-6">
-              {links.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="font-bebas text-5xl text-text hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        ref={menuRef}
+        className="fixed inset-0 z-[99] bg-bg flex flex-col items-center justify-center opacity-0 invisible"
+      >
+        <nav className="flex flex-col items-center gap-6">
+          {links.map((link) => (
+            <div key={link.href} className="mobile-link opacity-0">
+              <Link
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="font-bebas text-5xl text-text hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            </div>
+          ))}
+        </nav>
+      </div>
     </>
   );
 }

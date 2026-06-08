@@ -1,0 +1,225 @@
+[
+  {
+    "id": "01",
+    "name": "LICET 15",
+    "slug": "licet-15",
+    "category": "Visual Identity",
+    "year": "2025",
+    "size": "featured",
+    "tagline": "15 years of building engineers.\nOne mark that says it all.",
+    "client": "Loyola-ICAM College of Engineering & Technology",
+    "location": "Chennai, India",
+    "description": "A commemorative visual identity for Loyola-ICAM College of Engineering & Technology, Chennai, marking their 15th anniversary. The logomark is constructed from the numeral 15 with the college's top-view floor plan embedded in the negative space — a hidden blueprint.",
+    "approach": "Built using the brand's signature deep navy blue and amber orange, the mark is minimal, geometric and meaningful. Every angle, every line references the institutional architecture — turning a number into a monument.",
+    "heroImage": "/works/licet-15/licet -15 - t-shirt-mockup.jpg",
+    "useCuratedGallery": true,
+    "gallery": [
+      { "src": "/works/licet-15/licet15-wordmark-logo.jpg", "alt": "LICET 15 Wordmark Logo", "span": "full", "caption": "The complete wordmark system — LICET 15, with the college motto integrated beneath." },
+      { "src": "/works/licet-15/licet -15 -LOGO BLACK-mockup.jpg", "alt": "Logo Black Mockup", "span": "half" },
+      { "src": "/works/licet-15/display mockup.jpg", "alt": "Stage Display Mockup", "span": "half" },
+      { "src": "/works/licet-15/licet-15 pattern.jpg", "alt": "LICET 15 Brand Pattern", "span": "full", "caption": "A tessellated pattern derived from the logomark, built for large-format applications." },
+      { "src": "/works/licet-15/licet -15 - memento.jpg", "alt": "Glass Memento", "span": "half" },
+      { "src": "/works/licet-15/black t shirt mockup.jpg", "alt": "Black T-shirt Mockup", "span": "half" },
+      { "src": "/works/licet-15/magazine.jpg", "alt": "College Magazine Cover", "span": "full", "caption": "A magazine spread integrating the anniversary branding into the editorial system." }
+    ],
+    "colors": [
+      {
+        "name": "Navy Blue",
+        "hex": "#1B1464",
+        "rgb": "27, 20, 100",
+        "cmyk": "100, 95, 0, 40",
+        "psychology": "Represents academic excellence, trust, and institutional authority. Navy conveys depth and seriousness — the foundation of a 15-year legacy."
+      },
+      {
+        "name": "Amber Orange",
+        "hex": "#F5A623",
+        "rgb": "245, 166, 35",
+        "cmyk": "0, 35, 90, 0",
+        "psychology": "Symbolizes energy, warmth, and forward momentum. The amber counterbalances the navy's formality with optimism and approachability."
+      },
+      {
+        "name": "Pure White",
+        "hex": "#FFFFFF",
+        "rgb": "255, 255, 255",
+        "cmyk": "0, 0, 0, 0",
+        "psychology": "Provides breathing room and clarity. White space is not emptiness — it is the canvas that gives the mark its architectural precision."
+      },
+      {
+        "name": "Deep Black",
+        "hex": "#111111",
+        "rgb": "17, 17, 17",
+        "cmyk": "0, 0, 0, 95",
+        "psychology": "Used for mono applications and high-contrast scenarios. Black adds gravitas and ensures the mark reads powerfully at any scale."
+      }
+    ],
+    "typography": {
+      "fontFamily": "'Impact', 'Haettenschweiler', sans-serif",
+      "fontName": "Impact Bold",
+      "cssClass": "font-impact",
+      "description": "A realist sans-serif typeface designed by Geoffrey Lee in 1965. Impact's ultra-condensed, heavy letterforms command immediate attention — engineered for headlines that demand to be read. Its unapologetic weight delivers the institutional gravitas LICET 15's anniversary identity requires."
+    },
+    "nextSlug": "sans-badminton",
+    "nextTitle": "SANS"
+  },
+  {
+    "id": "02",
+    "name": "SANS",
+    "slug": "sans-badminton",
+    "category": "Logo Design",
+    "year": "2025",
+    "size": "half",
+    "tagline": "Built for speed.\nDesigned to dominate.",
+    "client": "Personal Project",
+    "location": "Chennai, India",
+    "deliverable": "Logomark, Brand Identity",
+    "description": "A bold brand identity for SANS — Supreme Agility Net Sport, a badminton sports brand. The logomark is born from the jump smash — the most aggressive, airborne strike in badminton — captured mid-flight and distilled into a geometric mark. Sharp, angular, and built for motion. Set in Brother Oblique to reinforce the dynamic, forward-leaning energy of competitive sport. The neo green and charcoal palette cuts through the noise — electric on court, unmistakable off it.",
+    "approach": "The identity system is engineered around tension and release. The jump smash logomark carries diagonal momentum — every angle references the explosive upward leap and downward strike. Brother Oblique's italic construction mirrors that same forward pressure. The neo green isn't decorative — it's adrenaline made visible.",
+    "heroImage": "/works/sans-badminton/sans-09.png",
+    "useCuratedGallery": true,
+    "gallery": [
+      { "src": "/works/sans-badminton/sans-07.png", "alt": "SANS Logomark — White on Charcoal Grey", "span": "full", "caption": "Brand in action — the jump smash logomark references the explosive mid-air strike that defines competitive badminton." },
+      { "src": "/works/sans-badminton/sans-08.png", "alt": "SANS Logomark — Neo Green on Charcoal", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/sans-badminton/sans-10.png", "alt": "SANS Logomark — Dark on Neo Green", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/sans-badminton/sans-09.png", "alt": "SANS Carbon Fibre Texture Logomark", "span": "full", "aspectRatio": "4/5", "caption": "The logomark on carbon fibre — raw material meets raw intent. Every angle of the jump smash mark carries diagonal momentum." },
+      { "src": "/works/sans-badminton/sans-11.png", "alt": "SANS Logo — Royal Blue Alternate Colorway", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/sans-badminton/website-img.png", "alt": "SANS Brand Showcase — Jump Smash Player", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/sans-badminton/untitled-2.jpg", "alt": "SANS Brand Collateral — Bottle Mockup & Player Action", "span": "full", "caption": "From branded merchandise to court-side presence — the identity system extends across every athlete touchpoint." },
+      { "src": "/works/sans-badminton/sans-12.png", "alt": "SANS Logo Color Variations — Four Colorways", "span": "full", "caption": "The logomark across the full colorway system — charcoal, neo green, royal blue, and sunset red. Built to flex, built to dominate." }
+    ],
+    "colors": [
+      {
+        "name": "Neo Green",
+        "hex": "#C8FF00",
+        "rgb": "200, 255, 0",
+        "cmyk": "22, 0, 100, 0",
+        "psychology": "The signature colour. Neo green is adrenaline — raw, electric, impossible to ignore. It captures the explosive energy of a jump smash and the relentless intensity of competitive badminton."
+      },
+      {
+        "name": "Charcoal Grey",
+        "hex": "#3D3D3D",
+        "rgb": "61, 61, 61",
+        "cmyk": "0, 0, 0, 76",
+        "psychology": "The grounding force. Charcoal provides the serious, performance-grade backbone of the identity — technical, controlled, and unapologetically premium."
+      },
+      {
+        "name": "Carbon Black",
+        "hex": "#1A1A1A",
+        "rgb": "26, 26, 26",
+        "cmyk": "0, 0, 0, 90",
+        "psychology": "Used for deep backgrounds and high-contrast applications. Carbon black creates the void against which neo green burns brightest — dominance through depth."
+      },
+      {
+        "name": "Pure White",
+        "hex": "#FFFFFF",
+        "rgb": "255, 255, 255",
+        "cmyk": "0, 0, 0, 0",
+        "psychology": "The counterforce. White delivers clarity and precision. On dark surfaces, it makes the logomark cut like a blade — sharp, clean, undeniable."
+      }
+    ],
+    "typography": {
+      "fontFamily": "'Brother Oblique', sans-serif",
+      "fontName": "Brother Oblique",
+      "cssClass": "font-brother",
+      "description": "A bold, forward-leaning display typeface that mirrors the diagonal momentum of competitive sport. Brother Oblique's italic construction captures the same aggressive energy as the jump smash — every letter leans into the action."
+    },
+    "nextSlug": "solstice-pick",
+    "nextTitle": "SOLSTICE PICK"
+  },
+  {
+    "id": "03",
+    "name": "Solestice Pick Branding",
+    "slug": "solstice-pick",
+    "category": "Logo Design",
+    "year": "2026",
+    "size": "half",
+    "tagline": "Premium for\naffordable people.",
+    "client": "Solestice Pick",
+    "location": "Global",
+    "description": "Solestice Pick is an e-commerce brand that curates high-quality products and offers them at affordable prices. The positioning is “premium for affordable people” — combining aspirational quality with accessibility.",
+    "approach": "The logo represents a thumb and index finger holding an object, symbolizing careful product selection and quality assurance. The overall form subtly resembles a shopping bag, reinforcing the e-commerce identity.",
+    "heroImage": "/works/solstice-pick/solstice pick - mockup 1.png",
+    "useCuratedGallery": true,
+    "gallery": [
+      { "src": "/works/solstice-pick/solstice pick - imagery style.png", "alt": "Solestice Pick Imagery Style", "span": "full", "caption": "The brand imagery evokes warmth and honesty, establishing the accessible premium positioning." },
+      { "src": "/works/solstice-pick/Solstice pick - logos-01.png", "alt": "Solestice Pick Logo Variation", "span": "half", "aspectRatio": "9/16" },
+      { "src": "/works/solstice-pick/Solstice pick - logos-02.png", "alt": "Solestice Pick Logo Variation 2", "span": "half", "aspectRatio": "9/16" },
+      { "src": "/works/solstice-pick/solstice pick - pattern.png", "alt": "Solestice Pick Brand Pattern", "span": "full", "aspectRatio": "22/10", "caption": "The brand pattern deployed as an asset across the packaging landscape." },
+      { "src": "/works/solstice-pick/Solstice pick - logos-04.png", "alt": "Solestice Pick Iconography", "span": "half", "aspectRatio": "9/16" },
+      { "src": "/works/solstice-pick/Solstice pick - logos-03.png", "alt": "Solestice Pick Secondary Monogram", "span": "half", "aspectRatio": "9/16", "caption": "Secondary monogram logo preserving the idea of careful selection." },
+      { "src": "/works/solstice-pick/Solstice pick - logos-05.png", "alt": "Solestice Pick Logomark", "span": "full", "aspectRatio": "1/1", "caption": "The standalone logomark." }
+    ],
+    "colors": [
+      {
+        "name": "Forest Dawn",
+        "hex": "#108577",
+        "rgb": "16, 133, 119",
+        "cmyk": "85, 20, 50, 5",
+        "psychology": "Trust, quality, and a calm premium feel. This colour grounds the brand in reliability and aspirational value."
+      },
+      {
+        "name": "Sunlit Cream",
+        "hex": "#FDF6B0",
+        "rgb": "253, 246, 176",
+        "cmyk": "2, 2, 35, 0",
+        "psychology": "Warmth, friendliness, and youthful energy. When paired with the deep teal, it establishes an accessible premium positioning that welcomes the user."
+      }
+    ],
+    "typography": {
+      "fontFamily": "'Adelle', serif",
+      "fontName": "Adelle",
+      "cssClass": "font-serif",
+      "description": "Adelle is a slab serif typeface that blends modern readability with traditional strength. It adds a premium editorial tone while maintaining clarity, making it suitable for a brand that communicates trust and quality."
+    },
+    "nextSlug": "footgraphy",
+    "nextTitle": "FOOTGRAPHY"
+  },
+  {
+    "id": "04",
+    "name": "FOOTGRAPHY",
+    "slug": "footgraphy",
+    "category": "AI Product Photography",
+    "year": "2026",
+    "size": "featured",
+    "tagline": "Step into the future.\nAI Product Photography.",
+    "client": "Footgraphy",
+    "location": "Global",
+    "description": "A comprehensive exploration of AI product photography for 'Footgraphy'. This project demonstrates the power of generative AI to create hyper-realistic, high-fidelity shoe concepts. By crafting precise prompts and leveraging AI rendering, we established a visual narrative that merges cinematic global-fashion aesthetic with modern streetwear.",
+    "approach": "The goal was not just to create images of shoes, but to capture an entire mood — dramatic lighting, premium textures, and dynamic angles. Each generated image acts as a standalone piece of editorial photography, proving that AI can deliver commercially viable, striking visuals without a studio.",
+    "heroImage": "/works/footgraphy/08.png",
+    "imageFit": "contain",
+    "useCuratedGallery": false,
+    "gallery": [
+      { "src": "/works/footgraphy/09.png", "alt": "Cinematic Shoe Photography 1", "span": "full", "caption": "High-contrast editorial lighting highlighting material texture." },
+      { "src": "/works/footgraphy/10.png", "alt": "AI generated shoe 2", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/footgraphy/11.png", "alt": "AI generated shoe 3", "span": "half", "aspectRatio": "3/4" },
+      { "src": "/works/footgraphy/12.png", "alt": "Cinematic Shoe Photography 4", "span": "full", "aspectRatio": "16/9", "caption": "Vibrant global-fashion aesthetic captured entirely through generative AI." },
+      { "src": "/works/footgraphy/13.png", "alt": "AI generated shoe 5", "span": "half", "aspectRatio": "4/5" },
+      { "src": "/works/footgraphy/15.png", "alt": "AI generated shoe 6", "span": "half", "aspectRatio": "4/5" },
+      { "src": "/works/footgraphy/16.png", "alt": "Cinematic Shoe Photography 7", "span": "full", "aspectRatio": "2/1", "caption": "The raw intent of design, crystallized in synthetic light." },
+      { "src": "/works/footgraphy/14.png", "alt": "AI generated shoe 14", "span": "full" },
+      { "src": "/works/footgraphy/01.png", "alt": "AI generated shoe 01", "span": "full" },
+      { "src": "/works/footgraphy/02.png", "alt": "AI generated shoe 02", "span": "half" },
+      { "src": "/works/footgraphy/03.png", "alt": "AI generated shoe 03", "span": "half" },
+      { "src": "/works/footgraphy/04.png", "alt": "AI generated shoe 04", "span": "full" },
+      { "src": "/works/footgraphy/05.png", "alt": "AI generated shoe 05", "span": "half" },
+      { "src": "/works/footgraphy/06.png", "alt": "AI generated shoe 06", "span": "half" },
+      { "src": "/works/footgraphy/07.png", "alt": "AI generated shoe 07", "span": "full" },
+      { "src": "/works/footgraphy/17.png", "alt": "AI generated shoe 17", "span": "half" },
+      { "src": "/works/footgraphy/18.png", "alt": "AI generated shoe 18", "span": "half" },
+      { "src": "/works/footgraphy/19.png", "alt": "AI generated shoe 19", "span": "full" },
+      { "src": "/works/footgraphy/20.png", "alt": "AI generated shoe 20", "span": "half" },
+      { "src": "/works/footgraphy/21.png", "alt": "AI generated shoe 21", "span": "half" },
+      { "src": "/works/footgraphy/22.png", "alt": "AI generated shoe 22", "span": "full" },
+      { "src": "/works/footgraphy/23.png", "alt": "AI generated shoe 23", "span": "half" },
+      { "src": "/works/footgraphy/24.png", "alt": "AI generated shoe 24", "span": "half" },
+      { "src": "/works/footgraphy/25.png", "alt": "AI generated shoe 25", "span": "full" },
+      { "src": "/works/footgraphy/26.png", "alt": "AI generated shoe 26", "span": "half" },
+      { "src": "/works/footgraphy/27.png", "alt": "AI generated shoe 27", "span": "half" },
+      { "src": "/works/footgraphy/28.png", "alt": "AI generated shoe 28", "span": "full" },
+      { "src": "/works/footgraphy/29.png", "alt": "AI generated shoe 29", "span": "half" },
+      { "src": "/works/footgraphy/30.png", "alt": "AI generated shoe 30", "span": "half" }
+    ],
+    "nextSlug": "licet-15",
+    "nextTitle": "LICET 15"
+  }
+]

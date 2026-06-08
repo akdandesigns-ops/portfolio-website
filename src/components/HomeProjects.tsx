@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import AnimatedHeading from "./AnimatedHeading";
 
 const projects = [
@@ -34,8 +36,25 @@ const projects = [
 ];
 
 export function HomeProjects() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>(".project-card").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="w-full flex justify-center py-20 px-6 md:px-12 max-w-[2000px] mx-auto z-10 relative bg-bg">
+    <section ref={containerRef} className="w-full flex justify-center py-20 px-6 md:px-12 max-w-[2000px] mx-auto z-10 relative bg-bg">
       <div className="w-full flex flex-col gap-32">
         {/* Section Heading */}
         <div className="w-full border-b border-border pb-8">
@@ -48,20 +67,18 @@ export function HomeProjects() {
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           {projects.map((project, index) => (
-            <motion.div
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="flex flex-col group w-full"
+              className="project-card flex flex-col group w-full"
             >
               <Link href={project.href} className="w-full flex flex-col gap-6">
-                <div className="w-full aspect-[4/3] md:aspect-[3/4] relative overflow-hidden">
+                <div className="w-full aspect-[4/3] md:aspect-[3/4] relative overflow-hidden" data-speed="0.95">
                   <Image 
                     src={project.image} 
                     alt={project.title}
                     fill
+                    priority={index <= 1}
+                    quality={85}
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] grayscale hover:grayscale-0"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
@@ -76,7 +93,7 @@ export function HomeProjects() {
                   </h3>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

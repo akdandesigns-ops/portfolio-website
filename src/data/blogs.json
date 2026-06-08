@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "the-death-of-the-landing-page",
+    "title": "The Death of the Landing Page: Why Storytelling is the Only Metric Left",
+    "date": "APR 04, 2024",
+    "readTime": "8 MIN READ",
+    "tag": "Brand Strategy",
+    "image": "https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=1600",
+    "quote": "When every brand shouts at the exact same frequency, total silence is the only sound that commands attention.",
+    "paragraphs": [
+      "We have entered the era of the endless scroll, the ubiquitous component library, and the templated aesthetic. Finding a SaaS layout that doesn’t employ a standard left-aligned h1, two buttons, and a massive dashboard mockup on the right is increasingly rare.",
+      "But visual noise has an endpoint. When every brand shouts at the exact same frequency, total silence is the only sound that commands attention. In a saturated market, restraint is a luxury.",
+      "Moving forward, brands will be defined not by how much information they can compress into an above-the-fold viewport, but by the confidence they exude through negative space. It's the difference between desperation and authority. To design authentically in this space, one must prioritize tension over mere balance. Structural rigidity, extreme grid awareness, and the exact placement of single elements against an infinite canvas."
+    ]
+  },
+  {
+    "slug": "design-system-efficiency",
+    "title": "Why Modular Design Systems Fail Without Architecture",
+    "date": "MAR 12, 2024",
+    "readTime": "4 MIN READ",
+    "tag": "Design Theory",
+    "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800",
+    "quote": "A library of components is not a system; it is just a box of Lego bricks without a blueprint.",
+    "paragraphs": [
+      "Design systems are often championed as the ultimate cure for design debt and developer friction. Organizations spend months building vast component libraries in Figma and React, cataloging every button state, modal, and input field.",
+      "And yet, many of these systems quietly fail. Teams continue to build custom, non-compliant components, layouts feel disconnected, and codebases become bloated. The reason is simple: a collection of components is not a design system. Without clear architectural rules, semantic tokens, and rigid layout guidelines, a design system is just a box of Lego bricks.",
+      "To build a truly functional design system, one must focus on decision-making models rather than just assets. How do components scale? What are the mathematical rules governing spacing, type curves, and color interactions? When we design the system itself rather than just the parts, consistency follows organically."
+    ]
+  },
+  {
+    "slug": "silence-in-design",
+    "title": "Silence as a Differentiator in Saturated Markets",
+    "date": "FEB 24, 2024",
+    "readTime": "6 MIN READ",
+    "tag": "Brand Strategy",
+    "image": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800",
+    "quote": "In a room full of people screaming, the person whispering holds the room's attention.",
+    "paragraphs": [
+      "Modern marketing is obsessed with optimization: brighter colors, bolder headlines, more popups, and faster animations. We are bombarded with notifications, micro-interactions, and visual noise every second we spend online.",
+      "But this hyper-stimulation creates a powerful counter-trend: sensory exhaustion. When everything is loud, nothing is heard. High-end brands understand this instinctively. They don't shout; they whisper. They build authority through vast negative space, ultra-refined typography, and absolute visual restraint.",
+      "By stripping away the noise, you force the audience to focus on the core value of your brand. You convey a sense of absolute confidence — that your product or service is so undeniably premium that it doesn't need to beg for attention. In a saturated digital landscape, silence isn't just a style; it's a devastatingly effective business strategy."
+    ]
+  },
+  {
+    "slug": "typography-first",
+    "title": "Rethinking Hierarchy: The Case for Typography-First Web",
+    "date": "JAN 18, 2024",
+    "readTime": "5 MIN READ",
+    "tag": "Web Design",
+    "image": "https://images.unsplash.com/photo-1510413009623-2895f36e89af?q=80&w=800",
+    "quote": "Type is not just a carrier of message; type is the architecture of the message.",
+    "paragraphs": [
+      "For years, web design has been dominated by imagery and video backgrounds. Type was treated as a secondary asset, placed over large banner graphics or inside boxes. But as user attention spans shrink, loading times and immediate readability have become paramount.",
+      "A typography-first design approach reverses this hierarchy. By using type scale, rhythm, line heights, and layout tension as the primary visual drivers, we build experiences that are incredibly fast, accessible, and uniquely premium.",
+      "When typography is the hero, every character holds weight. The selection of the typeface, the micro-adjustments of letter-spacing, and the rigid alignments against a clean grid create an interface that feels intellectual, editorial, and timeless. It shifts the web from a medium of decoration to a medium of pure, unadulterated communication."
+    ]
+  }
+]

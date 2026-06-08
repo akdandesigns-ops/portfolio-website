@@ -1,53 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import Link from "next/link";
+import worksData from "@/data/works.json";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
-const projects = [
-  {
-    id: "01",
-    name: "LICET 15",
-    slug: "licet-15",
-    category: "Visual Identity",
-    year: "2025",
-    image: "/works/licet-15/licet -15 - t-shirt-mockup.jpg",
-    size: "featured", // full-width featured
-  },
-  {
-    id: "02",
-    name: "SANS",
-    slug: "sans-badminton",
-    category: "Logo Design",
-    year: "2025",
-    image: "/works/sans-badminton/sans-09.png",
-    size: "half",
-  },
-  {
-    id: "03",
-    name: "Solestice Pick Branding",
-    slug: "solstice-pick",
-    category: "Logo Design",
-    year: "2026",
-    image: "/works/solstice-pick/solstice pick - mockup 1.png",
-    size: "half",
-  },
-  {
-    id: "04",
-    name: "FOOTGRAPHY",
-    slug: "footgraphy",
-    category: "AI Product Photography",
-    year: "2026",
-    image: "/works/footgraphy/08.png",
-    size: "featured",
-    imageFit: "contain",
-  },
-];
+interface Project {
+  id: string;
+  name: string;
+  slug: string;
+  category: string;
+  year: string;
+  heroImage: string;
+  size: "featured" | "half" | "wide" | string;
+  imageFit?: "cover" | "contain";
+}
 
 export default function WorkIndex() {
+  const projects = worksData as unknown as Project[];
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (projects.length === 0) return;
+    gsap.utils.toArray<HTMLElement>(".project-card").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+        },
+        opacity: 0,
+        y: 60,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+    });
+  }, { scope: containerRef, dependencies: [projects] });
 
   // Group projects for the asymmetric layout
   const renderProjects = () => {
@@ -60,12 +51,9 @@ export default function WorkIndex() {
       if (p.size === "featured") {
         // Full-width featured project
         elements.push(
-          <motion.div
+          <div
             key={p.id}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-5%" }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="project-card"
           >
             <Link href={`/works/${p.slug}`} className="group block">
               <div
@@ -75,10 +63,10 @@ export default function WorkIndex() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 <Image
-                  src={p.image}
+                  src={p.heroImage}
                   alt={p.name}
                   fill
-                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${p.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4 md:p-12' : 'object-cover'}`}
                   sizes="100vw"
                   priority
                 />
@@ -93,7 +81,7 @@ export default function WorkIndex() {
                 </p>
               </div>
             </Link>
-          </motion.div>
+          </div>
         );
         i++;
       } else if (
@@ -106,12 +94,9 @@ export default function WorkIndex() {
         elements.push(
           <div key={`row-${p.id}`} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[p, p2].map((proj, idx) => (
-              <motion.div
+              <div
                 key={proj.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="project-card"
               >
                 <Link href={`/works/${proj.slug}`} className="group block">
                   <div
@@ -121,10 +106,10 @@ export default function WorkIndex() {
                     onMouseLeave={() => setHoveredId(null)}
                   >
                     <Image
-                      src={proj.image}
+                      src={proj.heroImage}
                       alt={proj.name}
                       fill
-                      className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                      className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${proj.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4' : 'object-cover'}`}
                       sizes="50vw"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
@@ -138,7 +123,7 @@ export default function WorkIndex() {
                     </p>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         );
@@ -146,13 +131,9 @@ export default function WorkIndex() {
       } else {
         // Wide single project (wider than half but not full)
         elements.push(
-          <motion.div
+          <div
             key={p.id}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-5%" }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="md:w-[65%]"
+            className="md:w-[65%] project-card"
           >
             <Link href={`/works/${p.slug}`} className="group block">
               <div
@@ -162,10 +143,10 @@ export default function WorkIndex() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 <Image
-                  src={p.image}
+                  src={p.heroImage}
                   alt={p.name}
                   fill
-                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${p.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4' : 'object-cover'}`}
                   sizes="65vw"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
@@ -179,7 +160,7 @@ export default function WorkIndex() {
                 </p>
               </div>
             </Link>
-          </motion.div>
+          </div>
         );
         i++;
       }
@@ -189,7 +170,7 @@ export default function WorkIndex() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-16 md:gap-24 mt-8">
+    <div ref={containerRef} className="w-full flex flex-col gap-16 md:gap-24 mt-8">
       {/* Heading */}
       <AnimatedHeading
         text="WORKS"
@@ -198,7 +179,13 @@ export default function WorkIndex() {
 
       {/* Asymmetric project grid — Airey style */}
       <div className="w-full flex flex-col gap-16 md:gap-24">
-        {renderProjects()}
+        {projects.length === 0 ? (
+          <div className="font-mono text-muted text-sm uppercase tracking-widest py-10">
+            No works found.
+          </div>
+        ) : (
+          renderProjects()
+        )}
       </div>
     </div>
   );

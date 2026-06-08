@@ -1,44 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
 
 export default function BlogPostPage() {
+  const containerRef = useRef<HTMLElement>(null);
+  useGSAP(() => {
+    gsap.from(".fade-up", {
+      opacity: 0,
+      y: 20,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+    gsap.from(".fade-scale", {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.8,
+      delay: 0.4,
+      ease: "power3.out"
+    });
+    gsap.from(".fade-in", {
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.6,
+      ease: "power3.out"
+    });
+  }, { scope: containerRef });
   // In a real app we'd fetch data with the slug.
   
   return (
-    <article className="w-full flex flex-col items-center bg-bg text-text selection:bg-accent selection:text-bg pt-40 px-6 md:px-12 pb-32">
+    <article ref={containerRef} className="w-full flex flex-col items-center bg-bg text-text selection:bg-accent selection:text-bg pt-40 px-6 md:px-12 pb-32">
       
       {/* Header Area */}
       <header className="max-w-[720px] w-full flex flex-col items-center text-center gap-8 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex gap-4 font-mono text-[11px] text-muted tracking-[0.15em] uppercase"
+        <div className="flex gap-4 font-mono text-[11px] text-muted tracking-[0.15em] uppercase fade-up"
         >
           <span>APR 04, 2024</span>
           <span>By akdandesigns</span>
           <span>8 MIN READ</span>
-        </motion.div>
+        </div>
         
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-bebas text-5xl md:text-[80px] leading-[0.9] tracking-wide"
+        <h1 className="font-bebas text-5xl md:text-[80px] leading-[0.9] tracking-wide fade-up"
         >
           THE DEATH OF THE LANDING PAGE
-        </motion.h1>
+        </h1>
       </header>
 
       {/* Featured Image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="w-full max-w-[1000px] aspect-[21/9] relative mb-20"
+      <div className="w-full max-w-[1000px] aspect-[21/9] relative mb-20 fade-scale"
       >
         <Image 
           src="https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=2000" 
@@ -47,14 +61,10 @@ export default function BlogPostPage() {
           className="object-cover"
           priority
         />
-      </motion.div>
+      </div>
 
       {/* Body Copy */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="max-w-[720px] w-full flex flex-col gap-8 font-sans font-light text-[18px] leading-[1.8] text-text/85"
+      <div className="max-w-[720px] w-full flex flex-col gap-8 font-sans font-light text-[18px] leading-[1.8] text-text/85 fade-scale"
       >
         <p>
           We have entered the era of the endless scroll, the ubiquitous component library, and the templated aesthetic. Finding a SaaS layout that doesn’t employ a standard left-aligned h1, two buttons, and a massive dashboard dashboard mockup on the right is increasingly rare.
@@ -74,7 +84,7 @@ export default function BlogPostPage() {
         <p>
           Moving forward, brands will be defined not by how much information they can compress into an above-the-fold viewport, but by the confidence they exude through negative space. It's the difference between desperation and authority. To design authentically in this space, one must prioritize tension over mere balance. Structural rigidity, extreme grid awareness, and the exact placement of single elements against an infinite canvas.
         </p>
-      </motion.div>
+      </div>
 
       {/* Read More Section */}
       <div className="w-full max-w-[1200px] mt-32 pt-16 border-t border-border flex flex-col">

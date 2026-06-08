@@ -1,6 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "@/lib/gsap/SplitText";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
+}
 
 interface AnimatedHeadingProps {
   text: string;
@@ -9,44 +17,33 @@ interface AnimatedHeadingProps {
 }
 
 export default function AnimatedHeading({ text, className = "", delay = 0 }: AnimatedHeadingProps) {
-  // Split the text into an array of words
-  const words = text.split(" ");
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.1, 
-        delayChildren: delay 
+  useGSAP(() => {
+    const split = new SplitText(containerRef.current, { type: "words,chars" });
+
+    gsap.from(split.chars, {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 90%",
       },
-    },
-  };
+      yPercent: 120,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.02,
+      ease: "power4.out",
+      delay: delay,
+    });
 
-  const item = {
-    hidden: { y: "100%", opacity: 0 },
-    show: {
-      y: "0%",
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" } as const,
-    },
-  };
+    return () => split.revert();
+  }, { scope: containerRef });
 
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-10%" }}
-      className={`flex flex-wrap gap-x-[0.3em] gap-y-2 ${className}`}
+    <div
+      ref={containerRef}
+      className={`overflow-hidden ${className}`}
     >
-      {words.map((word, i) => (
-        <div key={i} className="overflow-hidden pb-1 lg:pb-3">
-          <motion.span variants={item} className="inline-block">
-            {word}
-          </motion.span>
-        </div>
-      ))}
-    </motion.div>
+      {text}
+    </div>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState, MouseEvent, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useRef, MouseEvent, ReactNode } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -11,38 +12,42 @@ interface MagneticButtonProps {
 export default function MagneticButton({ children, className = "" }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const xTo = useRef<gsap.QuickToFunc>();
+  const yTo = useRef<gsap.QuickToFunc>();
+
+  useGSAP(() => {
+    xTo.current = gsap.quickTo(ref.current, "x", { duration: 0.5, ease: "elastic.out(1, 0.3)" });
+    yTo.current = gsap.quickTo(ref.current, "y", { duration: 0.5, ease: "elastic.out(1, 0.3)" });
+  }, { scope: ref });
 
   const handleMouse = (e: MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current!.getBoundingClientRect();
     
-    // Magnetic pull radius. We pull within the bounding rect.
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
     
-    // Max displacement is ~12px visually
     const x = middleX * 0.2;
     const y = middleY * 0.2;
     
-    setPosition({ x, y });
+    if (xTo.current) xTo.current(x);
+    if (yTo.current) yTo.current(y);
   };
 
   const reset = () => {
-    setPosition({ x: 0, y: 0 });
+    if (xTo.current) xTo.current(0);
+    if (yTo.current) yTo.current(0);
   };
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       className={`relative inline-block ${className}`}
       data-magnetic="true"
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

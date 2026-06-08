@@ -1,37 +1,59 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const cursorArrowRef = useRef<HTMLDivElement>(null);
+  const cursorCircleRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Don't render custom cursor on touch devices
     if (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768) {
       setIsMobile(true);
-      return;
     }
+  }, []);
+
+  useGSAP(() => {
+    if (isMobile) return;
+
+    let isHovering = false;
+
+    const xArrow = cursorArrowRef.current ? gsap.quickTo(cursorArrowRef.current, "x", { duration: 0.1, ease: "power3" }) : () => {};
+    const yArrow = cursorArrowRef.current ? gsap.quickTo(cursorArrowRef.current, "y", { duration: 0.1, ease: "power3" }) : () => {};
+    
+    const xCircle = cursorCircleRef.current ? gsap.quickTo(cursorCircleRef.current, "x", { duration: 0.15, ease: "power3" }) : () => {};
+    const yCircle = cursorCircleRef.current ? gsap.quickTo(cursorCircleRef.current, "y", { duration: 0.15, ease: "power3" }) : () => {};
 
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      xArrow(e.clientX - 2);
+      yArrow(e.clientY - 2);
+      xCircle(e.clientX - 24);
+      yCircle(e.clientY - 24);
       if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    const handleLinkHoverStart = () => setIsHovering(true);
-    const handleLinkHoverEnd = () => setIsHovering(false);
+    const handleLinkHoverStart = () => {
+      isHovering = true;
+      if (cursorArrowRef.current) gsap.to(cursorArrowRef.current, { opacity: 0, scale: 0, duration: 0.2 });
+      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" });
+    };
+
+    const handleLinkHoverEnd = () => {
+      isHovering = false;
+      if (cursorArrowRef.current) gsap.to(cursorArrowRef.current, { opacity: 1, scale: 1, duration: 0.2 });
+      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 0, scale: 0.3, duration: 0.3, ease: "power3.out" });
+    };
 
     window.addEventListener("mousemove", updateMousePosition);
     document.body.addEventListener("mouseleave", handleMouseLeave);
     document.body.addEventListener("mouseenter", handleMouseEnter);
 
-    // Use MutationObserver to track dynamically added interactive elements
     const addHoverListeners = () => {
       const interactiveElements = document.querySelectorAll(
         "a, button, input, textarea, select, [data-magnetic], .group"
@@ -46,7 +68,6 @@ export default function CustomCursor() {
     let currentElements = addHoverListeners();
 
     const mutationObserver = new MutationObserver(() => {
-      // Re-bind on DOM changes
       currentElements.forEach((el) => {
         el.removeEventListener("mouseenter", handleLinkHoverStart);
         el.removeEventListener("mouseleave", handleLinkHoverEnd);
@@ -55,6 +76,10 @@ export default function CustomCursor() {
     });
 
     mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    if (cursorCircleRef.current) {
+      gsap.set(cursorCircleRef.current, { opacity: 0, scale: 0.3 });
+    }
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
@@ -66,65 +91,29 @@ export default function CustomCursor() {
       });
       mutationObserver.disconnect();
     };
-  }, [isVisible]);
+  }, [isMobile, isVisible]);
 
   if (isMobile || !isVisible) return null;
 
   return (
     <>
-      {/* Default state: modern arrow cursor */}
-      <motion.div
+      <div
+        ref={cursorArrowRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - 2,
-          y: mousePosition.y - 2,
-          opacity: isHovering ? 0 : 1,
-          scale: isHovering ? 0 : 1,
-        }}
-        transition={{
-          x: { duration: 0, ease: "linear" },
-          y: { duration: 0, ease: "linear" },
-          opacity: { duration: 0.2 },
-          scale: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-        }}
       >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5 2L20 12L12 13.5L9 21L5 2Z"
-            fill="var(--accent)"
-            stroke="var(--accent)"
-            strokeWidth="1"
-            strokeLinejoin="round"
-          />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 2L20 12L12 13.5L9 21L5 2Z" fill="var(--accent)" stroke="var(--accent)" strokeWidth="1" strokeLinejoin="round" />
         </svg>
-      </motion.div>
+      </div>
 
-      {/* Hover state: expanding circle */}
-      <motion.div
+      <div
+        ref={cursorCircleRef}
         className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
         style={{
-          backgroundColor: "#ffffff",
-          mixBlendMode: "difference",
-        }}
-        animate={{
-          x: mousePosition.x - 24,
-          y: mousePosition.y - 24,
           width: 48,
           height: 48,
-          opacity: isHovering ? 1 : 0,
-          scale: isHovering ? 1 : 0.3,
-        }}
-        transition={{
-          x: { duration: 0, ease: "linear" },
-          y: { duration: 0, ease: "linear" },
-          opacity: { duration: 0.25 },
-          scale: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+          backgroundColor: "#ffffff",
+          mixBlendMode: "difference",
         }}
       />
     </>

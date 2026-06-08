@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import MagneticButton from "@/components/MagneticButton";
 
@@ -33,8 +35,25 @@ const servicesList = [
 ];
 
 export default function ServicesPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>(".service-card").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 90%",
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+    });
+  }, { scope: containerRef });
+
   return (
-    <div className="w-full flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
+    <div ref={containerRef} className="w-full flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
       
       {/* Header */}
       <div className="w-full mb-16 md:mb-32">
@@ -50,13 +69,9 @@ export default function ServicesPage() {
       {/* Services List */}
       <div className="w-full flex flex-col mb-40 border-t border-border">
         {servicesList.map((service, i) => (
-          <motion.div
+          <div
             key={service.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8, delay: i * 0.1 }}
-            className="w-full flex flex-col md:flex-row gap-6 md:gap-12 py-12 md:py-20 border-b border-border items-start md:items-center justify-between group transition-colors px-6 rounded-sm hover:bg-surface"
+            className="service-card w-full flex flex-col md:flex-row gap-6 md:gap-12 py-12 md:py-20 border-b border-border items-start md:items-center justify-between group transition-colors px-6 rounded-sm hover:bg-surface"
           >
             <h2 className="font-bebas text-3xl sm:text-5xl md:text-7xl uppercase transition-colors w-full md:w-1/2 text-text [.light_&]:group-hover:text-[#888888] group-hover:text-accent">
               {service.title}
@@ -74,7 +89,7 @@ export default function ServicesPage() {
                 </MagneticButton>
               </Link>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 

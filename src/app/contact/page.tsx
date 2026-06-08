@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import MagneticButton from "@/components/MagneticButton";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
@@ -16,6 +17,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -27,14 +29,17 @@ export default function ContactPage() {
     }
   }, []);
 
+  useGSAP(() => {
+    gsap.from(".contact-col-left", { opacity: 0, duration: 1, delay: 0.4, ease: "power2.out" });
+    gsap.from(".contact-col-right", { opacity: 0, x: 20, duration: 0.8, delay: 0.2, ease: "power2.out" });
+  }, { scope: containerRef });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      // Build URL-encoded form data so it works with no-cors
-      // Google Apps Script reads these via e.parameter
       const formPayload = new URLSearchParams();
       formPayload.append("name", formData.name);
       formPayload.append("email", formData.email);
@@ -55,10 +60,7 @@ export default function ContactPage() {
         }
       );
 
-      // no-cors mode — assume success
       setSubmitted(true);
-
-      // Open Calendly in a new tab
       window.open("https://calendly.com/akdandesigns/30min", "_blank");
     } catch (err) {
       console.error("Submission error:", err);
@@ -68,11 +70,10 @@ export default function ContactPage() {
     }
   };
 
-  // Helper: determine if a field has content (for floating label state)
   const isFilled = (val: string) => val.length > 0;
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
+    <div ref={containerRef} className="w-full flex-1 flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
       
       <div className="w-full flex flex-col lg:flex-row gap-12 lg:gap-32 h-full">
         
@@ -83,11 +84,8 @@ export default function ContactPage() {
             className="font-bebas text-5xl sm:text-7xl md:text-[120px] leading-[0.85] tracking-wide"
           />
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex flex-col gap-6 font-mono text-[12px] md:text-[15px] text-muted tracking-[0.1em]"
+          <div 
+            className="contact-col-left flex flex-col gap-6 font-mono text-[12px] md:text-[15px] text-muted tracking-[0.1em]"
           >
             <div className="flex items-start gap-4">
               <span className="text-accent">—</span>
@@ -101,15 +99,12 @@ export default function ContactPage() {
               <span className="text-accent">—</span>
               <p>QUALITY ISN&apos;T NEGOTIABLE. EVERY PIXEL, INTENTIONAL.</p>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right Column (45%) — Form */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full lg:w-[45%] flex flex-col justify-center"
+        <div 
+          className="contact-col-right w-full lg:w-[45%] flex flex-col justify-center"
         >
           {submitted ? (
             <div className="flex flex-col gap-6">
@@ -286,7 +281,7 @@ export default function ContactPage() {
 
             </form>
           )}
-        </motion.div>
+        </div>
       </div>
 
     </div>

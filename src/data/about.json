@@ -1,0 +1,22 @@
+{
+  "profileImage": "/profile.jpg",
+  "philosophyParagraphs": [
+    "I'm Aswin Kumaaran, a self-taught brand identity designer based in Chennai, crafting visual identities that make businesses impossible to ignore.",
+    "I got into design the hard way, with no formal classroom and no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I've worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.",
+    "My approach is simple: I don't have a one-size-fits-all style, because your brand shouldn't look like everyone else's. Every project starts with understanding your business, your audience, and what you're really trying to say, so we can build a visual identity that says it better than words ever could.",
+    "If you're starting a new venture, rebranding, or just tired of looking like an amateur, let's fix that together."
+  ],
+  "services": [
+    { "num": "01", "name": "BRAND STRATEGY", "desc": "Positioning, architecture, and narrative design." },
+    { "num": "02", "name": "VISUAL IDENTITY", "desc": "Logo systems, typography, color, and art direction." },
+    { "num": "03", "name": "DIGITAL PLATFORMS", "desc": "Immersive WebGL experiences and e-commerce." },
+    { "num": "04", "name": "SPATIAL DESIGN", "desc": "Exhibition, retail, and environmental branding." }
+  ],
+  "clients": [
+    { "name": "LICET", "color": "#FF3366" },
+    { "name": "SOLSTICE PICK", "color": "#33CCFF" },
+    { "name": "TRIDEN D3D", "color": "#FFCC00" },
+    { "name": "CHENNAI CONNECTS", "color": "#00FF66" },
+    { "name": "WESAFE", "color": "#2ECC71" }
+  ]
+}

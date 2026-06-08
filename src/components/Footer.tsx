@@ -27,12 +27,58 @@ export default function Footer() {
             })}
           </nav>
           
-          <div className="flex gap-6 font-mono text-[13px] tracking-[0.12em] uppercase">
+          <div className="flex gap-6 items-center">
             <MagneticButton>
-              <a href="https://www.instagram.com/the_akdan/" target="_blank" rel="noopener noreferrer" className="text-text hover:text-accent transition-colors">IG</a>
+              <a
+                href="https://www.instagram.com/the_akdan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-text hover:text-accent transition-colors flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-instagram"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
             </MagneticButton>
             <MagneticButton>
-              <a href="#" className="text-text hover:text-accent transition-colors">IN</a>
+              <a
+                href="https://www.linkedin.com/in/aswin-kumaaran-26as04/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVcVlpZI6RPOBsCH5QFn2wA%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-text hover:text-accent transition-colors flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-linkedin"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect width="4" height="12" x="2" y="9"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
             </MagneticButton>
           </div>
         </div>

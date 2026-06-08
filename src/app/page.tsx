@@ -1,11 +1,24 @@
 "use client";
 
+import { useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { HomeProjects } from "@/components/HomeProjects";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Home() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.to(marqueeRef.current, {
+      xPercent: -50,
+      ease: "none",
+      duration: 25,
+      repeat: -1,
+    });
+  });
+
   return (
     <div className="w-full flex-1 flex flex-col items-center justify-center">
       <Hero />
@@ -14,9 +27,8 @@ export default function Home() {
       {/* Footer / Running Strip */}
       <section className="w-full py-16 md:py-24 lg:py-32 flex flex-col items-center justify-center overflow-hidden border-t border-border mt-16 md:mt-32 relative">
         <div className="relative w-full flex whitespace-nowrap overflow-hidden py-4 md:py-6 group">
-          <motion.div
-            animate={{ x: [0, "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          <div
+            ref={marqueeRef}
             className="flex font-sans font-bold text-3xl sm:text-5xl md:text-8xl uppercase tracking-wider text-text/90 gap-8 md:gap-12 min-w-max mix-blend-difference"
           >
             {Array(10)
@@ -26,7 +38,7 @@ export default function Home() {
                   {text}  —
                 </span>
               ))}
-          </motion.div>
+          </div>
         </div>
 
         <Link href="/contact" className="mt-16 md:mt-24 group/call">

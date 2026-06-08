@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Lora } from "next/font/google";
-import { motion } from "framer-motion";
 
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"] });
 

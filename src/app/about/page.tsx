@@ -1,28 +1,63 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import MagneticButton from "@/components/MagneticButton";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
-const services = [
-  { num: "01", name: "BRAND STRATEGY", desc: "Positioning, architecture, and narrative design." },
-  { num: "02", name: "VISUAL IDENTITY", desc: "Logo systems, typography, color, and art direction." },
-  { num: "03", name: "DIGITAL PLATFORMS", desc: "Immersive WebGL experiences and e-commerce." },
-  { num: "04", name: "SPATIAL DESIGN", desc: "Exhibition, retail, and environmental branding." },
-];
+import aboutData from "@/data/about.json";
 
-const clients = [
-  { name: "LICET", color: "#FF3366" },
-  { name: "SOLSTICE PICK", color: "#33CCFF" },
-  { name: "TRIDEN D3D", color: "#FFCC00" },
-  { name: "CHENNAI CONNECTS", color: "#00FF66" },
-  { name: "WESAFE", color: "#2ECC71" },
-];
+interface Service {
+  num: string;
+  name: string;
+  desc: string;
+}
+
+interface Client {
+  name: string;
+  color: string;
+}
+
+interface AboutData {
+  profileImage: string;
+  philosophyParagraphs: string[];
+  services: Service[];
+  clients: Client[];
+}
 
 export default function AboutPage() {
+  const data = aboutData as AboutData;
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>(".fade-in").forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.out",
+      });
+    });
+  }, { scope: containerRef, dependencies: [data] });
+
+  if (!data) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center bg-bg text-text pt-40">
+        <div className="font-mono text-muted text-sm uppercase tracking-widest">
+          Failed to load content.
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
+    <div ref={containerRef} className="w-full flex flex-col bg-bg text-text pt-28 md:pt-40 px-4 sm:px-6 md:px-12 pb-24 md:pb-32 max-w-[2000px] mx-auto min-h-screen">
       
       {/* Opening Statement */}
       <div className="w-full mb-20 md:mb-32">
@@ -34,95 +69,74 @@ export default function AboutPage() {
 
       {/* Philosophy */}
       <div className="w-full flex flex-col md:flex-row justify-between mb-24 md:mb-40 gap-12 md:gap-8 items-center md:items-start">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1 }}
-          className="w-full sm:w-[80%] md:w-[40%] aspect-[3/4] relative overflow-hidden bg-surface"
+        <div
+          className="fade-in w-full sm:w-[80%] md:w-[40%] aspect-[3/4] relative overflow-hidden bg-surface"
         >
           <Image 
-            src="/profile.jpg" 
+            src={data.profileImage || "/profile.jpg"} 
             alt="Aswin Kumaaran" 
             fill 
             className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
             sizes="(max-width: 768px) 100vw, 40vw"
           />
-        </motion.div>
+        </div>
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1 }}
-          className="max-w-[720px] w-full md:w-[50%] flex flex-col gap-6 font-sans font-light text-[16px] md:text-[20px] leading-[1.7] text-text/80"
+        <div
+          className="fade-in max-w-[720px] w-full md:w-[50%] flex flex-col gap-6 font-sans font-light text-[16px] md:text-[20px] leading-[1.7] text-text/80"
         >
-          <p>
-            I&apos;m Aswin Kumaaran, a self-taught brand identity designer based in Chennai, crafting visual identities that make businesses impossible to ignore.
-          </p>
-          <p>
-            I got into design the hard way, with no formal classroom and no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I&apos;ve worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.
-          </p>
-          <p>
-            My approach is simple: I don&apos;t have a one-size-fits-all style, because your brand shouldn&apos;t look like everyone else&apos;s. Every project starts with understanding your business, your audience, and what you&apos;re really trying to say, so we can build a visual identity that says it better than words ever could.
-          </p>
-          <p>
-            If you&apos;re starting a new venture, rebranding, or just tired of looking like an amateur, let&apos;s fix that together.
-          </p>
-        </motion.div>
+          {data.philosophyParagraphs.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
       </div>
 
       {/* Services Strip */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 0.8 }}
-        className="w-full mb-24 md:mb-40"
-      >
-        <div className="border-t border-b border-border py-12 flex flex-col md:flex-row gap-12 md:gap-6 justify-between overflow-x-auto hide-scrollbar">
-          {services.map((service) => (
-            <div key={service.num} className="flex flex-col gap-4 min-w-[280px]">
-              <span className="font-mono text-[13px] text-accent tracking-widest">{service.num}</span>
-              <h3 className="font-bebas text-4xl uppercase">{service.name}</h3>
-              <p className="font-sans font-light text-[15px] text-text/60 max-w-[240px]">
-                {service.desc}
-              </p>
-            </div>
-          ))}
+      {data.services && data.services.length > 0 && (
+        <div
+          className="fade-in w-full mb-24 md:mb-40"
+        >
+          <div className="border-t border-b border-border py-12 flex flex-col md:flex-row gap-12 md:gap-6 justify-between overflow-x-auto hide-scrollbar">
+            {data.services.map((service) => (
+              <div key={service.num} className="flex flex-col gap-4 min-w-[280px]">
+                <span className="font-mono text-[13px] text-accent tracking-widest">{service.num}</span>
+                <h3 className="font-bebas text-4xl uppercase">{service.name}</h3>
+                <p className="font-sans font-light text-[15px] text-text/60 max-w-[240px]">
+                  {service.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      )}
 
       {/* Clients Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="w-full mb-24 md:mb-32"
-      >
-        <h3 className="font-mono text-[11px] text-muted tracking-[0.2em] uppercase mb-12">Our clients</h3>
-        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-12 items-center opacity-80">
-          {clients.map((client) => (
-            <MagneticButton key={client.name}>
-              <div 
-                className="font-bebas text-2xl sm:text-3xl md:text-5xl lg:text-6xl uppercase grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer text-center"
-                style={{ WebkitTextStroke: "1px var(--text)", color: "transparent" } as React.CSSProperties}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = client.color;
-                  (e.currentTarget.style as any).WebkitTextStroke = `1px ${client.color}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "transparent";
-                  (e.currentTarget.style as any).WebkitTextStroke = "1px var(--text)";
-                }}
-              >
-                {client.name}
-              </div>
-            </MagneticButton>
-          ))}
+      {data.clients && data.clients.length > 0 && (
+        <div
+          className="fade-in w-full mb-24 md:mb-32"
+        >
+          <h3 className="font-mono text-[11px] text-muted tracking-[0.2em] uppercase mb-12">Our clients</h3>
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-12 items-center opacity-80">
+            {data.clients.map((client) => (
+              <MagneticButton key={client.name}>
+                <div 
+                  className="font-bebas text-2xl sm:text-3xl md:text-5xl lg:text-6xl uppercase grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer text-center"
+                  style={{ WebkitTextStroke: "1px var(--text)", color: "transparent" } as React.CSSProperties}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = client.color;
+                    (e.currentTarget.style as any).WebkitTextStroke = `1px ${client.color}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "transparent";
+                    (e.currentTarget.style as any).WebkitTextStroke = "1px var(--text)";
+                  }}
+                >
+                  {client.name}
+                </div>
+              </MagneticButton>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      )}
 
       {/* Founder Grid (Minimal) */}
       <div className="w-full">
