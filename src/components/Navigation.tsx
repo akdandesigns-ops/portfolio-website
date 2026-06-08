@@ -35,13 +35,19 @@ export default function Navigation() {
 
   useEffect(() => {
     if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
       gsap.to(menuRef.current, { autoAlpha: 1, duration: 0.4, ease: "power3.out" });
       gsap.fromTo(".mobile-link", 
         { y: 30, opacity: 0 }, 
         { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.1, ease: "power3.out" }
       );
     } else {
+      document.body.style.overflow = "";
       gsap.to(menuRef.current, { autoAlpha: 0, duration: 0.4, ease: "power3.in" });
+    }
+    
+    return () => {
+      document.body.style.overflow = "";
     }
   }, [mobileMenuOpen]);
 

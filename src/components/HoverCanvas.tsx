@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { useTheme } from "next-themes";
 
@@ -30,6 +30,11 @@ function getNoiseDataUrl() {
 export default function HoverCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
+  const [isMobile, setIsMobile] = useState(true); // default true to avoid hydration mismatch, check in effect
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768);
+  }, []);
 
   useEffect(() => {
     let lastTime = 0;
@@ -208,7 +213,9 @@ export default function HoverCanvas() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [resolvedTheme]);
+  }, [resolvedTheme, isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[40] overflow-hidden" style={{ perspective: '800px' }}>
