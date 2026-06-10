@@ -74,7 +74,7 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     className={`font-mono text-[13px] uppercase tracking-[0.12em] transition-colors ${
-                      isActive ? "text-text border-b-2 border-accent pb-[2px]" : "text-text hover:text-accent"
+                      isActive ? "text-text border-b-2 brand-border-gradient pb-[2px]" : "text-text hover:brand-text-gradient"
                     }`}
                   >
                     {link.label}
@@ -125,7 +125,7 @@ export default function Navigation() {
               <Link
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-bebas text-5xl text-text hover:text-accent transition-colors"
+                className="font-bebas text-5xl text-text hover:brand-text-gradient transition-colors"
               >
                 {link.label}
               </Link>

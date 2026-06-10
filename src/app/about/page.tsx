@@ -83,7 +83,7 @@ export default function AboutPage() {
           <div className="flex flex-col gap-2 mt-4">
             <h3 className="font-mono text-[11px] text-muted tracking-[0.2em] uppercase mb-2">FOUNDER & DIRECTOR</h3>
             <h4 className="font-bebas text-3xl uppercase">ASWIN KUMAARAN</h4>
-            <span className="font-mono text-[11px] text-accent tracking-[0.1em]">Brand Identity Designer</span>
+            <span className="font-mono text-[11px] brand-text-gradient tracking-[0.1em]">Brand Identity Designer</span>
             <p className="font-sans font-light text-[15px] text-text/60 max-w-[400px] mt-2">
               Self-taught brand identity designer with an obsession for clarity, precision, and making brands impossible to ignore.
             </p>
@@ -107,7 +107,7 @@ export default function AboutPage() {
           <div className="border-t border-b border-border py-12 flex flex-col md:flex-row gap-12 md:gap-6 justify-between overflow-x-auto hide-scrollbar">
             {data.services.map((service) => (
               <div key={service.num} className="flex flex-col gap-4 min-w-[280px]">
-                <span className="font-mono text-[13px] text-accent tracking-widest">{service.num}</span>
+                <span className="font-mono text-[13px] brand-text-gradient tracking-widest">{service.num}</span>
                 <h3 className="font-bebas text-4xl uppercase">{service.name}</h3>
                 <p className="font-sans font-light text-[15px] text-text/60 max-w-[240px]">
                   {service.desc}

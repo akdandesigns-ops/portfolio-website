@@ -88,15 +88,15 @@ export default function ContactPage() {
             className="contact-col-left flex flex-col gap-6 font-mono text-[12px] md:text-[15px] text-muted tracking-[0.1em]"
           >
             <div className="flex items-start gap-4">
-              <span className="text-accent">—</span>
+              <span className="brand-text-gradient">—</span>
               <p>30-MIN BRAND STRATEGY SESSION</p>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-accent">—</span>
+              <span className="brand-text-gradient">—</span>
               <p>NO PITCH. JUST HONEST CONVERSATION.</p>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-accent">—</span>
+              <span className="brand-text-gradient">—</span>
               <p>QUALITY ISN&apos;T NEGOTIABLE. EVERY PIXEL, INTENTIONAL.</p>
             </div>
           </div>
@@ -108,13 +108,13 @@ export default function ContactPage() {
         >
           {submitted ? (
             <div className="flex flex-col gap-6">
-              <h2 className="font-bebas text-4xl md:text-5xl text-accent">THANK YOU.</h2>
+              <h2 className="font-bebas text-4xl md:text-5xl brand-text-gradient">THANK YOU.</h2>
               <p className="font-sans font-light text-[16px] md:text-[18px] text-text/80 leading-[1.8]">
                 Your details have been recorded. A Calendly tab has been opened for you to pick a time slot. I&apos;ll review your request and we&apos;ll connect soon.
               </p>
               <div className="flex items-center gap-3 mt-4">
-                <div className="w-2 h-2 bg-accent rounded-full" />
-                <span className="font-mono text-[12px] text-accent tracking-widest uppercase">Submission successful</span>
+                <div className="w-2 h-2 brand-bg-gradient rounded-full" />
+                <span className="font-mono text-[12px] brand-text-gradient tracking-widest uppercase">Submission successful</span>
               </div>
             </div>
           ) : (
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 <label
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     isFilled(formData.name)
-                      ? "top-0 text-[11px] text-accent font-mono tracking-widest uppercase"
+                      ? "top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"
                       : "top-8 text-[16px] md:text-[18px] text-text/50 font-sans font-light"
                   }`}
                 >
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onFocus={(e) => {
                     const label = e.target.previousElementSibling as HTMLElement;
-                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] text-accent font-mono tracking-widest uppercase"; }
+                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"; }
                   }}
                   onBlur={(e) => {
                     if (!e.target.value) {
@@ -156,7 +156,7 @@ export default function ContactPage() {
                 <label
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     isFilled(formData.email)
-                      ? "top-0 text-[11px] text-accent font-mono tracking-widest uppercase"
+                      ? "top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"
                       : "top-8 text-[16px] md:text-[18px] text-text/50 font-sans font-light"
                   }`}
                 >
@@ -169,7 +169,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onFocus={(e) => {
                     const label = e.target.previousElementSibling as HTMLElement;
-                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] text-accent font-mono tracking-widest uppercase"; }
+                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"; }
                   }}
                   onBlur={(e) => {
                     if (!e.target.value) {
@@ -187,7 +187,7 @@ export default function ContactPage() {
                 <label
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     isFilled(formData.company)
-                      ? "top-0 text-[11px] text-accent font-mono tracking-widest uppercase"
+                      ? "top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"
                       : "top-8 text-[16px] md:text-[18px] text-text/50 font-sans font-light"
                   }`}
                 >
@@ -199,7 +199,7 @@ export default function ContactPage() {
                   value={formData.company}
                   onFocus={(e) => {
                     const label = e.target.previousElementSibling as HTMLElement;
-                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] text-accent font-mono tracking-widest uppercase"; }
+                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"; }
                   }}
                   onBlur={(e) => {
                     if (!e.target.value) {
@@ -214,7 +214,7 @@ export default function ContactPage() {
 
               {/* Type of Project Dropdown */}
               <div className="relative w-full pt-6">
-                <label className="absolute left-0 top-0 text-[11px] text-accent font-mono tracking-widest uppercase pointer-events-none transition-all duration-300">
+                <label className="absolute left-0 top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase pointer-events-none transition-all duration-300">
                   Type of Project
                 </label>
                 <select
@@ -239,7 +239,7 @@ export default function ContactPage() {
                 <label
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     isFilled(formData.message)
-                      ? "top-0 text-[11px] text-accent font-mono tracking-widest uppercase"
+                      ? "top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"
                       : "top-8 text-[16px] md:text-[18px] text-text/50 font-sans font-light"
                   }`}
                 >
@@ -252,7 +252,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onFocus={(e) => {
                     const label = e.target.previousElementSibling as HTMLElement;
-                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] text-accent font-mono tracking-widest uppercase"; }
+                    if (label) { label.className = "absolute left-0 transition-all duration-300 pointer-events-none top-0 text-[11px] brand-text-gradient font-mono tracking-widest uppercase"; }
                   }}
                   onBlur={(e) => {
                     if (!e.target.value) {
@@ -273,7 +273,7 @@ export default function ContactPage() {
               {/* Submit CTA */}
               <div className="mt-2 md:mt-4">
                 <MagneticButton className="w-full">
-                  <button disabled={loading} type="submit" className="w-full flex justify-center items-center py-5 md:py-6 bg-accent border border-accent text-bg font-mono text-[13px] md:text-[14px] uppercase tracking-widest hover:bg-bg hover:text-accent transition-colors duration-300 disabled:opacity-50">
+                  <button disabled={loading} type="submit" className="w-full flex justify-center items-center py-5 md:py-6 brand-bg-gradient border brand-border-gradient text-bg font-mono text-[13px] md:text-[14px] uppercase tracking-widest hover:bg-bg hover:brand-text-gradient transition-colors duration-300 disabled:opacity-50">
                     {loading ? "SUBMITTING..." : "BOOK YOUR CALL →"}
                   </button>
                 </MagneticButton>

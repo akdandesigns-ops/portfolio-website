@@ -53,14 +53,14 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <div className="w-full min-h-screen flex flex-col items-center justify-center bg-bg text-text pt-40 px-6 text-center gap-8">
-        <h1 className="font-bebas text-5xl md:text-7xl uppercase tracking-wider text-accent">
+        <h1 className="font-bebas text-5xl md:text-7xl uppercase tracking-wider brand-text-gradient">
           ARTICLE NOT FOUND
         </h1>
         <p className="font-sans font-light text-text/60 max-w-[500px]">
           The article you are looking for does not exist or has been removed.
         </p>
         <MagneticButton>
-          <Link href="/blogs" className="px-8 py-4 bg-accent text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:text-accent border border-transparent hover:border-accent transition-all duration-300">
+          <Link href="/blogs" className="px-8 py-4 brand-bg-gradient text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:brand-text-gradient border border-transparent hover:brand-border-gradient transition-all duration-300">
             Back to Journal
           </Link>
         </MagneticButton>
@@ -69,7 +69,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <article ref={containerRef} className="w-full flex flex-col items-center bg-bg text-text selection:bg-accent selection:text-bg pt-40 px-6 md:px-12 pb-32">
+    <article ref={containerRef} className="w-full flex flex-col items-center bg-bg text-text selection:bg-[#FF00E5] selection:text-bg pt-40 px-6 md:px-12 pb-32">
       
       {/* Header Area */}
       <header className="max-w-[720px] w-full flex flex-col items-center text-center gap-8 mb-16">
@@ -103,7 +103,7 @@ export default function BlogPostPage() {
           <div key={index} className="flex flex-col gap-8">
             <p>{para}</p>
             {index === 1 && post.quote && (
-              <blockquote className="my-8 md:my-12 pl-8 py-2 border-l-4 border-accent">
+              <blockquote className="my-8 md:my-12 pl-8 py-2 border-l-4 brand-border-gradient">
                 <p className="font-bebas text-4xl md:text-5xl italic text-text leading-none tracking-wide uppercase">
                   "{post.quote}"
                 </p>
@@ -129,16 +129,16 @@ export default function BlogPostPage() {
                 alt="Related" 
               />
             </div>
-            <h4 className="font-sans font-medium text-2xl text-text group-hover:text-accent transition-colors">
+            <h4 className="font-sans font-medium text-2xl text-text group-hover:brand-text-gradient transition-colors">
               Written by Rivers: The Brazilian Amazon's First Brand Identity
             </h4>
           </Link>
           
           <Link href="/blogs" className="group flex flex-col gap-4">
             <div className="aspect-[3/2] relative w-full overflow-hidden bg-surface flex items-center justify-center border border-border">
-              <span className="font-bebas text-5xl text-muted group-hover:text-accent transition-colors">VIEW ALL</span>
+              <span className="font-bebas text-5xl text-muted group-hover:brand-text-gradient transition-colors">VIEW ALL</span>
             </div>
-            <h4 className="font-sans font-medium text-2xl text-text group-hover:text-accent transition-colors">
+            <h4 className="font-sans font-medium text-2xl text-text group-hover:brand-text-gradient transition-colors">
               Explore More Articles in the Journal
             </h4>
           </Link>

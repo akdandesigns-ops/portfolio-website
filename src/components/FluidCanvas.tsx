@@ -165,17 +165,12 @@ export default function FluidCanvas() {
         if (blob.y > height + blob.radius) blob.vy -= 0.3;
       }
 
-      const accentColors = isLight
-        ? [
-            "rgba(0, 0, 0, 0.04)",
-            "rgba(60, 60, 60, 0.03)",
-            "rgba(120, 120, 120, 0.025)",
-          ]
-        : [
-            "rgba(200, 255, 0, 0.06)",
-            "rgba(100, 200, 0, 0.04)",
-            "rgba(150, 255, 50, 0.035)",
-          ];
+      const accentColors = [
+        "rgba(10, 228, 72, 0.05)",  // #0AE448 (Green)
+        "rgba(255, 166, 250, 0.05)",// #FFA6FA (Pink)
+        "rgba(255, 135, 9, 0.04)",  // #FF8709 (Orange)
+        "rgba(141, 101, 255, 0.04)",// #8D65FF (Purple)
+      ];
 
       for (let i = 0; i < blobs.length; i++) {
         const blob = blobs[i];

@@ -15,24 +15,79 @@
 }
 
 :root {
-  --bg: #080808;
-  --surface: #101010;
-  --text: #EDECE8;
-  --muted: #545454;
-  --accent: #C8FF00;
-  --border: #1A1A1A;
-  --overlay: rgba(8, 8, 8, 0.85);
+  --bg: #0e100f;
+  --surface: #1c1e1d;
+  --text: #fffce1;
+  --muted: #9ba09e;
+  --border: #2e302f;
+  --accent: #0ae448;
+  --overlay: rgba(14, 16, 15, 0.85);
   --font-brother: 'Brother Oblique', sans-serif;
 }
 
 .light {
-  --bg: #FAFAFA;
-  --surface: #F0F0F0;
-  --text: #111111;
-  --muted: #888888;
-  --accent: #222222;
-  --border: #E5E5E5;
-  --overlay: rgba(250, 250, 250, 0.85);
+  --bg: #fffce1;
+  --surface: #f3f0d1;
+  --text: #0e100f;
+  --muted: #666867;
+  --border: #e0ddc0;
+  --accent: #0ae448;
+  --overlay: rgba(255, 252, 225, 0.85);
+}
+
+@layer utilities {
+  .brand-text-gradient {
+    background-image: linear-gradient(
+      to right,
+      #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: brand-gradient-cycle 4s linear infinite;
+  }
+
+  .brand-bg-gradient {
+    background-image: linear-gradient(
+      to right,
+      #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
+    );
+    background-size: 200% auto;
+    animation: brand-gradient-cycle 4s linear infinite;
+  }
+
+  .brand-border-gradient {
+    border-color: transparent !important;
+    background: 
+      linear-gradient(var(--bg), var(--bg)) padding-box,
+      linear-gradient(
+        to right,
+        #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
+      ) border-box;
+    background-size: 100% 100%, 200% auto;
+    animation: brand-border-cycle 4s linear infinite;
+  }
+
+  .brand-border-gradient-surface {
+    border-color: transparent !important;
+    background: 
+      linear-gradient(var(--surface), var(--surface)) padding-box,
+      linear-gradient(
+        to right,
+        #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
+      ) border-box;
+    background-size: 100% 100%, 200% auto;
+    animation: brand-border-cycle 4s linear infinite;
+  }
+}
+
+@keyframes brand-gradient-cycle {
+  to { background-position: -200% center; }
+}
+
+@keyframes brand-border-cycle {
+  to { background-position: 0% 0%, -200% center; }
 }
 
 body {
@@ -84,4 +139,50 @@ body {
   margin: -1px !important;
   width: calc(100% + 2px) !important;
   height: calc(100% + 2px) !important;
+}
+
+.grain-shape {
+  position: relative;
+  overflow: hidden;
+}
+
+.grain-shape::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  z-index: 10;
+  animation: grain-shift 2s steps(4) infinite;
+}
+
+.grain-text {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E"),
+    var(--text-color, linear-gradient(#0AE448, #0AE448));
+  background-blend-mode: overlay, normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-size: 200px 200px, 100% 100%;
+  animation: grain-bg-shift 2s steps(4) infinite;
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-5%, -10%); }
+  50% { transform: translate(5%, 5%); }
+  75% { transform: translate(-2%, 8%); }
+}
+
+@keyframes grain-bg-shift {
+  0%, 100% { background-position: 0px 0px, 0 0; }
+  25% { background-position: -15px -20px, 0 0; }
+  50% { background-position: 15px 15px, 0 0; }
+  75% { background-position: -5px 25px, 0 0; }
 }

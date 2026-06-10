@@ -38,6 +38,7 @@ interface ProjectData {
   deliverable?: string;
   description: string;
   approach?: string;
+  link?: string;
   heroImage: string;
   imageFit?: "cover" | "contain";
   useCuratedGallery?: boolean;
@@ -130,14 +131,14 @@ export default function CaseStudyPage() {
   if (!project) {
     return (
       <div className="w-full min-h-screen flex flex-col items-center justify-center bg-bg text-text pt-40 px-6 text-center gap-8">
-        <h1 className="font-bebas text-5xl md:text-7xl uppercase tracking-wider text-accent">
+        <h1 className="font-bebas text-5xl md:text-7xl uppercase tracking-wider brand-text-gradient">
           CASE STUDY NOT FOUND
         </h1>
         <p className="font-sans font-light text-text/60 max-w-[500px]">
           The case study you are looking for does not exist or has been removed by the administrator.
         </p>
         <MagneticButton>
-          <Link href="/works" className="px-8 py-4 bg-accent text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:text-accent border border-transparent hover:border-accent transition-all duration-300">
+          <Link href="/works" className="px-8 py-4 brand-bg-gradient text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:brand-text-gradient border border-transparent hover:brand-border-gradient transition-all duration-300">
             Back to Works
           </Link>
         </MagneticButton>
@@ -146,7 +147,7 @@ export default function CaseStudyPage() {
   }
 
   return (
-    <div ref={containerRef} key={project.slug} className="w-full flex-col flex bg-bg text-text selection:bg-accent selection:text-bg pt-20">
+    <div ref={containerRef} key={project.slug} className="w-full flex-col flex bg-bg text-text selection:bg-[#FF00E5] selection:text-bg pt-20">
 
       {/* ═══════════ FULL-BLEED HERO ═══════════ */}
       <section className="relative w-full h-[55vh] min-h-[450px] md:h-[90vh] overflow-hidden">
@@ -186,7 +187,7 @@ export default function CaseStudyPage() {
           <div className="fade-up grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
             {/* Left column — Tagline */}
             <div className="md:col-span-5 lg:col-span-4">
-              <h2 className="font-bebas text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] uppercase leading-[1.05] text-accent whitespace-pre-line">
+              <h2 className="font-bebas text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] uppercase leading-[1.05] brand-text-gradient whitespace-pre-line">
                 {project.tagline}
               </h2>
             </div>
@@ -222,6 +223,18 @@ export default function CaseStudyPage() {
                   </div>
                 ))}
               </div>
+
+              {project.link && (
+                <div className="pt-4">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 border border-border text-text/80 font-mono text-[11px] uppercase tracking-widest hover:border-text hover:text-text transition-colors">
+                    Visit Live Site
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -254,7 +267,9 @@ export default function CaseStudyPage() {
           )}
 
           {/* ── Spacer ── */}
-          <div className="h-16 md:h-32" />
+          {project.gallery[1] && project.gallery[2] && (
+            <div className="h-16 md:h-32" />
+          )}
 
           {/* ── Side-by-side pair (gallery items 1+2) ── */}
           {project.gallery[1] && project.gallery[2] && (
@@ -289,10 +304,7 @@ export default function CaseStudyPage() {
       {/* ═══════════ COLOR PALETTE SECTION ═══════════ */}
       {project.colors && project.colors.length > 0 && (
         <>
-          {/* ── Spacer ── */}
-          <div className="h-16 md:h-32" />
-
-          <section className="w-full px-6 md:px-16 lg:px-24 py-16 md:py-32">
+          <section className="w-full px-6 md:px-16 lg:px-24 py-16 md:py-24">
             <div className="max-w-[1400px] mx-auto">
               {/* Section header */}
               <div className="fade-up mb-12 md:mb-20">
@@ -610,10 +622,10 @@ export default function CaseStudyPage() {
                 Next Project
               </span>
               <div className="flex items-center gap-4 md:gap-8">
-                <h2 className="font-bebas text-[44px] sm:text-[64px] md:text-[100px] lg:text-[130px] text-text/80 group-hover:text-accent transition-colors duration-700 text-center leading-none tracking-wider">
+                <h2 className="font-bebas text-[44px] sm:text-[64px] md:text-[100px] lg:text-[130px] text-text/80 group-hover:brand-text-gradient transition-colors duration-700 text-center leading-none tracking-wider">
                   {project.nextTitle}
                 </h2>
-                <span className="text-[28px] md:text-[60px] text-text/30 group-hover:text-accent group-hover:translate-x-4 transition-all duration-700">
+                <span className="text-[28px] md:text-[60px] text-text/30 group-hover:brand-text-gradient group-hover:translate-x-4 transition-all duration-700">
                   →
                 </span>
               </div>

@@ -74,14 +74,14 @@ export default function BlogsIndex() {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex gap-4 font-mono text-[11px] text-accent tracking-[0.1em] uppercase">
+            <div className="flex gap-4 font-mono text-[11px] brand-text-gradient tracking-[0.1em] uppercase">
               <span>APR 16, 2026</span>
               <span>—</span>
               <span>10 MIN READ</span>
               <span>—</span>
-              <span className="border border-accent px-2 py-[2px] rounded-sm">Featured</span>
+              <span className="border brand-border-gradient px-2 py-[2px] rounded-sm">Featured</span>
             </div>
-            <h2 className="font-sans font-medium text-3xl md:text-5xl text-text group-hover:text-accent transition-colors duration-300 w-full max-w-[800px]">
+            <h2 className="font-sans font-medium text-3xl md:text-5xl text-text group-hover:brand-text-gradient transition-colors duration-300 w-full max-w-[800px]">
               Written by Rivers: The Brazilian Amazon's First Brand Identity
             </h2>
           </div>
@@ -114,7 +114,7 @@ export default function BlogsIndex() {
                 </div>
 
                 <div className="flex flex-col gap-3 flex-1">
-                  <h3 className="font-sans font-medium text-xl md:text-2xl text-text group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-sans font-medium text-xl md:text-2xl text-text group-hover:brand-text-gradient transition-colors duration-300">
                     {post.title}
                   </h3>
                   <div className="flex flex-wrap gap-4 font-mono text-[11px] text-muted tracking-[0.1em] uppercase">
@@ -124,7 +124,7 @@ export default function BlogsIndex() {
                   </div>
                 </div>
 
-                <div className="hidden md:flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-accent text-sm">
+                <div className="hidden md:flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono brand-text-gradient text-sm">
                   READ →
                 </div>
               </Link>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Bebas_Neue, DM_Sans, DM_Mono } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
 import FluidCanvas from "@/components/FluidCanvas";
-import HoverCanvas from "@/components/HoverCanvas";
+import GrainOverlay from "@/components/GrainOverlay";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -84,10 +84,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col`}
+        className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col overflow-x-hidden`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" value={{ light: "light", dark: "dark" }}>
-          <HoverCanvas />
           <FluidCanvas />
           <CustomCursor />
           <Navigation />

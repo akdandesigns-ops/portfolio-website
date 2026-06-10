@@ -26,23 +26,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: project.title || project.name,
+    title: project.name,
     description: project.description.substring(0, 160),
     openGraph: {
-      title: `${project.title || project.name} | akdandesigns`,
+      title: `${project.name} | akdandesigns`,
       description: project.description.substring(0, 160),
       images: [
         {
           url: project.heroImage,
           width: 1200,
           height: 630,
-          alt: project.title || project.name,
+          alt: project.name,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title || project.name} | akdandesigns`,
+      title: `${project.name} | akdandesigns`,
       description: project.description.substring(0, 160),
       images: [project.heroImage],
     },

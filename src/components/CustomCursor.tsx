@@ -27,7 +27,7 @@ export default function CustomCursor() {
     const xCircle = cursorCircleRef.current ? gsap.quickTo(cursorCircleRef.current, "x", { duration: 0.15, ease: "power3" }) : () => {};
     const yCircle = cursorCircleRef.current ? gsap.quickTo(cursorCircleRef.current, "y", { duration: 0.15, ease: "power3" }) : () => {};
 
-    const updateMousePosition = (e: MouseEvent) => {
+    const updateMousePosition = (e: PointerEvent | MouseEvent) => {
       xArrow(e.clientX - 2);
       yArrow(e.clientY - 2);
       xCircle(e.clientX - 24);
@@ -50,7 +50,7 @@ export default function CustomCursor() {
       if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 0, scale: 0.3, duration: 0.3, ease: "power3.out" });
     };
 
-    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener("pointermove", updateMousePosition);
     document.body.addEventListener("mouseleave", handleMouseLeave);
     document.body.addEventListener("mouseenter", handleMouseEnter);
 
@@ -82,7 +82,7 @@ export default function CustomCursor() {
     }
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
+      window.removeEventListener("pointermove", updateMousePosition);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
       document.body.removeEventListener("mouseenter", handleMouseEnter);
       currentElements.forEach((el) => {
@@ -102,7 +102,7 @@ export default function CustomCursor() {
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M5 2L20 12L12 13.5L9 21L5 2Z" fill="var(--accent)" stroke="var(--accent)" strokeWidth="1" strokeLinejoin="round" />
+          <path d="M5 2L20 12L12 13.5L9 21L5 2Z" fill="#ffffff" stroke="#000000" strokeWidth="1.5" strokeLinejoin="round" />
         </svg>
       </div>
 

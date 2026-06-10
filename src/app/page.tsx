@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { HomeProjects } from "@/components/HomeProjects";
 import Link from "next/link";
+import MagneticButton from "@/components/MagneticButton";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -41,11 +42,18 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href="/contact" className="mt-16 md:mt-24 group/call">
-          <h4 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.2em] text-accent border-b border-accent pb-1 group-hover/call:opacity-80 transition-opacity flex items-center gap-2">
-            Book a Call <span className="group-hover/call:translate-x-2 transition-transform duration-300">→</span>
-          </h4>
-        </Link>
+        <div className="mt-16 md:mt-24">
+          <MagneticButton>
+            <Link 
+              href="/contact" 
+              className="group px-10 py-5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center"
+            >
+              <span className="font-mono text-sm uppercase tracking-widest text-bg group-hover:brand-text-gradient">
+                BOOK A CALL
+              </span>
+            </Link>
+          </MagneticButton>
+        </div>
       </section>
     </div>
   );

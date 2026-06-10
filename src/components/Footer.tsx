@@ -1,10 +1,16 @@
 import Link from "next/link";
 import MagneticButton from "./MagneticButton";
+import { GravityGraphic } from "./GravityGraphic";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-bg border-t border-border mt-auto">
-      <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start">
+    <footer className="w-full bg-bg border-t border-border mt-auto relative overflow-hidden">
+      {/* Background Graphic */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+        <GravityGraphic />
+      </div>
+
+      <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10">
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mb-12 gap-8">
           <div className="font-helvetica text-[18px] tracking-[0.02em] text-text">
@@ -18,7 +24,7 @@ export default function Footer() {
                 <MagneticButton key={label}>
                   <Link
                     href={href}
-                    className="font-mono text-[13px] uppercase tracking-[0.12em] text-text hover:text-accent transition-colors"
+                    className="font-mono text-[13px] uppercase tracking-[0.12em] text-text hover:brand-text-gradient transition-colors"
                   >
                     {label}
                   </Link>
@@ -34,7 +40,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-text hover:text-accent transition-colors flex items-center justify-center"
+                className="text-text hover:brand-text-gradient transition-colors flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +66,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-text hover:text-accent transition-colors flex items-center justify-center"
+                className="text-text hover:brand-text-gradient transition-colors flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

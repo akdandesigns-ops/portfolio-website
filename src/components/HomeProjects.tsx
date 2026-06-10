@@ -13,18 +13,21 @@ const projects = [
     type: "Visual Identity",
     image: "/works/licet-15/licet -15 - t-shirt-mockup.jpg",
     href: "/works/licet-15",
+    hoverColor: "group-hover:text-[#0AE448]" // Green
   },
   {
     title: "SANS BADMINTON",
     type: "Logo Design",
     image: "/works/sans-badminton/sans-09.png",
     href: "/works/sans-badminton",
+    hoverColor: "group-hover:text-[#FFA6FA]" // Pink
   },
   {
     title: "SOLSTICE PICK",
     type: "Logo Design",
     image: "/works/solstice-pick/solstice pick - mockup 1.png",
     href: "/works/solstice-pick",
+    hoverColor: "group-hover:text-[#FF8709]" // Orange
   },
   {
     title: "FOOTGRAPHY",
@@ -32,6 +35,7 @@ const projects = [
     image: "/works/footgraphy/08.png",
     href: "/works/footgraphy",
     imageFit: "contain",
+    hoverColor: "group-hover:text-[#00BAE2]" // Cyan
   },
 ];
 
@@ -85,7 +89,7 @@ export function HomeProjects() {
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <h2 className="font-bebas text-4xl md:text-5xl uppercase tracking-wide group-hover:text-accent transition-colors">
+                  <h2 className={`font-bebas text-4xl md:text-5xl uppercase tracking-wide transition-colors duration-300 text-text ${project.hoverColor}`}>
                     {project.title}
                   </h2>
                   <h3 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.1em] text-muted">
