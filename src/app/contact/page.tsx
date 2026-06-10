@@ -273,8 +273,10 @@ export default function ContactPage() {
               {/* Submit CTA */}
               <div className="mt-2 md:mt-4">
                 <MagneticButton className="w-full">
-                  <button disabled={loading} type="submit" className="w-full flex justify-center items-center py-5 md:py-6 brand-bg-gradient border brand-border-gradient text-bg font-mono text-[13px] md:text-[14px] uppercase tracking-widest hover:bg-bg hover:brand-text-gradient transition-colors duration-300 disabled:opacity-50">
-                    {loading ? "SUBMITTING..." : "BOOK YOUR CALL →"}
+                  <button disabled={loading} type="submit" className="group w-full flex justify-center items-center py-5 md:py-6 brand-bg-gradient border border-transparent text-bg font-mono text-[13px] md:text-[14px] uppercase tracking-widest hover:brand-border-gradient transition-all duration-300 disabled:opacity-50">
+                    <span className="group-hover:brand-text-gradient transition-colors duration-300">
+                      {loading ? "SUBMITTING..." : "BOOK YOUR CALL →"}
+                    </span>
                   </button>
                 </MagneticButton>
               </div>

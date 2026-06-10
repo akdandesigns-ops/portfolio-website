@@ -73,7 +73,7 @@ export default function ServicesPage() {
             key={service.title}
             className="service-card w-full flex flex-col md:flex-row gap-6 md:gap-12 py-12 md:py-20 border-b border-border items-start md:items-center justify-between group transition-colors px-6 rounded-sm hover:bg-surface"
           >
-            <h2 className="font-bebas text-3xl sm:text-5xl md:text-7xl uppercase transition-colors w-full md:w-1/2 text-text [.light_&]:group-hover:text-[#888888] group-hover:brand-text-gradient">
+            <h2 className="font-bebas text-3xl sm:text-5xl md:text-7xl uppercase transition-colors w-full md:w-1/2 text-text group-hover:brand-text-gradient">
               {service.title}
             </h2>
             <div className="flex flex-col gap-8 w-full md:w-1/2">
@@ -82,9 +82,10 @@ export default function ServicesPage() {
               </p>
               <Link href={`/contact?service=${encodeURIComponent(service.title)}`} className="self-start group/quote">
                 <MagneticButton>
-                  <div className="font-mono text-[12px] uppercase brand-text-gradient tracking-[0.1em] border-b brand-border-gradient pb-1 flex items-center gap-2 transition-opacity hover:opacity-80">
+                  <div className="relative font-mono text-[12px] uppercase brand-text-gradient tracking-[0.1em] pb-1 flex items-center gap-2 transition-opacity hover:opacity-80">
                     <span>Get Your Free Quote</span>
                     <span className="group-hover/quote:translate-x-2 transition-transform duration-300">→</span>
+                    <div className="absolute bottom-0 left-0 w-full h-[1px] brand-bg-gradient" />
                   </div>
                 </MagneticButton>
               </Link>
@@ -101,9 +102,11 @@ export default function ServicesPage() {
         <MagneticButton>
           <Link 
             href="/contact"
-            className="px-12 py-6 brand-bg-gradient text-bg font-mono text-[14px] uppercase tracking-widest hover:bg-bg hover:brand-text-gradient hover:brand-border-gradient border border-transparent transition-all duration-300"
+            className="group px-12 py-6 brand-bg-gradient text-bg font-mono text-[14px] uppercase tracking-widest hover:brand-border-gradient-surface border border-transparent transition-all duration-300"
           >
-            GET A FREE QUOTE
+            <span className="group-hover:brand-text-gradient transition-all duration-300">
+              GET A FREE QUOTE
+            </span>
           </Link>
         </MagneticButton>
       </div>

@@ -470,7 +470,9 @@
     "description": "Tarak Food Products brings fresh, ready-to-cook batters, traditional sweets, crunchy snacks, and flavourful masala podis to everyday homes. We designed a vibrant digital experience to communicate their commitment to quality, tradition, and freshness, leveraging premium animations and rich visuals.",
     "approach": "The website blends modern typography with a warm, appetizing color palette, reflecting the rich flavors of South Indian cuisine. A focus on high-performance animations, including magnetic mouse hovering effects and smooth scroll transitions, delivers a premium feel without sacrificing accessibility. Behind the scenes, we developed a powerful custom admin portal that allows their team to seamlessly manage inventory, orders, and product catalogs.",
     "link": "https://www.tarakfoodproduct.com/",
-    "heroImage": "/works/tarak-food/tarak-snacks-bg.png",
+    "heroImage": "/works/tarak-food/hero-image.png",
+    "hideBannerImage": true,
+    "bannerBackgroundColor": "#1A3A2A",
     "imageFit": "cover",
     "useCuratedGallery": true,
     "gallery": [

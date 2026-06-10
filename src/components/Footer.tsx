@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-bg border-t border-border mt-auto relative overflow-hidden">
       {/* Background Graphic */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-80">
         <GravityGraphic />
       </div>
 

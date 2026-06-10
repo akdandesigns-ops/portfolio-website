@@ -39,8 +39,13 @@ export function Hero() {
       delay: 0.5,
     });
 
-    // Initial entrance for the phrases line
-    gsap.fromTo(".gradient-line", {
+    // Phrase Cycler Timeline Setup
+    const phrases = gsap.utils.toArray(".phrase-wrapper");
+    gsap.set(phrases.slice(1), { opacity: 0, yPercent: 50 });
+
+    // Initial entrance for the first phrase words to sync with the main text
+    const firstPhraseWords = (phrases[0] as HTMLElement).querySelectorAll("span");
+    gsap.fromTo(firstPhraseWords, {
       yPercent: 120,
       opacity: 0,
     }, {
@@ -48,20 +53,26 @@ export function Hero() {
       opacity: 1,
       duration: 0.8,
       ease: "power4.out",
+      stagger: 0.1,
       delay: 0.7,
     });
 
-    // Phrase Cycler Timeline
-    const phrases = gsap.utils.toArray(".phrase-wrapper");
     gsap.set(phrases.slice(1), { opacity: 0, yPercent: 50 });
-
-    const cyclerTl = gsap.timeline({ repeat: -1, delay: 1.5 });
+    const cyclerTl = gsap.timeline({ repeat: -1 });
     
     phrases.forEach((phrase, i) => {
       const nextPhrase = phrases[(i + 1) % phrases.length] as Element;
       
-      cyclerTl.to(phrase as Element, { opacity: 0, yPercent: -50, duration: 0.6, ease: "power3.inOut", delay: 1.8 });
-      cyclerTl.fromTo(nextPhrase, { opacity: 0, yPercent: 50 }, { opacity: 1, yPercent: 0, duration: 0.6, ease: "power3.inOut" }, "<");
+      cyclerTl.fromTo(phrase as Element, 
+        { opacity: 1, yPercent: 0 }, 
+        { opacity: 0, yPercent: -50, duration: 0.6, ease: "power3.inOut", immediateRender: false }, 
+        "+=1.0"
+      );
+      cyclerTl.fromTo(nextPhrase, 
+        { opacity: 0, yPercent: 50 }, 
+        { opacity: 1, yPercent: 0, duration: 0.6, ease: "power3.inOut", immediateRender: false }, 
+        "<"
+      );
     });
 
     // Descriptor
@@ -114,10 +125,10 @@ export function Hero() {
           {/* Center Huge Text */}
           <h1 className="hero-heading font-bebas text-[clamp(64px,14vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase mt-2">
             <div className="split-line overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
-              <span>I</span> <span>DESIGN</span>
+              I DESIGN
             </div>
             <div className="split-line overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
-              <span>BRANDS</span> <span>THAT</span>
+              BRANDS THAT
             </div>
             
             {/* Cycling Phrases */}
@@ -129,7 +140,10 @@ export function Hero() {
                </div>
 
               {PHRASES.map((phrase, i) => (
-                <div key={i} className="phrase-wrapper absolute top-0 left-0 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 items-center w-full">
+                <div 
+                  key={i} 
+                  className={`phrase-wrapper absolute top-0 left-0 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 items-center w-full ${i === 0 ? '' : 'opacity-0'}`}
+                >
                   {phrase.text.split(" ").map((word, wIdx) => (
                     <span 
                       key={wIdx} 

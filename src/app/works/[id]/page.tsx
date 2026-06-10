@@ -40,6 +40,9 @@ interface ProjectData {
   approach?: string;
   link?: string;
   heroImage: string;
+  bannerImage?: string;
+  hideBannerImage?: boolean;
+  bannerBackgroundColor?: string;
   imageFit?: "cover" | "contain";
   useCuratedGallery?: boolean;
   gallery: { src: string; alt: string; span?: "full" | "half"; caption?: string; aspectRatio?: string }[];
@@ -150,18 +153,29 @@ export default function CaseStudyPage() {
     <div ref={containerRef} key={project.slug} className="w-full flex-col flex bg-bg text-text selection:bg-[#FF00E5] selection:text-bg pt-20">
 
       {/* ═══════════ FULL-BLEED HERO ═══════════ */}
-      <section className="relative w-full h-[55vh] min-h-[450px] md:h-[90vh] overflow-hidden">
-        <MediaItem
-          src={project.heroImage}
-          alt={project.title || project.name}
-          fill
-          className="object-cover object-center"
-          priority
-          quality={85}
-          sizes="(max-width: 768px) 100vw, 100vw"
-        />
-        {/* Gradient overlay — bottom-heavy for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+      <section 
+        className="relative w-full h-[55vh] min-h-[450px] md:h-[90vh] overflow-hidden"
+        style={project.bannerBackgroundColor ? { backgroundColor: project.bannerBackgroundColor } : {}}
+      >
+        {!project.hideBannerImage && (
+          <MediaItem
+            src={project.bannerImage || project.heroImage}
+            alt={project.title || project.name}
+            fill
+            className={
+              project.bannerImage 
+                ? "object-contain object-right md:object-right px-4 md:px-0 md:pr-12 lg:pr-24" 
+                : `object-cover object-center ${project.imageFit === 'contain' ? '!object-contain' : ''}`
+            }
+            priority
+            quality={85}
+            sizes="(max-width: 768px) 100vw, 100vw"
+          />
+        )}
+        {/* Gradient overlay — bottom-heavy for text legibility (Only for regular cover images) */}
+        {!project.bannerImage && !project.hideBannerImage && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        )}
 
         {/* Hero text — bottom-left, editorial positioning */}
         <div className="absolute bottom-10 md:bottom-16 left-6 md:left-16 lg:left-24"
