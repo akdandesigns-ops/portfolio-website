@@ -1,5 +1,5 @@
 {
-  "profileImage": "/profile.jpg",
+  "profileImage": "/profile-image/founder-image.png",
   "philosophyParagraphs": [
     "I'm Aswin Kumaaran, a self-taught brand identity designer based in Chennai, crafting visual identities that make businesses impossible to ignore.",
     "I got into design the hard way, with no formal classroom and no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I've worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.",
@@ -17,6 +17,6 @@
     { "name": "SOLSTICE PICK", "color": "#33CCFF" },
     { "name": "TRIDEN D3D", "color": "#FFCC00" },
     { "name": "CHENNAI CONNECTS", "color": "#00FF66" },
-    { "name": "WESAFE", "color": "#2ECC71" }
+    { "name": "TARAK FOOD PRODUCTS", "color": "#FF9900" }
   ]
 }

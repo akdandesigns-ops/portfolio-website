@@ -1,53 +1,53 @@
 [
   {
-    "slug": "the-death-of-the-landing-page",
-    "title": "The Death of the Landing Page: Why Storytelling is the Only Metric Left",
-    "date": "APR 04, 2024",
-    "readTime": "8 MIN READ",
-    "tag": "Brand Strategy",
-    "image": "https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=1600",
-    "quote": "When every brand shouts at the exact same frequency, total silence is the only sound that commands attention.",
-    "paragraphs": [
-      "We have entered the era of the endless scroll, the ubiquitous component library, and the templated aesthetic. Finding a SaaS layout that doesn’t employ a standard left-aligned h1, two buttons, and a massive dashboard mockup on the right is increasingly rare.",
-      "But visual noise has an endpoint. When every brand shouts at the exact same frequency, total silence is the only sound that commands attention. In a saturated market, restraint is a luxury.",
-      "Moving forward, brands will be defined not by how much information they can compress into an above-the-fold viewport, but by the confidence they exude through negative space. It's the difference between desperation and authority. To design authentically in this space, one must prioritize tension over mere balance. Structural rigidity, extreme grid awareness, and the exact placement of single elements against an infinite canvas."
-    ]
-  },
-  {
-    "slug": "design-system-efficiency",
-    "title": "Why Modular Design Systems Fail Without Architecture",
-    "date": "MAR 12, 2024",
-    "readTime": "4 MIN READ",
-    "tag": "Design Theory",
-    "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800",
-    "quote": "A library of components is not a system; it is just a box of Lego bricks without a blueprint.",
-    "paragraphs": [
-      "Design systems are often championed as the ultimate cure for design debt and developer friction. Organizations spend months building vast component libraries in Figma and React, cataloging every button state, modal, and input field.",
-      "And yet, many of these systems quietly fail. Teams continue to build custom, non-compliant components, layouts feel disconnected, and codebases become bloated. The reason is simple: a collection of components is not a design system. Without clear architectural rules, semantic tokens, and rigid layout guidelines, a design system is just a box of Lego bricks.",
-      "To build a truly functional design system, one must focus on decision-making models rather than just assets. How do components scale? What are the mathematical rules governing spacing, type curves, and color interactions? When we design the system itself rather than just the parts, consistency follows organically."
-    ]
-  },
-  {
-    "slug": "silence-in-design",
-    "title": "Silence as a Differentiator in Saturated Markets",
-    "date": "FEB 24, 2024",
+    "slug": "logo-design-trends-ai-era",
+    "title": "Logo Design Trends in the AI Era: Why Simplicity is Still King",
+    "date": "MAY 12, 2026",
     "readTime": "6 MIN READ",
-    "tag": "Brand Strategy",
-    "image": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800",
-    "quote": "In a room full of people screaming, the person whispering holds the room's attention.",
+    "tag": "Design Trends",
+    "image": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1600",
+    "quote": "Artificial Intelligence can generate a million variations, but it takes human intuition to select the one that speaks to the soul.",
     "paragraphs": [
-      "Modern marketing is obsessed with optimization: brighter colors, bolder headlines, more popups, and faster animations. We are bombarded with notifications, micro-interactions, and visual noise every second we spend online.",
-      "But this hyper-stimulation creates a powerful counter-trend: sensory exhaustion. When everything is loud, nothing is heard. High-end brands understand this instinctively. They don't shout; they whisper. They build authority through vast negative space, ultra-refined typography, and absolute visual restraint.",
-      "By stripping away the noise, you force the audience to focus on the core value of your brand. You convey a sense of absolute confidence — that your product or service is so undeniably premium that it doesn't need to beg for attention. In a saturated digital landscape, silence isn't just a style; it's a devastatingly effective business strategy."
+      "With the explosion of generative AI, the barrier to entry for creating a logo has dropped to zero. Anyone can type a prompt and instantly receive dozens of highly detailed, stylized brand marks. But as the market becomes flooded with AI-generated complexity, the most successful brands are moving in the exact opposite direction.",
+      "The defining trend of this era is hyper-simplicity. When complex, illustrative logos are cheap and ubiquitous, true premium branding relies on restraint. We are seeing a massive shift towards custom typography, stark geometric forms, and reductive monograms that an AI might consider 'too simple' but that human psychology recognizes as authoritative.",
+      "AI is an incredible tool for brainstorming and exploring visual territories rapidly. However, a logo must function perfectly on a 16-pixel favicon, a massive billboard, and stitched into fabric. It must hold meaning, not just look impressive. As we navigate this new era, the role of the designer shifts from mere creator to strategic curator—distilling the noise into perfect, resonant clarity."
     ]
   },
   {
-    "slug": "typography-first",
-    "title": "Rethinking Hierarchy: The Case for Typography-First Web",
-    "date": "JAN 18, 2024",
+    "slug": "designing-with-adobe-firefly",
+    "title": "How to Design a Brand with the Help of Adobe Firefly",
+    "date": "APR 28, 2026",
+    "readTime": "8 MIN READ",
+    "tag": "Tools & Workflow",
+    "image": "/blogs/adobe-firefly.png",
+    "quote": "Firefly doesn't replace the design process; it accelerates the visual exploration phase.",
+    "paragraphs": [
+      "Adobe Firefly has fundamentally changed how we approach the early stages of brand identity design. Instead of spending hours scouring Pinterest or building moodboards from existing assets, designers can now conjure highly specific visual worlds in seconds to align with a client's strategic vision.",
+      "The secret to using Firefly effectively is to not treat it as an end-product generator. You shouldn't ask it to 'design a logo for a coffee shop.' Instead, use it to explore textures, color palettes, and photographic styles. For example, generating 'macro photography of roasted coffee beans with stark, cinematic lighting and deep amber hues' gives you a perfect foundation for a brand's visual direction.",
+      "Once the aesthetic boundaries are established, the traditional design work begins. You build the vector assets, define the typography system, and create the grid. Firefly acts as your ultimate creative assistant, removing the friction between an abstract idea and a concrete visual reference, allowing you to design with unprecedented speed and conviction."
+    ]
+  },
+  {
+    "slug": "from-normal-business-to-memorable-brand",
+    "title": "How Design Turns a Normal Business into a Memorable Brand",
+    "date": "APR 10, 2026",
+    "readTime": "7 MIN READ",
+    "tag": "Brand Strategy",
+    "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1600",
+    "quote": "A business sells a product. A brand sells a feeling. Design is the bridge between the two.",
+    "paragraphs": [
+      "Every day, thousands of new businesses are launched. Most of them offer perfectly adequate products or services. Yet, the vast majority will remain entirely forgettable to their target audience. They blend into the background noise of the market because they lack a cohesive, intentional visual identity.",
+      "Design is what separates a commodity from a premium offering. It is the silent ambassador of your company's values. When a customer interacts with your website, holds your packaging, or sees your social media posts, they are making subconscious judgments about your credibility, quality, and pricing within milliseconds. A rigid, beautiful design system communicates that you care about the details—and by extension, that you care about the customer.",
+      "Turning a business into a brand requires consistency and courage. It means committing to a specific color palette, a strict typographic hierarchy, and a distinct tone of voice. It means refusing to look like everyone else in your industry. When every touchpoint feels deliberate and premium, you stop competing on price and start competing on value."
+    ]
+  },
+  {
+    "slug": "typography-first-web-design",
+    "title": "The Power of Typography-First Web Design",
+    "date": "MAR 22, 2026",
     "readTime": "5 MIN READ",
     "tag": "Web Design",
-    "image": "https://images.unsplash.com/photo-1510413009623-2895f36e89af?q=80&w=800",
+    "image": "/blogs/typography-cover.png",
     "quote": "Type is not just a carrier of message; type is the architecture of the message.",
     "paragraphs": [
       "For years, web design has been dominated by imagery and video backgrounds. Type was treated as a secondary asset, placed over large banner graphics or inside boxes. But as user attention spans shrink, loading times and immediate readability have become paramount.",

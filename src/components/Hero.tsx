@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "@/lib/gsap/SplitText";
+// import { HeroRobot } from "./HeroRobot";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(SplitText, useGSAP);
@@ -51,7 +52,9 @@ export function Hero() {
       <div className="flex-1 min-h-[60px]" />
 
       {/* Hero Content Block */}
-      <div className="w-full flex justify-start lg:justify-center max-w-[2000px] mx-auto z-10">
+      <div className="w-full flex items-center max-w-[2000px] mx-auto z-10">
+        
+        {/* Left Column: Typography */}
         <div className="flex flex-col items-start gap-2 md:gap-3 w-full">
           {/* Top Left Label */}
           <div className="hero-label font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-muted pl-1 md:pl-2">
@@ -59,15 +62,15 @@ export function Hero() {
           </div>
 
           {/* Center Huge Text */}
-          <h1 className="hero-heading font-bebas text-[clamp(48px,13vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase">
-            <div className="overflow-hidden pb-2 lg:pb-4 flex gap-[clamp(16px,2.5vw,36px)]">
-              I DESIGN
+          <h1 className="hero-heading font-bebas text-[clamp(64px,14vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase">
+            <div className="overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
+              <span>I</span> <span>DESIGN</span>
             </div>
-            <div className="overflow-hidden pb-2 lg:pb-4 flex gap-[clamp(16px,2.5vw,36px)]">
-              BRANDS THAT
+            <div className="overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
+              <span>BRANDS</span> <span>THAT</span>
             </div>
-            <div className="overflow-hidden pb-2 lg:pb-4 flex gap-[clamp(16px,2.5vw,36px)] text-accent">
-              DEFY GRAVITY.
+            <div className="overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 text-accent">
+              <span>DEFY</span> <span>GRAVITY.</span>
             </div>
           </h1>
 
@@ -76,6 +79,11 @@ export function Hero() {
             akdandesigns crafts identities that rise above the ordinary — strategic, precise, and impossible to ignore.
           </p>
         </div>
+
+        {/* Right Column: Wall-E Robot (Hidden on Mobile) */}
+        {/* <div className="hidden lg:flex w-full h-full items-center justify-center">
+          <HeroRobot />
+        </div> */}
       </div>
 
       {/* Spacer */}

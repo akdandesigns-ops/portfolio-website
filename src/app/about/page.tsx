@@ -69,16 +69,25 @@ export default function AboutPage() {
 
       {/* Philosophy */}
       <div className="w-full flex flex-col md:flex-row justify-between mb-24 md:mb-40 gap-12 md:gap-8 items-center md:items-start">
-        <div
-          className="fade-in w-full sm:w-[80%] md:w-[40%] aspect-[3/4] relative overflow-hidden bg-surface"
-        >
-          <Image 
-            src={data.profileImage || "/profile.jpg"} 
-            alt="Aswin Kumaaran" 
-            fill 
-            className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-            sizes="(max-width: 768px) 100vw, 40vw"
-          />
+        <div className="fade-in w-full sm:w-[80%] md:w-[40%] flex flex-col gap-6">
+          <div className="w-full aspect-[3/4] relative overflow-hidden bg-surface">
+            <Image 
+              src={data.profileImage || "/profile.jpg"} 
+              alt="Aswin Kumaaran" 
+              fill 
+              className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
+          </div>
+          
+          <div className="flex flex-col gap-2 mt-4">
+            <h3 className="font-mono text-[11px] text-muted tracking-[0.2em] uppercase mb-2">FOUNDER & DIRECTOR</h3>
+            <h4 className="font-bebas text-3xl uppercase">ASWIN KUMAARAN</h4>
+            <span className="font-mono text-[11px] text-accent tracking-[0.1em]">Brand Identity Designer</span>
+            <p className="font-sans font-light text-[15px] text-text/60 max-w-[400px] mt-2">
+              Self-taught brand identity designer with an obsession for clarity, precision, and making brands impossible to ignore.
+            </p>
+          </div>
         </div>
         
         <div
@@ -118,17 +127,9 @@ export default function AboutPage() {
           <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-12 items-center opacity-80">
             {data.clients.map((client) => (
               <MagneticButton key={client.name}>
-                <div 
-                  className="font-bebas text-2xl sm:text-3xl md:text-5xl lg:text-6xl uppercase grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer text-center"
-                  style={{ WebkitTextStroke: "1px var(--text)", color: "transparent" } as React.CSSProperties}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = client.color;
-                    (e.currentTarget.style as any).WebkitTextStroke = `1px ${client.color}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "transparent";
-                    (e.currentTarget.style as any).WebkitTextStroke = "1px var(--text)";
-                  }}
+                  <div 
+                  className="font-bebas text-2xl sm:text-3xl md:text-5xl lg:text-6xl uppercase cursor-pointer text-center"
+                  style={{ color: client.color }}
                 >
                   {client.name}
                 </div>
@@ -138,19 +139,7 @@ export default function AboutPage() {
         </div>
       )}
 
-      {/* Founder Grid (Minimal) */}
-      <div className="w-full">
-        <h3 className="font-mono text-[11px] text-muted tracking-[0.2em] uppercase mb-12">FOUNDER & DIRECTOR</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="flex flex-col gap-2">
-            <h4 className="font-bebas text-3xl uppercase">ASWIN KUMAARAN</h4>
-            <span className="font-mono text-[11px] text-accent tracking-[0.1em]">Brand Identity Designer</span>
-            <p className="font-sans font-light text-[15px] text-text/60 max-w-[400px] mt-4">
-              Self-taught brand identity designer with an obsession for clarity, precision, and making brands impossible to ignore.
-            </p>
-          </div>
-        </div>
-      </div>
+
 
     </div>
   );

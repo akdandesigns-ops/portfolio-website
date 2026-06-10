@@ -30,11 +30,6 @@ function getNoiseDataUrl() {
 export default function HoverCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
-  const [isMobile, setIsMobile] = useState(true); // default true to avoid hydration mismatch, check in effect
-
-  useEffect(() => {
-    setIsMobile(window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768);
-  }, []);
 
   useEffect(() => {
     let lastTime = 0;
@@ -211,11 +206,27 @@ export default function HoverCanvas() {
       );
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [resolvedTheme, isMobile]);
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        handleMouseMove({
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+          target: e.target
+        } as any);
+      }
+    };
 
-  if (isMobile) return null;
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+    };
+  }, [resolvedTheme]);
 
   return (
     <div ref={containerRef} className="fixed inset-0 pointer-events-none z-[40] overflow-hidden" style={{ perspective: '800px' }}>

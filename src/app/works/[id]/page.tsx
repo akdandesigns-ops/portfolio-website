@@ -48,14 +48,44 @@ interface ProjectData {
   nextTitle: string;
 }
 
+
+const MediaItem = ({ src, alt, fill, className, sizes, quality, priority, style, loading }: any) => {
+  if (src?.endsWith('.mp4') || src?.endsWith('.webm')) {
+    return (
+      <video
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={className}
+        style={{ ...style, objectFit: className?.includes('object-contain') ? 'contain' : 'cover' }}
+      />
+    );
+  }
+  return (
+    <Image
+      src={src}
+      alt={alt || ''}
+      fill={fill}
+      className={className}
+      sizes={sizes}
+      quality={quality}
+      priority={priority}
+      style={style}
+      loading={loading}
+    />
+  );
+};
+
+
 const idToSlug: Record<string, string> = {
   "01": "licet-15",
   "02": "sans-badminton",
   "03": "solstice-pick",
   "04": "footgraphy",
+  "05": "tarak-food",
 };
-
-
 
 export default function CaseStudyPage() {
   const { id } = useParams();
@@ -120,7 +150,7 @@ export default function CaseStudyPage() {
 
       {/* ═══════════ FULL-BLEED HERO ═══════════ */}
       <section className="relative w-full h-[55vh] min-h-[450px] md:h-[90vh] overflow-hidden">
-        <Image
+        <MediaItem
           src={project.heroImage}
           alt={project.title || project.name}
           fill
@@ -205,7 +235,7 @@ export default function CaseStudyPage() {
             <section className="fade-in w-full">
               <div className="w-full px-0 md:px-16 lg:px-24">
                 <div className={`relative w-full ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[2/1]' : 'aspect-[16/9] md:aspect-[2/1]'} overflow-hidden`}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[0].src}
                     alt={project.gallery[0].alt}
                     fill
@@ -231,7 +261,7 @@ export default function CaseStudyPage() {
             <section className="fade-up w-full px-6 md:px-16 lg:px-24">
               <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[1]?.aspectRatio || "4/5" }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[1].src}
                     alt={project.gallery[1].alt}
                     fill
@@ -241,7 +271,7 @@ export default function CaseStudyPage() {
                   />
                 </div>
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[2]?.aspectRatio || "4/5" }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[2].src}
                     alt={project.gallery[2].alt}
                     fill
@@ -378,7 +408,7 @@ export default function CaseStudyPage() {
             <section className="fade-in w-full">
               <div className="w-full px-0 md:px-16 lg:px-24">
                 <div className={`relative w-full overflow-hidden max-h-[85vh] ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : ''}`} style={{ aspectRatio: project.imageFit === 'contain' ? undefined : (project.gallery[3]?.aspectRatio || "16/10") }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[3].src}
                     alt={project.gallery[3].alt}
                     fill
@@ -406,7 +436,7 @@ export default function CaseStudyPage() {
             <section className="fade-up w-full px-6 md:px-16 lg:px-24">
               <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[4]?.aspectRatio || "4/5" }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[4].src}
                     alt={project.gallery[4].alt}
                     fill
@@ -416,7 +446,7 @@ export default function CaseStudyPage() {
                   />
                 </div>
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[5]?.aspectRatio || "4/5" }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[5].src}
                     alt={project.gallery[5].alt}
                     fill
@@ -434,7 +464,7 @@ export default function CaseStudyPage() {
             <section className="fade-up w-full px-6 md:px-16 lg:px-24">
               <div className="max-w-[700px] mx-auto">
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: project.gallery[4]?.aspectRatio || "4/5" }}>
-                  <Image
+                  <MediaItem
                     src={project.gallery[4].src}
                     alt={project.gallery[4].alt}
                     fill
@@ -455,7 +485,7 @@ export default function CaseStudyPage() {
               <div className="w-full px-6 md:px-16 lg:px-24">
                 <div className="max-w-[1400px] mx-auto">
                   <div className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : 'aspect-[16/10]'}`}>
-                    <Image
+                    <MediaItem
                       src={project.gallery[6].src}
                       alt={project.gallery[6].alt}
                       fill
@@ -483,7 +513,7 @@ export default function CaseStudyPage() {
               <div className="w-full px-6 md:px-16 lg:px-24">
                 <div className="max-w-[1400px] mx-auto">
                   <div className="relative w-full aspect-[16/10] overflow-hidden">
-                    <Image
+                    <MediaItem
                       src={project.gallery[7].src}
                       alt={project.gallery[7].alt}
                       fill
@@ -518,7 +548,7 @@ export default function CaseStudyPage() {
                   elements.push(
                     <div key={`full-${i}`} className="fade-in w-full md:w-[75%] lg:w-[65%] mx-auto flex flex-col gap-4">
                       <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "4/5" }}>
-                        <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 75vw" quality={85} loading="lazy" />
+                        <MediaItem src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 75vw" quality={85} loading="lazy" />
                       </div>
                       {img.caption && (
                         <p className="font-sans text-[13px] md:text-[14px] text-text/40 leading-relaxed mx-auto text-center mt-2 max-w-[500px]">
@@ -534,14 +564,14 @@ export default function CaseStudyPage() {
                     <div key={`half-${i}`} className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-0 items-start">
                       <div className="fade-up md:col-span-5 md:col-start-2 flex flex-col gap-3">
                         <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "3/4" }}>
-                          <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
+                          <MediaItem src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
                         </div>
                         {img.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img.caption}</p>}
                       </div>
 
                       <div className="fade-up md:col-span-4 md:col-start-8 flex flex-col gap-3 mt-8 md:mt-48">
                         <div className="relative w-full overflow-hidden" style={{ aspectRatio: img2.aspectRatio || "4/5" }}>
-                          <Image src={img2.src} alt={img2.alt || `Gallery Image ${i+1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
+                          <MediaItem src={img2.src} alt={img2.alt || `Gallery Image ${i+1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" quality={85} loading="lazy" />
                         </div>
                         {img2.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img2.caption}</p>}
                       </div>
@@ -552,7 +582,7 @@ export default function CaseStudyPage() {
                   elements.push(
                     <div key={`single-${i}`} className="fade-in w-full md:w-[60%] lg:w-[50%] mr-auto flex flex-col gap-4">
                       <div className="relative w-full overflow-hidden" style={{ aspectRatio: img.aspectRatio || "1/1" }}>
-                        <Image src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" quality={85} loading="lazy" />
+                        <MediaItem src={img.src} alt={img.alt || `Gallery Image ${i}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" quality={85} loading="lazy" />
                       </div>
                       {img.caption && <p className="font-sans text-[12px] md:text-[13px] text-text/40">{img.caption}</p>}
                     </div>

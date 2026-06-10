@@ -14,13 +14,44 @@
     "heroImage": "/works/licet-15/licet -15 - t-shirt-mockup.jpg",
     "useCuratedGallery": true,
     "gallery": [
-      { "src": "/works/licet-15/licet15-wordmark-logo.jpg", "alt": "LICET 15 Wordmark Logo", "span": "full", "caption": "The complete wordmark system — LICET 15, with the college motto integrated beneath." },
-      { "src": "/works/licet-15/licet -15 -LOGO BLACK-mockup.jpg", "alt": "Logo Black Mockup", "span": "half" },
-      { "src": "/works/licet-15/display mockup.jpg", "alt": "Stage Display Mockup", "span": "half" },
-      { "src": "/works/licet-15/licet-15 pattern.jpg", "alt": "LICET 15 Brand Pattern", "span": "full", "caption": "A tessellated pattern derived from the logomark, built for large-format applications." },
-      { "src": "/works/licet-15/licet -15 - memento.jpg", "alt": "Glass Memento", "span": "half" },
-      { "src": "/works/licet-15/black t shirt mockup.jpg", "alt": "Black T-shirt Mockup", "span": "half" },
-      { "src": "/works/licet-15/magazine.jpg", "alt": "College Magazine Cover", "span": "full", "caption": "A magazine spread integrating the anniversary branding into the editorial system." }
+      {
+        "src": "/works/licet-15/licet15-wordmark-logo.jpg",
+        "alt": "LICET 15 Wordmark Logo",
+        "span": "full",
+        "caption": "The complete wordmark system — LICET 15, with the college motto integrated beneath."
+      },
+      {
+        "src": "/works/licet-15/licet -15 -LOGO BLACK-mockup.jpg",
+        "alt": "Logo Black Mockup",
+        "span": "half"
+      },
+      {
+        "src": "/works/licet-15/display mockup.jpg",
+        "alt": "Stage Display Mockup",
+        "span": "half"
+      },
+      {
+        "src": "/works/licet-15/licet-15 pattern.jpg",
+        "alt": "LICET 15 Brand Pattern",
+        "span": "full",
+        "caption": "A tessellated pattern derived from the logomark, built for large-format applications."
+      },
+      {
+        "src": "/works/licet-15/licet -15 - memento.jpg",
+        "alt": "Glass Memento",
+        "span": "half"
+      },
+      {
+        "src": "/works/licet-15/black t shirt mockup.jpg",
+        "alt": "Black T-shirt Mockup",
+        "span": "half"
+      },
+      {
+        "src": "/works/licet-15/magazine.jpg",
+        "alt": "College Magazine Cover",
+        "span": "full",
+        "caption": "A magazine spread integrating the anniversary branding into the editorial system."
+      }
     ],
     "colors": [
       {
@@ -77,14 +108,55 @@
     "heroImage": "/works/sans-badminton/sans-09.png",
     "useCuratedGallery": true,
     "gallery": [
-      { "src": "/works/sans-badminton/sans-07.png", "alt": "SANS Logomark — White on Charcoal Grey", "span": "full", "caption": "Brand in action — the jump smash logomark references the explosive mid-air strike that defines competitive badminton." },
-      { "src": "/works/sans-badminton/sans-08.png", "alt": "SANS Logomark — Neo Green on Charcoal", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/sans-badminton/sans-10.png", "alt": "SANS Logomark — Dark on Neo Green", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/sans-badminton/sans-09.png", "alt": "SANS Carbon Fibre Texture Logomark", "span": "full", "aspectRatio": "4/5", "caption": "The logomark on carbon fibre — raw material meets raw intent. Every angle of the jump smash mark carries diagonal momentum." },
-      { "src": "/works/sans-badminton/sans-11.png", "alt": "SANS Logo — Royal Blue Alternate Colorway", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/sans-badminton/website-img.png", "alt": "SANS Brand Showcase — Jump Smash Player", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/sans-badminton/untitled-2.jpg", "alt": "SANS Brand Collateral — Bottle Mockup & Player Action", "span": "full", "caption": "From branded merchandise to court-side presence — the identity system extends across every athlete touchpoint." },
-      { "src": "/works/sans-badminton/sans-12.png", "alt": "SANS Logo Color Variations — Four Colorways", "span": "full", "caption": "The logomark across the full colorway system — charcoal, neo green, royal blue, and sunset red. Built to flex, built to dominate." }
+      {
+        "src": "/works/sans-badminton/sans-07.png",
+        "alt": "SANS Logomark — White on Charcoal Grey",
+        "span": "full",
+        "caption": "Brand in action — the jump smash logomark references the explosive mid-air strike that defines competitive badminton."
+      },
+      {
+        "src": "/works/sans-badminton/sans-08.png",
+        "alt": "SANS Logomark — Neo Green on Charcoal",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/sans-badminton/sans-10.png",
+        "alt": "SANS Logomark — Dark on Neo Green",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/sans-badminton/sans-09.png",
+        "alt": "SANS Carbon Fibre Texture Logomark",
+        "span": "full",
+        "aspectRatio": "4/5",
+        "caption": "The logomark on carbon fibre — raw material meets raw intent. Every angle of the jump smash mark carries diagonal momentum."
+      },
+      {
+        "src": "/works/sans-badminton/sans-11.png",
+        "alt": "SANS Logo — Royal Blue Alternate Colorway",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/sans-badminton/website-img.png",
+        "alt": "SANS Brand Showcase — Jump Smash Player",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/sans-badminton/untitled-2.jpg",
+        "alt": "SANS Brand Collateral — Bottle Mockup & Player Action",
+        "span": "full",
+        "caption": "From branded merchandise to court-side presence — the identity system extends across every athlete touchpoint."
+      },
+      {
+        "src": "/works/sans-badminton/sans-12.png",
+        "alt": "SANS Logo Color Variations — Four Colorways",
+        "span": "full",
+        "caption": "The logomark across the full colorway system — charcoal, neo green, royal blue, and sunset red. Built to flex, built to dominate."
+      }
     ],
     "colors": [
       {
@@ -140,13 +212,51 @@
     "heroImage": "/works/solstice-pick/solstice pick - mockup 1.png",
     "useCuratedGallery": true,
     "gallery": [
-      { "src": "/works/solstice-pick/solstice pick - imagery style.png", "alt": "Solestice Pick Imagery Style", "span": "full", "caption": "The brand imagery evokes warmth and honesty, establishing the accessible premium positioning." },
-      { "src": "/works/solstice-pick/Solstice pick - logos-01.png", "alt": "Solestice Pick Logo Variation", "span": "half", "aspectRatio": "9/16" },
-      { "src": "/works/solstice-pick/Solstice pick - logos-02.png", "alt": "Solestice Pick Logo Variation 2", "span": "half", "aspectRatio": "9/16" },
-      { "src": "/works/solstice-pick/solstice pick - pattern.png", "alt": "Solestice Pick Brand Pattern", "span": "full", "aspectRatio": "22/10", "caption": "The brand pattern deployed as an asset across the packaging landscape." },
-      { "src": "/works/solstice-pick/Solstice pick - logos-04.png", "alt": "Solestice Pick Iconography", "span": "half", "aspectRatio": "9/16" },
-      { "src": "/works/solstice-pick/Solstice pick - logos-03.png", "alt": "Solestice Pick Secondary Monogram", "span": "half", "aspectRatio": "9/16", "caption": "Secondary monogram logo preserving the idea of careful selection." },
-      { "src": "/works/solstice-pick/Solstice pick - logos-05.png", "alt": "Solestice Pick Logomark", "span": "full", "aspectRatio": "1/1", "caption": "The standalone logomark." }
+      {
+        "src": "/works/solstice-pick/solstice pick - imagery style.png",
+        "alt": "Solestice Pick Imagery Style",
+        "span": "full",
+        "caption": "The brand imagery evokes warmth and honesty, establishing the accessible premium positioning."
+      },
+      {
+        "src": "/works/solstice-pick/Solstice pick - logos-01.png",
+        "alt": "Solestice Pick Logo Variation",
+        "span": "half",
+        "aspectRatio": "9/16"
+      },
+      {
+        "src": "/works/solstice-pick/Solstice pick - logos-02.png",
+        "alt": "Solestice Pick Logo Variation 2",
+        "span": "half",
+        "aspectRatio": "9/16"
+      },
+      {
+        "src": "/works/solstice-pick/solstice pick - pattern.png",
+        "alt": "Solestice Pick Brand Pattern",
+        "span": "full",
+        "aspectRatio": "22/10",
+        "caption": "The brand pattern deployed as an asset across the packaging landscape."
+      },
+      {
+        "src": "/works/solstice-pick/Solstice pick - logos-04.png",
+        "alt": "Solestice Pick Iconography",
+        "span": "half",
+        "aspectRatio": "9/16"
+      },
+      {
+        "src": "/works/solstice-pick/Solstice pick - logos-03.png",
+        "alt": "Solestice Pick Secondary Monogram",
+        "span": "half",
+        "aspectRatio": "9/16",
+        "caption": "Secondary monogram logo preserving the idea of careful selection."
+      },
+      {
+        "src": "/works/solstice-pick/Solstice pick - logos-05.png",
+        "alt": "Solestice Pick Logomark",
+        "span": "full",
+        "aspectRatio": "1/1",
+        "caption": "The standalone logomark."
+      }
     ],
     "colors": [
       {
@@ -189,36 +299,224 @@
     "imageFit": "contain",
     "useCuratedGallery": false,
     "gallery": [
-      { "src": "/works/footgraphy/09.png", "alt": "Cinematic Shoe Photography 1", "span": "full", "caption": "High-contrast editorial lighting highlighting material texture." },
-      { "src": "/works/footgraphy/10.png", "alt": "AI generated shoe 2", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/footgraphy/11.png", "alt": "AI generated shoe 3", "span": "half", "aspectRatio": "3/4" },
-      { "src": "/works/footgraphy/12.png", "alt": "Cinematic Shoe Photography 4", "span": "full", "aspectRatio": "16/9", "caption": "Vibrant global-fashion aesthetic captured entirely through generative AI." },
-      { "src": "/works/footgraphy/13.png", "alt": "AI generated shoe 5", "span": "half", "aspectRatio": "4/5" },
-      { "src": "/works/footgraphy/15.png", "alt": "AI generated shoe 6", "span": "half", "aspectRatio": "4/5" },
-      { "src": "/works/footgraphy/16.png", "alt": "Cinematic Shoe Photography 7", "span": "full", "aspectRatio": "2/1", "caption": "The raw intent of design, crystallized in synthetic light." },
-      { "src": "/works/footgraphy/14.png", "alt": "AI generated shoe 14", "span": "full" },
-      { "src": "/works/footgraphy/01.png", "alt": "AI generated shoe 01", "span": "full" },
-      { "src": "/works/footgraphy/02.png", "alt": "AI generated shoe 02", "span": "half" },
-      { "src": "/works/footgraphy/03.png", "alt": "AI generated shoe 03", "span": "half" },
-      { "src": "/works/footgraphy/04.png", "alt": "AI generated shoe 04", "span": "full" },
-      { "src": "/works/footgraphy/05.png", "alt": "AI generated shoe 05", "span": "half" },
-      { "src": "/works/footgraphy/06.png", "alt": "AI generated shoe 06", "span": "half" },
-      { "src": "/works/footgraphy/07.png", "alt": "AI generated shoe 07", "span": "full" },
-      { "src": "/works/footgraphy/17.png", "alt": "AI generated shoe 17", "span": "half" },
-      { "src": "/works/footgraphy/18.png", "alt": "AI generated shoe 18", "span": "half" },
-      { "src": "/works/footgraphy/19.png", "alt": "AI generated shoe 19", "span": "full" },
-      { "src": "/works/footgraphy/20.png", "alt": "AI generated shoe 20", "span": "half" },
-      { "src": "/works/footgraphy/21.png", "alt": "AI generated shoe 21", "span": "half" },
-      { "src": "/works/footgraphy/22.png", "alt": "AI generated shoe 22", "span": "full" },
-      { "src": "/works/footgraphy/23.png", "alt": "AI generated shoe 23", "span": "half" },
-      { "src": "/works/footgraphy/24.png", "alt": "AI generated shoe 24", "span": "half" },
-      { "src": "/works/footgraphy/25.png", "alt": "AI generated shoe 25", "span": "full" },
-      { "src": "/works/footgraphy/26.png", "alt": "AI generated shoe 26", "span": "half" },
-      { "src": "/works/footgraphy/27.png", "alt": "AI generated shoe 27", "span": "half" },
-      { "src": "/works/footgraphy/28.png", "alt": "AI generated shoe 28", "span": "full" },
-      { "src": "/works/footgraphy/29.png", "alt": "AI generated shoe 29", "span": "half" },
-      { "src": "/works/footgraphy/30.png", "alt": "AI generated shoe 30", "span": "half" }
+      {
+        "src": "/works/footgraphy/09.png",
+        "alt": "Cinematic Shoe Photography 1",
+        "span": "full",
+        "caption": "High-contrast editorial lighting highlighting material texture."
+      },
+      {
+        "src": "/works/footgraphy/10.png",
+        "alt": "AI generated shoe 2",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/footgraphy/11.png",
+        "alt": "AI generated shoe 3",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/footgraphy/12.png",
+        "alt": "Cinematic Shoe Photography 4",
+        "span": "full",
+        "aspectRatio": "16/9",
+        "caption": "Vibrant global-fashion aesthetic captured entirely through generative AI."
+      },
+      {
+        "src": "/works/footgraphy/13.png",
+        "alt": "AI generated shoe 5",
+        "span": "half",
+        "aspectRatio": "4/5"
+      },
+      {
+        "src": "/works/footgraphy/15.png",
+        "alt": "AI generated shoe 6",
+        "span": "half",
+        "aspectRatio": "4/5"
+      },
+      {
+        "src": "/works/footgraphy/16.png",
+        "alt": "Cinematic Shoe Photography 7",
+        "span": "full",
+        "aspectRatio": "2/1",
+        "caption": "The raw intent of design, crystallized in synthetic light."
+      },
+      {
+        "src": "/works/footgraphy/14.png",
+        "alt": "AI generated shoe 14",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/01.png",
+        "alt": "AI generated shoe 01",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/02.png",
+        "alt": "AI generated shoe 02",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/03.png",
+        "alt": "AI generated shoe 03",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/04.png",
+        "alt": "AI generated shoe 04",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/05.png",
+        "alt": "AI generated shoe 05",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/06.png",
+        "alt": "AI generated shoe 06",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/07.png",
+        "alt": "AI generated shoe 07",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/17.png",
+        "alt": "AI generated shoe 17",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/18.png",
+        "alt": "AI generated shoe 18",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/19.png",
+        "alt": "AI generated shoe 19",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/20.png",
+        "alt": "AI generated shoe 20",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/21.png",
+        "alt": "AI generated shoe 21",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/22.png",
+        "alt": "AI generated shoe 22",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/23.png",
+        "alt": "AI generated shoe 23",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/24.png",
+        "alt": "AI generated shoe 24",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/25.png",
+        "alt": "AI generated shoe 25",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/26.png",
+        "alt": "AI generated shoe 26",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/27.png",
+        "alt": "AI generated shoe 27",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/28.png",
+        "alt": "AI generated shoe 28",
+        "span": "full"
+      },
+      {
+        "src": "/works/footgraphy/29.png",
+        "alt": "AI generated shoe 29",
+        "span": "half"
+      },
+      {
+        "src": "/works/footgraphy/30.png",
+        "alt": "AI generated shoe 30",
+        "span": "half"
+      }
     ],
+    "nextSlug": "tarak-food",
+    "nextTitle": "TARAK FOOD PRODUCTS"
+  },
+  {
+    "id": "05",
+    "name": "Tarak Food Products",
+    "slug": "tarak-food",
+    "category": "Web Design",
+    "year": "2026",
+    "size": "featured",
+    "tagline": "Fresh South Indian Favourites.\nMade for modern homes.",
+    "client": "Tarak Food Products",
+    "location": "Bengaluru, India",
+    "description": "Tarak Food Products brings fresh, ready-to-cook batters, traditional sweets, crunchy snacks, and flavourful masala podis to everyday homes. We designed a vibrant digital experience to communicate their commitment to quality, tradition, and freshness, leveraging premium animations and rich visuals.",
+    "approach": "The website blends modern typography with a warm, appetizing color palette, reflecting the rich flavors of South Indian cuisine. A focus on high-performance animations, including magnetic mouse hovering effects and smooth scroll transitions, delivers a premium feel without sacrificing accessibility. Behind the scenes, we developed a powerful custom admin portal that allows their team to seamlessly manage inventory, orders, and product catalogs.",
+    "heroImage": "/works/tarak-food/green-cover.svg",
+    "imageFit": "cover",
+    "useCuratedGallery": true,
+    "gallery": [
+      {
+        "src": "/works/tarak-food/gallery-video.mp4",
+        "alt": "Tarak Food Products website loading animation",
+        "span": "full",
+        "caption": "The immersive homepage experience featuring smooth entry animations and rich product showcases."
+      },
+      null,
+      null,
+      {
+        "src": "/works/tarak-food/hero-video.mp4",
+        "alt": "Tarak Food Products website full recording",
+        "span": "full",
+        "aspectRatio": "16/9"
+      }
+    ],
+    "colors": [
+      {
+        "name": "Saffron Spice",
+        "hex": "#E04F26",
+        "rgb": "224, 79, 38",
+        "cmyk": "5, 82, 95, 1",
+        "psychology": "Appetizing, vibrant, and energetic. This deep orange evokes the traditional spices and warmth of South Indian cuisine."
+      },
+      {
+        "name": "Mustard Gold",
+        "hex": "#F3B229",
+        "rgb": "243, 178, 41",
+        "cmyk": "5, 30, 95, 0",
+        "psychology": "Radiant and inviting, representing fresh ingredients and the crispness of perfectly roasted dosas."
+      },
+      {
+        "name": "Deep Forest",
+        "hex": "#1A3A2A",
+        "rgb": "26, 58, 42",
+        "cmyk": "80, 40, 75, 60",
+        "psychology": "A grounding, natural tone providing high contrast for text while maintaining an organic, fresh vibe."
+      }
+    ],
+    "typography": {
+      "fontFamily": "'Bricolage Grotesque', sans-serif",
+      "fontName": "Bricolage Grotesque",
+      "cssClass": "font-sans",
+      "description": "A characterful modern sans-serif. It carries a subtle quirkiness and weight that feels approachable yet highly contemporary, perfectly balancing tradition with a modern digital presence."
+    },
     "nextSlug": "licet-15",
     "nextTitle": "LICET 15"
   }

@@ -5,11 +5,29 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import blogsData from "@/data/blogs.json";
 import MagneticButton from "@/components/MagneticButton";
+
+interface Post {
+  slug: string;
+  title: string;
+  date: string;
+  readTime: string;
+  tag: string;
+  image: string;
+  quote: string;
+  paragraphs: string[];
+}
 
 export default function BlogPostPage() {
   const containerRef = useRef<HTMLElement>(null);
+  const { slug } = useParams();
+  
+  const post = (blogsData as Post[]).find((p) => p.slug === slug);
+
   useGSAP(() => {
+    if (!post) return;
     gsap.from(".fade-up", {
       opacity: 0,
       y: 20,
@@ -30,60 +48,69 @@ export default function BlogPostPage() {
       delay: 0.6,
       ease: "power3.out"
     });
-  }, { scope: containerRef });
-  // In a real app we'd fetch data with the slug.
+  }, { scope: containerRef, dependencies: [post] });
   
+  if (!post) {
+    return (
+      <div className="w-full min-h-screen flex flex-col items-center justify-center bg-bg text-text pt-40 px-6 text-center gap-8">
+        <h1 className="font-bebas text-5xl md:text-7xl uppercase tracking-wider text-accent">
+          ARTICLE NOT FOUND
+        </h1>
+        <p className="font-sans font-light text-text/60 max-w-[500px]">
+          The article you are looking for does not exist or has been removed.
+        </p>
+        <MagneticButton>
+          <Link href="/blogs" className="px-8 py-4 bg-accent text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:text-accent border border-transparent hover:border-accent transition-all duration-300">
+            Back to Journal
+          </Link>
+        </MagneticButton>
+      </div>
+    );
+  }
+
   return (
     <article ref={containerRef} className="w-full flex flex-col items-center bg-bg text-text selection:bg-accent selection:text-bg pt-40 px-6 md:px-12 pb-32">
       
       {/* Header Area */}
       <header className="max-w-[720px] w-full flex flex-col items-center text-center gap-8 mb-16">
-        <div className="flex gap-4 font-mono text-[11px] text-muted tracking-[0.15em] uppercase fade-up"
-        >
-          <span>APR 04, 2024</span>
+        <div className="flex gap-4 font-mono text-[11px] text-muted tracking-[0.15em] uppercase fade-up">
+          <span>{post.date}</span>
           <span>By akdandesigns</span>
-          <span>8 MIN READ</span>
+          <span>{post.readTime}</span>
         </div>
         
-        <h1 className="font-bebas text-5xl md:text-[80px] leading-[0.9] tracking-wide fade-up"
-        >
-          THE DEATH OF THE LANDING PAGE
+        <h1 className="font-bebas text-5xl md:text-[80px] leading-[0.9] tracking-wide fade-up uppercase">
+          {post.title}
         </h1>
       </header>
 
       {/* Featured Image */}
-      <div className="w-full max-w-[1000px] aspect-[21/9] relative mb-20 fade-scale"
-      >
+      <div className="w-full max-w-[1000px] aspect-[21/9] relative mb-20 fade-scale">
         <Image 
-          src="https://images.unsplash.com/photo-1502224562085-639556652f33?q=80&w=2000" 
+          src={post.image} 
           fill 
-          alt="Featured" 
+          alt={post.title} 
           className="object-cover"
           priority
         />
       </div>
 
       {/* Body Copy */}
-      <div className="max-w-[720px] w-full flex flex-col gap-8 font-sans font-light text-[18px] leading-[1.8] text-text/85 fade-scale"
-      >
-        <p>
-          We have entered the era of the endless scroll, the ubiquitous component library, and the templated aesthetic. Finding a SaaS layout that doesn’t employ a standard left-aligned h1, two buttons, and a massive dashboard dashboard mockup on the right is increasingly rare.
-        </p>
-
-        <p>
-          But visual noise has an endpoint. When every brand shouts at the exact same frequency, total silence is the only sound that commands attention. In a saturated market, restraint is a luxury.
-        </p>
-
-        {/* Pull Quote */}
-        <blockquote className="my-12 pl-8 py-2 border-l-4 border-accent">
-          <p className="font-bebas text-4xl md:text-5xl italic text-text leading-none tracking-wide">
-            "When every brand shouts at the exact same frequency, total silence is the only sound that commands attention."
-          </p>
-        </blockquote>
-
-        <p>
-          Moving forward, brands will be defined not by how much information they can compress into an above-the-fold viewport, but by the confidence they exude through negative space. It's the difference between desperation and authority. To design authentically in this space, one must prioritize tension over mere balance. Structural rigidity, extreme grid awareness, and the exact placement of single elements against an infinite canvas.
-        </p>
+      <div className="max-w-[720px] w-full flex flex-col gap-8 font-sans font-light text-[18px] leading-[1.8] text-text/85 fade-scale">
+        
+        {/* Render paragraphs, injecting the pull quote after the 2nd paragraph if possible */}
+        {post.paragraphs.map((para, index) => (
+          <div key={index} className="flex flex-col gap-8">
+            <p>{para}</p>
+            {index === 1 && post.quote && (
+              <blockquote className="my-8 md:my-12 pl-8 py-2 border-l-4 border-accent">
+                <p className="font-bebas text-4xl md:text-5xl italic text-text leading-none tracking-wide uppercase">
+                  "{post.quote}"
+                </p>
+              </blockquote>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Read More Section */}
@@ -93,31 +120,26 @@ export default function BlogPostPage() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
           
-          <Link href="/blogs/silence-in-design" className="group flex flex-col gap-4">
+          <Link href="/blogs/written-by-rivers" className="group flex flex-col gap-4">
             <div className="aspect-[3/2] relative w-full overflow-hidden">
               <Image 
-                src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800" 
+                src="/blogs/written-by-rivers/hero-aerial.png" 
                 fill 
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105" 
                 alt="Related" 
               />
             </div>
             <h4 className="font-sans font-medium text-2xl text-text group-hover:text-accent transition-colors">
-              Silence as a Differentiator in Saturated Markets
+              Written by Rivers: The Brazilian Amazon's First Brand Identity
             </h4>
           </Link>
           
-          <Link href="/blogs/typography-first" className="group flex flex-col gap-4">
-            <div className="aspect-[3/2] relative w-full overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1510413009623-2895f36e89af?q=80&w=800" 
-                fill 
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105" 
-                alt="Related 2" 
-              />
+          <Link href="/blogs" className="group flex flex-col gap-4">
+            <div className="aspect-[3/2] relative w-full overflow-hidden bg-surface flex items-center justify-center border border-border">
+              <span className="font-bebas text-5xl text-muted group-hover:text-accent transition-colors">VIEW ALL</span>
             </div>
             <h4 className="font-sans font-medium text-2xl text-text group-hover:text-accent transition-colors">
-              Rethinking Hierarchy: The Case for Typography-First Web
+              Explore More Articles in the Journal
             </h4>
           </Link>
 
