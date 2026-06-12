@@ -56,7 +56,7 @@ export default function WrittenByRiversPage() {
       <section className="relative w-full h-[85vh] min-h-[600px] flex items-end overflow-hidden pt-[64px]">
         <div className="absolute inset-0 z-0 reveal-img">
           <Image 
-            src="/blogs/written-by-rivers/hero-aerial.png"
+            src="/blogs/written-by-rivers/hero-aerial.avif"
             alt="Aerial satellite photograph of the Amazon River basin"
             fill
             className="object-cover"
@@ -117,7 +117,7 @@ export default function WrittenByRiversPage() {
         <section className="w-full px-6 md:px-12 lg:px-24 pb-24 md:pb-32 reveal-img">
           <div className="w-full relative aspect-[21/9] bg-gray-50 overflow-hidden">
             <Image 
-              src="/blogs/written-by-rivers/logo.png"
+              src="/blogs/written-by-rivers/logo.jpg"
               alt="The official Amazon brand identity logo"
               fill
               className="object-contain p-12"
@@ -165,7 +165,7 @@ export default function WrittenByRiversPage() {
           <div className="reveal-img">
             <div className="relative aspect-[4/5] bg-gray-50 overflow-hidden mb-4">
               <Image 
-                src="/blogs/written-by-rivers/letter-extraction.png"
+                src="/blogs/written-by-rivers/letter-extraction.webp"
                 alt="Individual letter extraction showing a river bend"
                 fill
                 className="object-cover"
@@ -178,7 +178,7 @@ export default function WrittenByRiversPage() {
           <div className="reveal-img">
             <div className="relative aspect-[4/5] bg-[#1A3A2A]/5 overflow-hidden mb-4">
               <Image 
-                src="/blogs/written-by-rivers/seal.png"
+                src="/blogs/written-by-rivers/seal.webp"
                 alt="Feito de Amazônia seal applied to product"
                 fill
                 className="object-cover"
@@ -208,7 +208,7 @@ export default function WrittenByRiversPage() {
         {/* SECTION 8 — CLOSING IMAGE */}
         <section className="w-full relative h-[60vh] md:h-[80vh] min-h-[500px] mt-12 mb-24 overflow-hidden reveal-img">
           <Image 
-            src="/blogs/written-by-rivers/community.png"
+            src="/blogs/written-by-rivers/community.avif"
             alt="Local community photograph in the Amazon rainforest"
             fill
             className="object-cover"

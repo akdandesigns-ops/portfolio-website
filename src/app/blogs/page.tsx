@@ -66,7 +66,7 @@ export default function BlogsIndex() {
         <Link href="/blogs/written-by-rivers" className="group flex flex-col gap-6">
           <div className="relative w-full aspect-[2/1] bg-surface overflow-hidden">
             <Image 
-              src="/blogs/written-by-rivers/hero-aerial.png" 
+              src="/blogs/written-by-rivers/hero-aerial.avif" 
               fill 
               alt="Featured" 
               className="object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-700 ease-out grayscale group-hover:grayscale-0"
