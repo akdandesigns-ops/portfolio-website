@@ -40,109 +40,205 @@ export function GravityGraphic() {
   useGSAP(() => {
     if (!containerRef.current || items.length === 0) return;
 
-    // 1. Ambient Anti-Gravity Floating
-    itemsRef.current.forEach((el, index) => {
-      if (!el) return;
-      
-      const randomY = gsap.utils.random(-30, -80);
-      const randomX = gsap.utils.random(-40, 40);
-      const randomRot = gsap.utils.random(-45, 45);
-      const duration = gsap.utils.random(4, 8);
+    const mm = gsap.matchMedia();
 
-      // Initial pop-in
-      gsap.from(el, {
-        scale: 0,
-        opacity: 0,
-        rotation: randomRot * 2,
-        duration: 1.5,
-        delay: 1 + (index * 0.1),
-        ease: "back.out(1.5)"
-      });
-
-      // Continuous floating
-      gsap.to(el, {
-        y: `-=${15 + Math.random() * 20}`,
-        x: `+=${(Math.random() - 0.5) * 20}`,
-        rotation: `+=${(Math.random() - 0.5) * 45}`,
-        duration: 3 + Math.random() * 2,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut",
-        delay: 1.5
-      });
-    });
-
-    // 2. Observer: Mouse Repel & Parallax
-    const xTo: gsap.QuickToFunc[] = [];
-    const yTo: gsap.QuickToFunc[] = [];
-
-    itemsRef.current.forEach((el) => {
-      if (el) {
-        xTo.push(gsap.quickTo(el, "x", { duration: 0.8, ease: "power3" }));
-        yTo.push(gsap.quickTo(el, "y", { duration: 0.8, ease: "power3" }));
-      } else {
-        xTo.push((() => {}) as any);
-        yTo.push((() => {}) as any);
-      }
-    });
-
-    (Observer as any).create({
-      target: window,
-      type: "pointer",
-      onMove: (e: any) => {
-        if (!containerRef.current) return;
-        const rect = containerRef.current.getBoundingClientRect();
+    // Desktop logic: Ambient Floating + Observer Mouse Repel
+    mm.add("(min-width: 768px)", () => {
+      itemsRef.current.forEach((el, index) => {
+        if (!el) return;
         
-        // Mouse position relative to the center of the container
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        const mouseX = e.x;
-        const mouseY = e.y;
+        const randomRot = gsap.utils.random(-45, 45);
 
-        itemsRef.current.forEach((el, i) => {
-          if (!el) return;
-          
-          const elRect = el.getBoundingClientRect();
-          const elCenterX = elRect.left + elRect.width / 2;
-          const elCenterY = elRect.top + elRect.height / 2;
-
-          const dx = elCenterX - mouseX;
-          const dy = elCenterY - mouseY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          // Magnetic repel: if mouse is within 300px, push away!
-          const maxDist = 400;
-          if (distance < maxDist) {
-            const force = (maxDist - distance) / maxDist; // 0 to 1
-            const repelX = (dx / distance) * force * 100; 
-            const repelY = (dy / distance) * force * 100;
-            
-            // Add parallax based on the mouse relative to container center
-            const parallaxX = (mouseX - centerX) * 0.05 * (i % 2 === 0 ? 1 : -1);
-            const parallaxY = (mouseY - centerY) * 0.05 * (i % 2 === 0 ? 1 : -1);
-
-            gsap.to(el, {
-              x: `+=${repelX + parallaxX}`,
-              y: `+=${repelY + parallaxY}`,
-              duration: 1,
-              ease: "power2.out",
-              overwrite: "auto"
-            });
-          } else {
-             // Gentle parallax even when far away
-            const parallaxX = (mouseX - centerX) * 0.02 * (i % 2 === 0 ? 1 : -1);
-            const parallaxY = (mouseY - centerY) * 0.02 * (i % 2 === 0 ? 1 : -1);
-            gsap.to(el, {
-              x: parallaxX,
-              y: parallaxY,
-              duration: 2,
-              ease: "power2.out",
-              overwrite: "auto"
-            });
-          }
+        // Initial pop-in
+        gsap.from(el, {
+          scale: 0,
+          opacity: 0,
+          rotation: randomRot * 2,
+          duration: 1.5,
+          delay: 1 + (index * 0.1),
+          ease: "back.out(1.5)"
         });
-      }
+
+        // Continuous floating
+        gsap.to(el, {
+          y: `-=${15 + Math.random() * 20}`,
+          x: `+=${(Math.random() - 0.5) * 20}`,
+          rotation: `+=${(Math.random() - 0.5) * 45}`,
+          duration: 3 + Math.random() * 2,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          delay: 1.5
+        });
+      });
+
+      const xTo: gsap.QuickToFunc[] = [];
+      const yTo: gsap.QuickToFunc[] = [];
+
+      itemsRef.current.forEach((el) => {
+        if (el) {
+          xTo.push(gsap.quickTo(el, "x", { duration: 0.8, ease: "power3" }));
+          yTo.push(gsap.quickTo(el, "y", { duration: 0.8, ease: "power3" }));
+        } else {
+          xTo.push((() => {}) as any);
+          yTo.push((() => {}) as any);
+        }
+      });
+
+      (Observer as any).create({
+        target: window,
+        type: "pointer",
+        onMove: (e: any) => {
+          if (!containerRef.current) return;
+          const rect = containerRef.current.getBoundingClientRect();
+          
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          const mouseX = e.x;
+          const mouseY = e.y;
+
+          itemsRef.current.forEach((el, i) => {
+            if (!el) return;
+            
+            const elRect = el.getBoundingClientRect();
+            const elCenterX = elRect.left + elRect.width / 2;
+            const elCenterY = elRect.top + elRect.height / 2;
+
+            const dx = elCenterX - mouseX;
+            const dy = elCenterY - mouseY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            const maxDist = 400;
+            if (distance < maxDist) {
+              const force = (maxDist - distance) / maxDist; 
+              const repelX = (dx / distance) * force * 100; 
+              const repelY = (dy / distance) * force * 100;
+              
+              const parallaxX = (mouseX - centerX) * 0.05 * (i % 2 === 0 ? 1 : -1);
+              const parallaxY = (mouseY - centerY) * 0.05 * (i % 2 === 0 ? 1 : -1);
+
+              gsap.to(el, {
+                x: `+=${repelX + parallaxX}`,
+                y: `+=${repelY + parallaxY}`,
+                duration: 1,
+                ease: "power2.out",
+                overwrite: "auto"
+              });
+            } else {
+              const parallaxX = (mouseX - centerX) * 0.02 * (i % 2 === 0 ? 1 : -1);
+              const parallaxY = (mouseY - centerY) * 0.02 * (i % 2 === 0 ? 1 : -1);
+              gsap.to(el, {
+                x: parallaxX,
+                y: parallaxY,
+                duration: 2,
+                ease: "power2.out",
+                overwrite: "auto"
+              });
+            }
+          });
+        }
+      });
+    });
+
+    // Mobile logic: Ambient Floating + Safe Touch Tracking
+    mm.add("(max-width: 767px)", () => {
+      itemsRef.current.forEach((el, index) => {
+        if (!el) return;
+        
+        const randomRot = gsap.utils.random(-45, 45);
+
+        // Initial pop-in
+        gsap.from(el, {
+          scale: 0,
+          opacity: 0,
+          rotation: randomRot * 2,
+          duration: 1.5,
+          delay: 1 + (index * 0.1),
+          ease: "back.out(1.5)"
+        });
+
+        // Continuous floating
+        gsap.to(el, {
+          y: `-=${15 + Math.random() * 20}`,
+          x: `+=${(Math.random() - 0.5) * 20}`,
+          rotation: `+=${(Math.random() - 0.5) * 45}`,
+          duration: 3 + Math.random() * 2,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          delay: 1.5
+        });
+      });
+
+      // Touch Observer with absolute xPercent/yPercent to prevent floating conflicts
+      (Observer as any).create({
+        target: containerRef.current,
+        type: "touch,pointer",
+        onMove: (e: any) => {
+          if (!containerRef.current) return;
+          const rect = containerRef.current.getBoundingClientRect();
+          
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          const mouseX = e.x;
+          const mouseY = e.y;
+
+          itemsRef.current.forEach((el, i) => {
+            if (!el) return;
+            
+            const elRect = el.getBoundingClientRect();
+            const elCenterX = elRect.left + elRect.width / 2;
+            const elCenterY = elRect.top + elRect.height / 2;
+
+            const dx = elCenterX - mouseX;
+            const dy = elCenterY - mouseY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Shorter interaction distance on mobile
+            const maxDist = 250;
+            if (distance < maxDist) {
+              const force = (maxDist - distance) / maxDist; 
+              // Map to percentages (60 = 60% of element width)
+              const repelX = (dx / distance) * force * 60; 
+              const repelY = (dy / distance) * force * 60;
+              
+              const parallaxX = (mouseX - centerX) * 0.05 * (i % 2 === 0 ? 1 : -1);
+              const parallaxY = (mouseY - centerY) * 0.05 * (i % 2 === 0 ? 1 : -1);
+
+              gsap.to(el, {
+                xPercent: repelX + parallaxX,
+                yPercent: repelY + parallaxY,
+                duration: 0.6,
+                ease: "power2.out",
+                overwrite: "auto"
+              });
+            } else {
+              gsap.to(el, {
+                xPercent: 0,
+                yPercent: 0,
+                duration: 1.2,
+                ease: "power2.out",
+                overwrite: "auto"
+              });
+            }
+          });
+        },
+        onRelease: () => {
+          // Reset shapes when touch ends
+          itemsRef.current.forEach((el) => {
+            if (!el) return;
+            gsap.to(el, {
+              xPercent: 0,
+              yPercent: 0,
+              duration: 1.2,
+              ease: "power2.out",
+              overwrite: "auto"
+            });
+          });
+        }
+      });
     });
 
   }, { scope: containerRef, dependencies: [items] });

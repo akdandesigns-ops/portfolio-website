@@ -7,6 +7,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -29,26 +30,37 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "akdandesigns | Clarity in Brand Design",
-    template: "%s | akdandesigns",
+    default: "AK Dan Designs (akdandesigns) | Premium Brand Identity & Strategy",
+    template: "%s | AK Dan Designs",
   },
-  description: "I design clarity. Stripping away the noise so your true value speaks for itself. Premium brand strategy, visual identity design, logo systems, and AI product photography.",
-  keywords: ["Aswin Kumaaran", "akdandesigns", "Brand Identity Chennai", "Logo Design Chennai", "Visual Identity", "David Airey Style", "Premium Brand Strategist India", "Independent Designer Chennai", "AI Product Photography"],
+  description: "Welcome to AK Dan Designs (akdandesigns) by Aswin Kumaaran. I design clarity, stripping away the noise so your true value speaks for itself. Premium brand strategy, visual identity, and logo systems.",
+  keywords: [
+    "AK Dan Designs",
+    "ak dan designs",
+    "akdandesigns",
+    "Aswin Kumaaran",
+    "Brand Identity Chennai",
+    "Logo Design Chennai",
+    "Visual Identity",
+    "Premium Brand Strategist India",
+    "Independent Designer Chennai",
+    "AI Product Photography"
+  ],
   metadataBase: new URL("https://akdandesigns.in"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "akdandesigns | Clarity in Brand Design",
-    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems that rise above the ordinary.",
+    title: "AK Dan Designs (akdandesigns) | Clarity in Brand Design",
+    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems by AK Dan Designs.",
     url: "https://akdandesigns.in",
-    siteName: "akdandesigns",
+    siteName: "AK Dan Designs",
     images: [
       {
         url: "/works/licet-15/display mockup.jpg",
         width: 1200,
         height: 630,
-        alt: "akdandesigns Brand Design Showcase",
+        alt: "AK Dan Designs Brand Design Showcase",
       },
     ],
     locale: "en_US",
@@ -56,8 +68,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "akdandesigns | Clarity in Brand Design",
-    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems that rise above the ordinary.",
+    title: "AK Dan Designs | Clarity in Brand Design",
+    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems by AK Dan Designs.",
     images: ["/works/licet-15/display mockup.jpg"],
   },
   icons: {
@@ -84,9 +96,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col overflow-x-hidden`}
+        className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col overflow-x-clip`}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" value={{ light: "light", dark: "dark" }}>
+          <Preloader />
           <FluidCanvas />
           <CustomCursor />
           <Navigation />

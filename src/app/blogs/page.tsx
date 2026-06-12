@@ -74,12 +74,16 @@ export default function BlogsIndex() {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex gap-4 font-mono text-[11px] brand-text-gradient tracking-[0.1em] uppercase">
-              <span>APR 16, 2026</span>
-              <span>—</span>
-              <span>10 MIN READ</span>
-              <span>—</span>
-              <span className="border brand-border-gradient px-2 py-[2px] rounded-sm">Featured</span>
+            <div className="flex items-center gap-4 font-mono text-[11px] tracking-[0.1em] uppercase">
+              <div className="brand-text-gradient flex items-center gap-4">
+                <span>APR 16, 2026</span>
+                <span>—</span>
+                <span>10 MIN READ</span>
+                <span>—</span>
+              </div>
+              <div className="border brand-border-gradient px-2 py-[2px] rounded-sm">
+                <span className="brand-text-gradient">Featured</span>
+              </div>
             </div>
             <h2 className="font-sans font-medium text-3xl md:text-5xl text-text group-hover:brand-text-gradient transition-colors duration-300 w-full max-w-[800px]">
               Written by Rivers: The Brazilian Amazon's First Brand Identity
