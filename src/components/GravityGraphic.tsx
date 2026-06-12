@@ -173,7 +173,7 @@ export function GravityGraphic() {
 
       // Touch Observer with absolute xPercent/yPercent to prevent floating conflicts
       (Observer as any).create({
-        target: containerRef.current,
+        target: window,
         type: "touch,pointer",
         onMove: (e: any) => {
           if (!containerRef.current) return;
@@ -196,46 +196,33 @@ export function GravityGraphic() {
             const dy = elCenterY - mouseY;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            // Shorter interaction distance on mobile
             const maxDist = 250;
             if (distance < maxDist) {
               const force = (maxDist - distance) / maxDist; 
-              // Map to percentages (60 = 60% of element width)
-              const repelX = (dx / distance) * force * 60; 
-              const repelY = (dy / distance) * force * 60;
+              const repelX = (dx / distance) * force * 80; 
+              const repelY = (dy / distance) * force * 80;
               
               const parallaxX = (mouseX - centerX) * 0.05 * (i % 2 === 0 ? 1 : -1);
               const parallaxY = (mouseY - centerY) * 0.05 * (i % 2 === 0 ? 1 : -1);
 
               gsap.to(el, {
-                xPercent: repelX + parallaxX,
-                yPercent: repelY + parallaxY,
-                duration: 0.6,
+                x: `+=${repelX + parallaxX}`,
+                y: `+=${repelY + parallaxY}`,
+                duration: 1,
                 ease: "power2.out",
                 overwrite: "auto"
               });
             } else {
+              const parallaxX = (mouseX - centerX) * 0.02 * (i % 2 === 0 ? 1 : -1);
+              const parallaxY = (mouseY - centerY) * 0.02 * (i % 2 === 0 ? 1 : -1);
               gsap.to(el, {
-                xPercent: 0,
-                yPercent: 0,
-                duration: 1.2,
+                x: parallaxX,
+                y: parallaxY,
+                duration: 2,
                 ease: "power2.out",
                 overwrite: "auto"
               });
             }
-          });
-        },
-        onRelease: () => {
-          // Reset shapes when touch ends
-          itemsRef.current.forEach((el) => {
-            if (!el) return;
-            gsap.to(el, {
-              xPercent: 0,
-              yPercent: 0,
-              duration: 1.2,
-              ease: "power2.out",
-              overwrite: "auto"
-            });
           });
         }
       });
@@ -244,25 +231,27 @@ export function GravityGraphic() {
   }, { scope: containerRef, dependencies: [items] });
 
   const renderShape = (shapeType: string, color: string, i: number) => {
+    const shadowBright = `inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 12px rgba(255,255,255,0.8), 0 10px 20px rgba(0,0,0,0.3)`;
+
     if (shapeType === 'sphere') {
       return (
         <div 
           className="rounded-full w-20 h-20 md:w-28 md:h-28 grain-shape" 
-          style={{ background: `radial-gradient(circle at 30% 30%, #ffffff 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)' }}
+          style={{ background: `radial-gradient(circle at 30% 30%, #ffffff 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)', boxShadow: shadowBright }}
         />
       );
     } else if (shapeType === 'cube') {
       return (
         <div 
           className="rounded-xl w-20 h-20 md:w-28 md:h-28 grain-shape" 
-          style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)' }}
+          style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)', boxShadow: shadowBright }}
         />
       );
     } else if (shapeType === 'diamond') {
       return (
         <div 
           className="rounded-2xl w-16 h-16 md:w-24 md:h-24 grain-shape" 
-          style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)' }}
+          style={{ background: `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, ${color} 40%, ${color} 100%)`, border: '1px solid rgba(255,255,255,0.6)', boxShadow: shadowBright }}
         />
       );
     } else {
@@ -272,23 +261,45 @@ export function GravityGraphic() {
       else if (shapeType === 'pentagon') pathData = "M 50 0 L 100 38 L 82 100 L 18 100 L 0 38 Z";
 
       return (
-        <div className="w-20 h-20 md:w-28 md:h-28 relative drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
+        <div className="w-20 h-20 md:w-28 md:h-28 relative" style={{ filter: "drop-shadow(0 15px 25px rgba(0,0,0,0.5))" }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
             <defs>
               <linearGradient id={`grad-${shapeType}-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
-                <stop offset="30%" stopColor={color} />
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+                <stop offset="50%" stopColor={color} />
                 <stop offset="100%" stopColor={color} />
               </linearGradient>
-              <filter id={`emboss-${shapeType}-${i}`}>
-                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
-                <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.35 0" in="noise" result="coloredNoise" />
-                <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="clippedNoise" />
-                <feBlend mode="overlay" in="clippedNoise" in2="SourceGraphic" />
+              <filter id={`emboss-${shapeType}-${i}`} x="-20%" y="-20%" width="140%" height="140%">
+                <feOffset dx="-4" dy="-4" in="SourceAlpha" result="shadowOffset"/>
+                <feGaussianBlur stdDeviation="3" in="shadowOffset" result="shadowBlur"/>
+                <feComposite operator="out" in="SourceAlpha" in2="shadowBlur" result="shadowInverse"/>
+                <feFlood floodColor="#000000" floodOpacity="0.2" result="shadowColor"/>
+                <feComposite operator="in" in="shadowColor" in2="shadowInverse" result="shadowResult"/>
+                
+                <feOffset dx="4" dy="4" in="SourceAlpha" result="highlightOffset"/>
+                <feGaussianBlur stdDeviation="3" in="highlightOffset" result="highlightBlur"/>
+                <feComposite operator="out" in="SourceAlpha" in2="highlightBlur" result="highlightInverse"/>
+                <feFlood floodColor="#ffffff" floodOpacity="0.9" result="highlightColor"/>
+                <feComposite operator="in" in="highlightColor" in2="highlightInverse" result="highlightResult"/>
+                
+                <feMerge>
+                  <feMergeNode in="SourceGraphic" />
+                  <feMergeNode in="shadowResult" />
+                  <feMergeNode in="highlightResult" />
+                </feMerge>
               </filter>
             </defs>
-            <path d={pathData} fill={`url(#grad-${shapeType}-${i})`} filter={`url(#emboss-${shapeType}-${i})`} stroke="rgba(255,255,255,0.6)" strokeWidth="1" />
+            <path d={pathData} fill={`url(#grad-${shapeType}-${i})`} filter={`url(#emboss-${shapeType}-${i})`} />
           </svg>
+          <div 
+             className="absolute inset-0 pointer-events-none opacity-90 mix-blend-overlay"
+             style={{
+               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E")`,
+               clipPath: shapeType === 'cone' ? 'polygon(50% 0%, 0% 100%, 100% 100%)' :
+                         shapeType === 'star' ? 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' :
+                         shapeType === 'pentagon' ? 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)' : 'none'
+             }}
+          />
         </div>
       );
     }

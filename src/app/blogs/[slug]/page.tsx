@@ -75,7 +75,7 @@ export default function BlogPostPage() {
       <header className="max-w-[720px] w-full flex flex-col items-center text-center gap-8 mb-16">
         <div className="flex gap-4 font-mono text-[11px] text-muted tracking-[0.15em] uppercase fade-up">
           <span>{post.date}</span>
-          <span>By akdandesigns</span>
+          <span>By <span className="font-bebas tracking-widest text-[16px] translate-y-[2px] inline-block text-text">AK DAN DESIGNS</span></span>
           <span>{post.readTime}</span>
         </div>
         

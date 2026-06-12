@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10">
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mb-12 gap-8">
-          <div className="font-helvetica text-[18px] tracking-[0.02em] text-text">
-            akdandesigns
+          <div className="font-bebas text-[28px] tracking-[0.05em] text-text">
+            AK DAN DESIGNS
           </div>
           
           <nav className="flex flex-wrap justify-center gap-4 md:gap-12 text-center">
@@ -91,7 +91,7 @@ export default function Footer() {
 
         <div className="w-full text-center border-t border-border/50 pt-8">
           <span className="font-mono text-[12px] text-muted tracking-widest uppercase">
-            © {new Date().getFullYear()} akdandesigns. All rights reserved.
+            © {new Date().getFullYear()} AK DAN DESIGNS. All rights reserved.
           </span>
         </div>
 

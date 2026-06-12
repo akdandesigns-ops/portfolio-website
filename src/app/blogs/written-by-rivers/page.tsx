@@ -163,12 +163,12 @@ export default function WrittenByRiversPage() {
         {/* SECTION 6 — IMAGE GRID */}
         <section className="px-6 md:px-12 lg:px-24 py-20 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div className="reveal-img">
-            <div className="relative aspect-[4/5] bg-gray-50 overflow-hidden mb-4">
-              <Image 
+            <div className="w-full bg-gray-50 overflow-hidden mb-4 rounded-sm">
+              <img 
                 src="/blogs/written-by-rivers/letter-extraction.webp"
                 alt="Individual letter extraction showing a river bend"
-                fill
-                className="object-cover"
+                className="w-full h-auto block"
+                loading="lazy"
               />
             </div>
             <p className="text-[12px] font-sans text-gray-500">
@@ -176,12 +176,12 @@ export default function WrittenByRiversPage() {
             </p>
           </div>
           <div className="reveal-img">
-            <div className="relative aspect-[4/5] bg-[#1A3A2A]/5 overflow-hidden mb-4">
-              <Image 
+            <div className="w-full bg-[#1A3A2A]/5 overflow-hidden mb-4 rounded-sm">
+              <img 
                 src="/blogs/written-by-rivers/seal.webp"
                 alt="Feito de Amazônia seal applied to product"
-                fill
-                className="object-cover"
+                className="w-full h-auto block"
+                loading="lazy"
               />
             </div>
             <p className="text-[12px] font-sans text-gray-500">

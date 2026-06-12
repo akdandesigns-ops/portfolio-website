@@ -61,8 +61,8 @@ export default function Navigation() {
         }`}
       >
         <div className="flex w-full justify-between items-center max-w-[2000px] mx-auto">
-          <Link href="/" className="font-helvetica text-[22px] tracking-[0.02em] text-text">
-            <MagneticButton>akdandesigns</MagneticButton>
+          <Link href="/" className="font-bebas text-[28px] tracking-[0.05em] text-text flex items-center justify-center mt-1">
+            <MagneticButton>AK DAN DESIGNS</MagneticButton>
           </Link>
 
           {/* Desktop Nav */}

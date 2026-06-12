@@ -160,7 +160,7 @@ export function Hero() {
 
           {/* Descriptor */}
           <p className="hero-desc font-sans font-light text-[14px] md:text-[17px] leading-[1.6] max-w-[420px] text-text/80 mt-6 md:mt-10 pl-1 md:pl-2">
-            akdandesigns crafts identities that rise above the ordinary — strategic, precise, and impossible to ignore.
+            <span className="font-bebas text-[20px] tracking-widest translate-y-[2px] inline-block">AK DAN DESIGNS</span> crafts identities that rise above the ordinary — strategic, precise, and impossible to ignore.
           </p>
         </div>
       </div>
