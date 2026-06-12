@@ -88,6 +88,7 @@ export function GravityGraphic() {
       (Observer as any).create({
         target: window,
         type: "pointer",
+        preventDefault: false,
         onMove: (e: any) => {
           if (!containerRef.current) return;
           const rect = containerRef.current.getBoundingClientRect();
@@ -176,6 +177,7 @@ export function GravityGraphic() {
       (Observer as any).create({
         target: window,
         type: "touch,pointer",
+        preventDefault: false,
         onMove: (e: any) => {
           if (!containerRef.current) return;
           const rect = containerRef.current.getBoundingClientRect();
