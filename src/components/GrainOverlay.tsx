@@ -1,13 +1,46 @@
 "use client";
+import { useEffect, useState } from "react";
+
+let cachedNoiseUrl = "";
+function getNoiseDataUrl() {
+  if (cachedNoiseUrl) return cachedNoiseUrl;
+  if (typeof document === "undefined") return "";
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return "";
+  const idata = ctx.createImageData(64, 64);
+  const data = idata.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const val = Math.random() * 255 | 0;
+    data[i] = val;
+    data[i+1] = val;
+    data[i+2] = val;
+    data[i+3] = 200; // Alpha
+  }
+  ctx.putImageData(idata, 0, 0);
+  cachedNoiseUrl = canvas.toDataURL("image/png");
+  return cachedNoiseUrl;
+}
 
 export default function GrainOverlay() {
+  const [noiseUrl, setNoiseUrl] = useState("");
+
+  useEffect(() => {
+    const url = getNoiseDataUrl();
+    setNoiseUrl(url);
+    document.documentElement.style.setProperty('--noise-url', `url("${url}")`);
+  }, []);
+
+  if (!noiseUrl) return null;
+
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[9998]"
+      className="pointer-events-none fixed inset-0 z-[9998] opacity-20 mix-blend-overlay"
       style={{
-        opacity: 0.25,
-        mixBlendMode: "overlay",
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundImage: `url("${noiseUrl}")`,
+        backgroundRepeat: "repeat",
       }}
     />
   );

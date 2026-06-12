@@ -10,7 +10,8 @@
     { "num": "01", "name": "BRAND STRATEGY", "desc": "Positioning, architecture, and narrative design." },
     { "num": "02", "name": "VISUAL IDENTITY", "desc": "Logo systems, typography, color, and art direction." },
     { "num": "03", "name": "DIGITAL PLATFORMS", "desc": "Immersive WebGL experiences and e-commerce." },
-    { "num": "04", "name": "SPATIAL DESIGN", "desc": "Exhibition, retail, and environmental branding." }
+    { "num": "04", "name": "SPATIAL DESIGN", "desc": "Exhibition, retail, and environmental branding." },
+    { "num": "05", "name": "ANIMATED WEBSITE", "desc": "Highly interactive, motion-driven web experiences." }
   ],
   "clients": [
     { "name": "LICET", "color": "#FF3366" },

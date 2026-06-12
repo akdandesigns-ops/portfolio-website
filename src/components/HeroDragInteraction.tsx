@@ -263,19 +263,25 @@ export function HeroDragInteraction() {
 
       if (target.closest('a, button, input, textarea, [data-magnetic]')) return;
       
-      // Only interact if we started in the Hero section
-      if (window.scrollY > window.innerHeight) return;
+      const rect = containerRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      
+      // Only interact if we started strictly inside the Hero section bounds!
+      if (e.clientY < rect.top || e.clientY > rect.bottom) return;
 
-      // Special handling for mobile/touch: Tap to burst (but don't block scrolling)
-      if (e.pointerType === 'touch' || window.innerWidth < 768) {
-        const rect = containerRef.current?.getBoundingClientRect();
-        const localX = rect ? e.clientX - rect.left : e.clientX;
-        const localY = rect ? e.clientY - rect.top : e.clientY;
+      const localX = e.clientX - rect.left;
+      const localY = e.clientY - rect.top;
+
+      // Ensure touch devices don't get their scroll blocked by line drawing.
+      // We'll just spawn a single premium burst on tap instead.
+      const isTouch = e.pointerType === 'touch' || e.pointerType === 'pen' || (e.pointerType === '' && window.innerWidth < 1024);
+      
+      if (isTouch) {
         triggerBurst(localX, localY);
         return;
       }
 
-      e.preventDefault(); // Stop native text selection and image dragging
+      e.preventDefault(); // Stop native text selection and image dragging (safe for desktop mouse)
       
       setIsDragging(true);
       (window as any).isHeroDragging = true;
@@ -283,17 +289,14 @@ export function HeroDragInteraction() {
       document.documentElement.style.userSelect = "none";
       document.body.classList.add("is-dragging");
       
-      const rect = containerRef.current?.getBoundingClientRect();
-      const localX = rect ? e.clientX - rect.left : e.clientX;
-      const localY = rect ? e.clientY - rect.top : e.clientY;
-      
       dragStart.current = { x: localX, y: localY };
       mousePos.current = { x: localX, y: localY };
     };
 
     const handlePointerMove = (e: PointerEvent) => {
       if (isDragging) {
-        e.preventDefault(); // Prevent scrolling while dragging on mobile
+        // We only allow isDragging=true on non-touch devices now, so preventDefault is completely safe and won't hijack mobile scroll!
+        e.preventDefault(); 
         const rect = containerRef.current?.getBoundingClientRect();
         const localX = rect ? e.clientX - rect.left : e.clientX;
         const localY = rect ? e.clientY - rect.top : e.clientY;

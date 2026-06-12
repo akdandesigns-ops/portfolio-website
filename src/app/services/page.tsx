@@ -32,6 +32,10 @@ const servicesList = [
     title: "Branding",
     description: "End-to-end holistic branding that strips away the noise and leaves only pure, devastating clarity.",
   },
+  {
+    title: "Animated Website",
+    description: "Highly interactive, premium motion-driven web experiences that captivate users and elevate your brand narrative.",
+  },
 ];
 
 export default function ServicesPage() {

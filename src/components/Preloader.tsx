@@ -5,6 +5,29 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
 
+let cachedNoiseUrl = "";
+function getNoiseDataUrl() {
+  if (cachedNoiseUrl) return cachedNoiseUrl;
+  if (typeof document === "undefined") return "";
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return "";
+  const idata = ctx.createImageData(64, 64);
+  const data = idata.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const val = Math.random() * 255 | 0;
+    data[i] = val;
+    data[i+1] = val;
+    data[i+2] = val;
+    data[i+3] = 255;
+  }
+  ctx.putImageData(idata, 0, 0);
+  cachedNoiseUrl = canvas.toDataURL("image/png");
+  return cachedNoiseUrl;
+}
+
 export default function Preloader() {
   const [show, setShow] = useState(true);
   const [mounted, setMounted] = useState(false);
@@ -111,7 +134,8 @@ export default function Preloader() {
         <div 
           className="spline-container absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("${getNoiseDataUrl()}")`,
+            backgroundRepeat: "repeat",
           }}
         />
 
