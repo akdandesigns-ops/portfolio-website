@@ -30,10 +30,10 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "AK Dan Designs (akdandesigns) | Premium Brand Identity & Strategy",
+    default: "AK Dan Designs | Brand Design in Chennai & Web Design Service",
     template: "%s | AK Dan Designs",
   },
-  description: "Welcome to AK Dan Designs (akdandesigns) by Aswin Kumaaran. I design clarity, stripping away the noise so your true value speaks for itself. Premium brand strategy, visual identity, and logo systems.",
+  description: "Welcome to AK Dan Designs (akdandesigns) by Aswin Kumaaran. I design clarity, stripping away the noise so your true value speaks for itself. Premium brand design in Chennai, web design service, and animated website design.",
   keywords: [
     "AK Dan Designs",
     "ak dan designs",
@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     "Aswin Kumaaran",
     "Brand Identity Chennai",
     "Logo Design Chennai",
+    "Brand Design in Chennai",
+    "Web Design Service",
+    "Animated Website Design",
     "Visual Identity",
     "Premium Brand Strategist India",
     "Independent Designer Chennai",
@@ -51,8 +54,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AK Dan Designs (akdandesigns) | Clarity in Brand Design",
-    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems by AK Dan Designs.",
+    title: "AK Dan Designs | Brand Design in Chennai & Web Design Service",
+    description: "Stripping away the noise so your true value speaks for itself. Strategic visual systems and animated website design by AK Dan Designs.",
     url: "https://akdandesigns.in",
     siteName: "AK Dan Designs",
     images: [
@@ -95,6 +98,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "AK Dan Designs",
+              "description": "Premium brand design in Chennai, offering web design services and animated website design by freelance designer Aswin Kumaaran.",
+              "url": "https://akdandesigns.in",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Chennai",
+                "addressCountry": "IN"
+              }
+            })
+          }}
+        />
+      </head>
       <body
         className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased bg-bg text-text min-h-screen flex flex-col overflow-x-clip`}
       >

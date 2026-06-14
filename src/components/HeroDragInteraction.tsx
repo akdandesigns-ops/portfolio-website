@@ -115,9 +115,10 @@ export function HeroDragInteraction() {
     if (!containerRef.current) return;
     const container = containerRef.current;
     const noiseDataUrl = getNoiseDataUrl();
+    const isMobile = window.innerWidth < 768;
 
-    // Spawn 15-20 shapes
-    const numShapes = Math.floor(gsap.utils.random(15, 25));
+    // Spawn 15-20 shapes (reduced to 5-8 on mobile)
+    const numShapes = isMobile ? Math.floor(gsap.utils.random(5, 8)) : Math.floor(gsap.utils.random(15, 25));
 
     for (let i = 0; i < numShapes; i++) {
       const shapeType = SHAPES[Math.floor(Math.random() * SHAPES.length)];
@@ -139,7 +140,7 @@ export function HeroDragInteraction() {
       el.style.transformStyle = "preserve-3d";
       el.style.willChange = "transform, opacity";
       
-      const shadowBright = `inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 12px rgba(255,255,255,0.8), 0 10px 20px rgba(0,0,0,0.3)`;
+      const shadowBright = isMobile ? "none" : `inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 12px rgba(255,255,255,0.8), 0 10px 20px rgba(0,0,0,0.3)`;
       
       if (shapeType === 'sphere' || shapeType === 'cube' || shapeType === 'diamond') {
         el.style.boxShadow = shadowBright;
@@ -172,7 +173,7 @@ export function HeroDragInteraction() {
                 <stop offset="50%" stop-color="${colorStr}" />
                 <stop offset="100%" stop-color="${colorStr}" />
               </linearGradient>
-              <filter id="emboss-${shapeType}-${i}" x="-20%" y="-20%" width="140%" height="140%">
+              ${isMobile ? '' : `<filter id="emboss-${shapeType}-${i}" x="-20%" y="-20%" width="140%" height="140%">
                 <feOffset dx="-4" dy="-4" in="SourceAlpha" result="shadowOffset"/>
                 <feGaussianBlur stdDeviation="3" in="shadowOffset" result="shadowBlur"/>
                 <feComposite operator="out" in="SourceAlpha" in2="shadowBlur" result="shadowInverse"/>
@@ -190,35 +191,37 @@ export function HeroDragInteraction() {
                   <feMergeNode in="shadowResult" />
                   <feMergeNode in="highlightResult" />
                 </feMerge>
-              </filter>
+              </filter>`}
             </defs>
-            <path d="${pathData}" fill="url(#grad-${shapeType}-${i})" filter="url(#emboss-${shapeType}-${i})" />
+            <path d="${pathData}" fill="url(#grad-${shapeType}-${i})" ${isMobile ? '' : `filter="url(#emboss-${shapeType}-${i})"`} />
           </svg>`;
 
         el.style.backgroundImage = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}")`;
         el.style.backgroundSize = "contain";
         el.style.backgroundPosition = "center";
         el.style.backgroundRepeat = "no-repeat";
-        el.style.filter = `drop-shadow(0 15px 25px rgba(0,0,0,0.5))`;
+        el.style.filter = isMobile ? 'none' : `drop-shadow(0 15px 25px rgba(0,0,0,0.5))`;
       }
 
-      // Add grain
-      const grain = document.createElement("div");
-      grain.style.position = "absolute";
-      grain.style.inset = "0";
-      grain.style.opacity = "0.9";
-      grain.style.mixBlendMode = "overlay";
-      grain.style.pointerEvents = "none";
-      grain.style.backgroundImage = `url("${noiseDataUrl}")`;
-      
-      if (shapeType === 'sphere') grain.style.borderRadius = "50%";
-      else if (shapeType === 'cube') grain.style.borderRadius = "12px";
-      else if (shapeType === 'diamond') grain.style.borderRadius = "8px";
-      else if (shapeType === 'cone') grain.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
-      else if (shapeType === 'star') grain.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-      else if (shapeType === 'pentagon') grain.style.clipPath = 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)';
-      
-      el.appendChild(grain);
+      if (!isMobile) {
+        // Add grain
+        const grain = document.createElement("div");
+        grain.style.position = "absolute";
+        grain.style.inset = "0";
+        grain.style.opacity = "0.9";
+        grain.style.mixBlendMode = "overlay";
+        grain.style.pointerEvents = "none";
+        grain.style.backgroundImage = `url("${noiseDataUrl}")`;
+        
+        if (shapeType === 'sphere') grain.style.borderRadius = "50%";
+        else if (shapeType === 'cube') grain.style.borderRadius = "12px";
+        else if (shapeType === 'diamond') grain.style.borderRadius = "8px";
+        else if (shapeType === 'cone') grain.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+        else if (shapeType === 'star') grain.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+        else if (shapeType === 'pentagon') grain.style.clipPath = 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)';
+        
+        el.appendChild(grain);
+      }
       container.appendChild(el);
 
       // Animate with Physics2DPlugin!

@@ -113,7 +113,7 @@ export default function Preloader() {
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
         
         {/* Swirling Spline Container */}
-        <div className="spline-container absolute inset-0 flex items-center justify-center opacity-80">
+        <div className="spline-container absolute inset-0 flex items-center justify-center opacity-80" style={{ willChange: "opacity, transform", transform: "translateZ(0)" }}>
           <div 
             className="spline-blob absolute"
             style={{
@@ -126,6 +126,8 @@ export default function Preloader() {
               borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
               filter: "blur(30px)",
               animation: "blob-morph 4s ease-in-out infinite alternate, blob-bg 8s ease infinite",
+              willChange: "transform, filter, border-radius, background-position",
+              transform: "translateZ(0)",
             }}
           />
         </div>
@@ -136,6 +138,8 @@ export default function Preloader() {
           style={{
             backgroundImage: `url("${getNoiseDataUrl()}")`,
             backgroundRepeat: "repeat",
+            willChange: "transform",
+            transform: "translateZ(0)",
           }}
         />
 

@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 }
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
@@ -24,7 +25,16 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
     // Setup ResizeObserver to detect layout shifts (like images loading)
     let resizeTimer: ReturnType<typeof setTimeout>;
-    const resizeObserver = new ResizeObserver(() => {
+    let lastWidth = 0;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (!entries.length) return;
+      const currentWidth = entries[0].contentRect.width;
+      
+      // Ignore if only height changed (prevents mobile URL bar scroll jumping)
+      if (lastWidth !== 0 && lastWidth === currentWidth) return;
+      lastWidth = currentWidth;
+
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         ScrollTrigger.refresh(true);

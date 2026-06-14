@@ -9,8 +9,8 @@ import MagneticButton from "@/components/MagneticButton";
 
 const servicesList = [
   {
-    title: "Brand Identity Design",
-    description: "Architecting the foundational core of your brand, from strategy to complete identity systems that demand attention.",
+    title: "Brand Design in Chennai",
+    description: "Architecting the foundational core of your brand, from strategy to complete identity systems that demand attention from the heart of Chennai to the world.",
   },
   {
     title: "Visual Identity Design",
@@ -25,15 +25,15 @@ const servicesList = [
     description: "Cutting-edge artificial intelligence workflows to place your product in impossible, high-fidelity environments.",
   },
   {
-    title: "Landing Page Design",
-    description: "High-performance landing pages engineered for maximum conversion, blending stunning aesthetics with razor-sharp user experience.",
+    title: "Web Design Service",
+    description: "High-performance web design services engineered for maximum conversion, blending stunning aesthetics with razor-sharp user experience.",
   },
   {
     title: "Branding",
     description: "End-to-end holistic branding that strips away the noise and leaves only pure, devastating clarity.",
   },
   {
-    title: "Animated Website",
+    title: "Animated Website Design",
     description: "Highly interactive, premium motion-driven web experiences that captivate users and elevate your brand narrative.",
   },
 ];
@@ -66,7 +66,7 @@ export default function ServicesPage() {
           className="font-bebas text-[clamp(64px,10vw,180px)] leading-[0.85] tracking-[0.02em] w-full"
         />
         <p className="font-mono text-[13px] md:text-[15px] text-muted tracking-widest mt-8 uppercase max-w-[600px]">
-          We strip away ornamentation until nothing is left but the absolute essence of your identity.
+          I strip away ornamentation until nothing is left but the absolute essence of your identity.
         </p>
       </div>
 
