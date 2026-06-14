@@ -42,6 +42,69 @@ function getNoiseDataUrl() {
   return cachedNoiseUrl;
 }
 
+const svgCache: Record<string, string> = {};
+
+function getShapeSvgUrl(shapeType: string, colorStr: string, isMobile: boolean): string {
+  const cacheKey = `${shapeType}-${colorStr}-${isMobile}`;
+  if (svgCache[cacheKey]) return svgCache[cacheKey];
+
+  let pathData = "";
+  if (shapeType === 'cone') pathData = "M 50 0 L 0 100 L 100 100 Z";
+  else if (shapeType === 'star') pathData = "M 50 0 L 61 35 L 98 35 L 68 57 L 79 91 L 50 70 L 21 91 L 32 57 L 2 35 L 39 35 Z";
+  else if (shapeType === 'pentagon') pathData = "M 50 0 L 100 38 L 82 100 L 18 100 L 0 38 Z";
+
+  const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" style="overflow: visible;">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+          <stop offset="50%" stop-color="${colorStr}" />
+          <stop offset="100%" stop-color="${colorStr}" />
+        </linearGradient>
+        ${isMobile ? '' : `<filter id="emboss" x="-20%" y="-20%" width="140%" height="140%">
+          <feOffset dx="-4" dy="-4" in="SourceAlpha" result="shadowOffset"/>
+          <feGaussianBlur stdDeviation="3" in="shadowOffset" result="shadowBlur"/>
+          <feComposite operator="out" in="SourceAlpha" in2="shadowBlur" result="shadowInverse"/>
+          <feFlood flood-color="#000000" flood-opacity="0.2" result="shadowColor"/>
+          <feComposite operator="in" in="shadowColor" in2="shadowInverse" result="shadowResult"/>
+          
+          <feOffset dx="4" dy="4" in="SourceAlpha" result="highlightOffset"/>
+          <feGaussianBlur stdDeviation="3" in="highlightOffset" result="highlightBlur"/>
+          <feComposite operator="out" in="SourceAlpha" in2="highlightBlur" result="highlightInverse"/>
+          <feFlood flood-color="#ffffff" flood-opacity="0.9" result="highlightColor"/>
+          <feComposite operator="in" in="highlightColor" in2="highlightInverse" result="highlightResult"/>
+          
+          <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode in="shadowResult" />
+            <feMergeNode in="highlightResult" />
+          </feMerge>
+        </filter>`}
+      </defs>
+      <path d="${pathData}" fill="url(#grad)" ${isMobile ? '' : `filter="url(#emboss)"`} />
+    </svg>`;
+
+  const url = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}")`;
+  svgCache[cacheKey] = url;
+  return url;
+}
+
+if (typeof window !== "undefined") {
+  // Pre-generate and cache SVG images to prevent lag on first burst
+  setTimeout(() => {
+    SHAPES.forEach(shapeType => {
+      if (shapeType !== 'sphere' && shapeType !== 'cube' && shapeType !== 'diamond') {
+        SHAPE_COLORS.forEach(colorStr => {
+          const urlDesktop = getShapeSvgUrl(shapeType, colorStr, false);
+          // extract the raw data uri from `url("...")`
+          const src = urlDesktop.slice(5, -2);
+          const img = new Image();
+          img.src = src;
+        });
+      }
+    });
+  }, 1000);
+}
+
 export function HeroDragInteraction() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -161,42 +224,7 @@ export function HeroDragInteraction() {
           el.style.background = `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, ${colorStr} 40%, ${colorStr} 100%)`;
         }
       } else {
-        let pathData = "";
-        if (shapeType === 'cone') pathData = "M 50 0 L 0 100 L 100 100 Z";
-        else if (shapeType === 'star') pathData = "M 50 0 L 61 35 L 98 35 L 68 57 L 79 91 L 50 70 L 21 91 L 32 57 L 2 35 L 39 35 Z";
-        else if (shapeType === 'pentagon') pathData = "M 50 0 L 100 38 L 82 100 L 18 100 L 0 38 Z";
-
-        const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" style="overflow: visible;">
-            <defs>
-              <linearGradient id="grad-${shapeType}-${i}" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
-                <stop offset="50%" stop-color="${colorStr}" />
-                <stop offset="100%" stop-color="${colorStr}" />
-              </linearGradient>
-              ${isMobile ? '' : `<filter id="emboss-${shapeType}-${i}" x="-20%" y="-20%" width="140%" height="140%">
-                <feOffset dx="-4" dy="-4" in="SourceAlpha" result="shadowOffset"/>
-                <feGaussianBlur stdDeviation="3" in="shadowOffset" result="shadowBlur"/>
-                <feComposite operator="out" in="SourceAlpha" in2="shadowBlur" result="shadowInverse"/>
-                <feFlood flood-color="#000000" flood-opacity="0.2" result="shadowColor"/>
-                <feComposite operator="in" in="shadowColor" in2="shadowInverse" result="shadowResult"/>
-                
-                <feOffset dx="4" dy="4" in="SourceAlpha" result="highlightOffset"/>
-                <feGaussianBlur stdDeviation="3" in="highlightOffset" result="highlightBlur"/>
-                <feComposite operator="out" in="SourceAlpha" in2="highlightBlur" result="highlightInverse"/>
-                <feFlood flood-color="#ffffff" flood-opacity="0.9" result="highlightColor"/>
-                <feComposite operator="in" in="highlightColor" in2="highlightInverse" result="highlightResult"/>
-                
-                <feMerge>
-                  <feMergeNode in="SourceGraphic" />
-                  <feMergeNode in="shadowResult" />
-                  <feMergeNode in="highlightResult" />
-                </feMerge>
-              </filter>`}
-            </defs>
-            <path d="${pathData}" fill="url(#grad-${shapeType}-${i})" ${isMobile ? '' : `filter="url(#emboss-${shapeType}-${i})"`} />
-          </svg>`;
-
-        el.style.backgroundImage = `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}")`;
+        el.style.backgroundImage = getShapeSvgUrl(shapeType, colorStr, isMobile);
         el.style.backgroundSize = "contain";
         el.style.backgroundPosition = "center";
         el.style.backgroundRepeat = "no-repeat";
@@ -314,7 +342,14 @@ export function HeroDragInteraction() {
         document.body.style.userSelect = "";
         document.documentElement.style.userSelect = "";
         document.body.classList.remove("is-dragging");
-        triggerBurst(dragStart.current.x, dragStart.current.y);
+        
+        const dx = mousePos.current.x - dragStart.current.x;
+        const dy = mousePos.current.y - dragStart.current.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist > 20) {
+          triggerBurst(dragStart.current.x, dragStart.current.y);
+        }
       }
     };
 

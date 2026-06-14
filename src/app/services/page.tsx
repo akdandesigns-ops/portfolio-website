@@ -6,36 +6,33 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import MagneticButton from "@/components/MagneticButton";
+import { FinalCTA } from "@/components/FinalCTA";
 
 const servicesList = [
   {
-    title: "Brand Design in Chennai",
-    description: "Architecting the foundational core of your brand, from strategy to complete identity systems that demand attention from the heart of Chennai to the world.",
+    title: "Brand Identity",
+    description: "I create complete identity systems for D2C brands that need to look clear, premium, and trustworthy across packaging, social media, websites, and campaigns.",
   },
   {
-    title: "Visual Identity Design",
-    description: "Crafting precise, unforgettable visual languages including typography, color theory, and logo systems that defy gravity.",
+    title: "Visual Identity",
+    description: "I define the color, typography, layout style, and visual language that help a consumer brand become recognizable.",
   },
   {
     title: "Logo Design",
-    description: "A focused package starting with an in-depth brand discovery session, followed by 2 unique design concept explorations — refined until your mark is unmistakable.",
+    description: "I design simple, memorable, and scalable logos that work across packaging, product labels, social media, merchandise, and digital platforms.",
   },
   {
     title: "AI Product Photography",
-    description: "Cutting-edge artificial intelligence workflows to place your product in impossible, high-fidelity environments.",
+    description: "I create premium AI-assisted product visuals for D2C brands that need high-quality imagery for launches, campaigns, websites, and social media.",
   },
   {
-    title: "Web Design Service",
-    description: "High-performance web design services engineered for maximum conversion, blending stunning aesthetics with razor-sharp user experience.",
+    title: "Landing Page Design",
+    description: "I design clean and responsive landing pages for D2C brands that need to explain their product, build trust, and guide visitors toward action.",
   },
   {
     title: "Branding",
-    description: "End-to-end holistic branding that strips away the noise and leaves only pure, devastating clarity.",
-  },
-  {
-    title: "Animated Website Design",
-    description: "Highly interactive, premium motion-driven web experiences that captivate users and elevate your brand narrative.",
-  },
+    description: "I help shape how a consumer brand is perceived — from positioning and identity to visual storytelling and launch presentation.",
+  }
 ];
 
 export default function ServicesPage() {
@@ -98,22 +95,7 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      {/* Final CTA */}
-      <div className="w-full flex flex-col items-center justify-center text-center gap-12 py-20 bg-surface rounded-sm">
-        <h3 className="font-bebas text-4xl sm:text-6xl md:text-8xl uppercase tracking-wide px-4">
-          READY FOR CLARITY?
-        </h3>
-        <MagneticButton>
-          <Link 
-            href="/contact"
-            className="group px-12 py-6 brand-bg-gradient text-bg font-mono text-[14px] uppercase tracking-widest hover:brand-border-gradient-surface border border-transparent transition-all duration-300"
-          >
-            <span className="group-hover:brand-text-gradient transition-all duration-300">
-              GET A FREE QUOTE
-            </span>
-          </Link>
-        </MagneticButton>
-      </div>
+      <FinalCTA />
 
     </div>
   );

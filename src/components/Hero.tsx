@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "@/lib/gsap/SplitText";
 import { HeroDragInteraction } from "./HeroDragInteraction";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(SplitText, useGSAP);
@@ -159,9 +160,26 @@ export function Hero() {
           </h1>
 
           {/* Descriptor */}
-          <p className="hero-desc font-sans font-light text-[14px] md:text-[17px] leading-[1.6] max-w-[420px] text-text/80 mt-6 md:mt-10 pl-1 md:pl-2">
-            <span className="font-bebas text-[20px] tracking-widest translate-y-[2px] inline-block">AK DAN DESIGNS</span> is a premium web design service offering brand design in Chennai. I craft animated website design and identities that rise above the ordinary — strategic, precise, and impossible to ignore.
-          </p>
+          <div className="hero-desc mt-6 md:mt-10 pl-1 md:pl-2 flex flex-col gap-8 items-start">
+            <p className="font-sans font-light text-[15px] md:text-[18px] leading-[1.6] max-w-[500px] text-text/80">
+              I help D2C brands in FMCG, sports, fashion, lifestyle, and consumer products build sharp brand identities that people notice, trust, and remember.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4">
+              <Link href="/contact" className="group px-8 py-3.5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center">
+                <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest text-bg group-hover:brand-text-gradient font-bold">
+                  Start a Project
+                </span>
+              </Link>
+
+              <Link href="/works" className="group px-8 py-3.5 border border-border hover:border-text transition-all duration-300 flex items-center justify-center">
+                <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest text-text">
+                  View Work
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

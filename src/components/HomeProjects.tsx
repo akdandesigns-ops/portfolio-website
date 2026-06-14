@@ -6,6 +6,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import AnimatedHeading from "./AnimatedHeading";
+import MagneticButton from "./MagneticButton";
 
 const projects = [
   {
@@ -99,6 +100,18 @@ export function HomeProjects() {
               </Link>
             </div>
           ))}
+        </div>
+        <div className="w-full flex justify-center mt-12 md:mt-16">
+          <MagneticButton>
+            <Link 
+              href="/works" 
+              className="group px-10 py-5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center min-w-[200px]"
+            >
+              <span className="font-mono text-sm uppercase tracking-widest text-bg group-hover:brand-text-gradient font-bold">
+                View All Projects
+              </span>
+            </Link>
+          </MagneticButton>
         </div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import MagneticButton from "@/components/MagneticButton";
 import AnimatedHeading from "@/components/AnimatedHeading";
+import { FinalCTA } from "@/components/FinalCTA";
 
 import aboutData from "@/data/about.json";
 
@@ -139,8 +140,31 @@ export default function AboutPage() {
         </div>
       )}
 
+      {/* What I bring to D2C brands */}
+      <div className="fade-in w-full mb-24 md:mb-32">
+        <div className="border-t border-border py-12 flex flex-col md:flex-row gap-12 md:gap-24">
+          <h3 className="font-bebas text-4xl uppercase md:w-1/3">What I bring to D2C brands</h3>
+          <ul className="flex flex-col gap-4 md:w-2/3">
+            {[
+              "Strategic brand thinking",
+              "Clean and memorable identity systems",
+              "Consumer-focused visual direction",
+              "Packaging and social media awareness",
+              "AI-assisted creative workflow",
+              "Practical brand systems for launch and growth"
+            ].map((point, i) => (
+              <li key={i} className="flex items-center gap-4 py-3 border-b border-border/50">
+                <div className="w-1.5 h-1.5 rounded-full brand-bg-gradient" />
+                <span className="font-sans font-light text-[15px] md:text-[17px] text-text/90">
+                  {point}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-
+      <FinalCTA />
     </div>
   );
 }
