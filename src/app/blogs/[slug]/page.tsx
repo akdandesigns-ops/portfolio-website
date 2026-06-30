@@ -8,8 +8,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import blogsData from "@/data/blogs.json";
 import MagneticButton from "@/components/MagneticButton";
-import BlogComments from "@/components/BlogComments";
-
 interface Post {
   slug: string;
   title: string;
@@ -116,8 +114,6 @@ export default function BlogPostPage() {
         ))}
       </div>
 
-      {/* Comment Section */}
-      <BlogComments />
 
       {/* Read More Section */}
       <div className="w-full max-w-[1200px] mt-32 pt-16 border-t border-border flex flex-col">
