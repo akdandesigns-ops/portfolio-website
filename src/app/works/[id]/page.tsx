@@ -512,7 +512,10 @@ export default function CaseStudyPage() {
             <section className="fade-in w-full">
               <div className="w-full px-6 md:px-16 lg:px-24">
                 <div className="max-w-[1400px] mx-auto">
-                  <div className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : 'aspect-[16/10]'}`}>
+                  <div 
+                    className={`relative w-full overflow-hidden ${project.imageFit === 'contain' ? 'aspect-[4/5] md:aspect-[16/10]' : ''}`}
+                    style={{ aspectRatio: project.imageFit === 'contain' ? undefined : (project.gallery[6]?.aspectRatio || "16/10") }}
+                  >
                     <MediaItem
                       src={project.gallery[6].src}
                       alt={project.gallery[6].alt}

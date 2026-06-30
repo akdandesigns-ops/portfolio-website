@@ -121,7 +121,7 @@ export function HomeProjects() {
                 src={project.image} 
                 alt={project.title}
                 fill
-                priority={index <= 1}
+                priority={true}
                 quality={85}
                 className={`transition-transform duration-700 ease-out group-hover:scale-[1.05] grayscale hover:grayscale-0 ${project.imageFit === "contain" ? "object-contain p-8" : "object-cover"}`}
                 sizes="(max-width: 768px) 100vw, 30vw"
