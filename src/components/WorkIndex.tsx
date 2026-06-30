@@ -57,7 +57,7 @@ export default function WorkIndex() {
           >
             <Link href={`/works/${p.slug}`} className="group block">
               <div
-                className="relative w-full overflow-hidden"
+                className="relative w-full overflow-hidden rounded-[12px]"
                 style={{ aspectRatio: "16/9" }}
                 onMouseEnter={() => setHoveredId(p.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -100,7 +100,7 @@ export default function WorkIndex() {
               >
                 <Link href={`/works/${proj.slug}`} className="group block">
                   <div
-                    className="relative w-full overflow-hidden"
+                    className="relative w-full overflow-hidden rounded-[12px]"
                     style={{ aspectRatio: "4/3" }}
                     onMouseEnter={() => setHoveredId(proj.id)}
                     onMouseLeave={() => setHoveredId(null)}
@@ -137,7 +137,7 @@ export default function WorkIndex() {
           >
             <Link href={`/works/${p.slug}`} className="group block">
               <div
-                className="relative w-full overflow-hidden"
+                className="relative w-full overflow-hidden rounded-[12px]"
                 style={{ aspectRatio: "3/2" }}
                 onMouseEnter={() => setHoveredId(p.id)}
                 onMouseLeave={() => setHoveredId(null)}

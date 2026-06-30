@@ -59,7 +59,7 @@ export default function ServicesPage() {
       {/* Header */}
       <div className="w-full mb-16 md:mb-32">
         <AnimatedHeading 
-          text="OUR SERVICES"
+          text="SERVICES"
           className="font-bebas text-[clamp(64px,10vw,180px)] leading-[0.85] tracking-[0.02em] w-full"
         />
         <p className="font-mono text-[13px] md:text-[15px] text-muted tracking-widest mt-8 uppercase max-w-[600px]">

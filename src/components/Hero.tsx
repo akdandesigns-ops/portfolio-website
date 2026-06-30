@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "@/lib/gsap/SplitText";
 import { HeroDragInteraction } from "./HeroDragInteraction";
 import Link from "next/link";
+import MagneticButton from "./MagneticButton";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(SplitText, useGSAP);
@@ -167,11 +168,13 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/contact" className="group px-8 py-3.5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center">
-                <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest text-bg group-hover:brand-text-gradient font-bold">
-                  Start a Project
-                </span>
-              </Link>
+              <MagneticButton>
+                <Link href="/contact" className="group px-8 py-3.5 brand-button transition-all duration-300 flex items-center justify-center">
+                  <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
+                    Start a Project
+                  </span>
+                </Link>
+              </MagneticButton>
 
               <Link href="/works" className="group px-8 py-3.5 border border-border hover:border-text transition-all duration-300 flex items-center justify-center">
                 <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest text-text">

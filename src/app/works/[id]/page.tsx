@@ -141,8 +141,10 @@ export default function CaseStudyPage() {
           The case study you are looking for does not exist or has been removed by the administrator.
         </p>
         <MagneticButton>
-          <Link href="/works" className="px-8 py-4 brand-bg-gradient text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:brand-text-gradient border border-transparent hover:brand-border-gradient transition-all duration-300">
-            Back to Works
+          <Link href="/works" className="group px-8 py-4 brand-button transition-all duration-300 flex items-center justify-center min-w-[200px]">
+            <span className="font-mono text-sm uppercase tracking-widest font-bold">
+              Back to Works
+            </span>
           </Link>
         </MagneticButton>
       </div>

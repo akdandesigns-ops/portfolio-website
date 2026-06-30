@@ -10,6 +10,8 @@ if (typeof window !== "undefined") {
   ScrollTrigger.config({ ignoreMobileResize: true });
 }
 
+import { ReactLenis } from '@studio-freight/react-lenis';
+
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -53,8 +55,10 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   return (
-    <div ref={wrapperRef}>
-      {children}
-    </div>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
+      <div ref={wrapperRef}>
+        {children}
+      </div>
+    </ReactLenis>
   );
 }

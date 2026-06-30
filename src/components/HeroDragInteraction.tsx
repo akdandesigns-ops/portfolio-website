@@ -200,7 +200,6 @@ export function HeroDragInteraction() {
       
       el.style.pointerEvents = "none";
       el.style.zIndex = "40";
-      el.style.transformStyle = "preserve-3d";
       el.style.willChange = "transform, opacity";
       
       const shadowBright = isMobile ? "none" : `inset -4px -4px 8px rgba(0,0,0,0.2), inset 4px 4px 12px rgba(255,255,255,0.8), 0 10px 20px rgba(0,0,0,0.3)`;
@@ -288,7 +287,10 @@ export function HeroDragInteraction() {
       const isMobileTrigger = target.closest('#mobile-burst-trigger');
       if (isMobileTrigger) {
         const rect = isMobileTrigger.getBoundingClientRect();
-        triggerBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        const containerRect = containerRef.current?.getBoundingClientRect();
+        const localX = containerRect ? (rect.left + rect.width / 2) - containerRect.left : rect.left + rect.width / 2;
+        const localY = containerRect ? (rect.top + rect.height / 2) - containerRect.top : rect.top + rect.height / 2;
+        triggerBurst(localX, localY);
         return; // Do not start a drag
       }
 
@@ -369,7 +371,8 @@ export function HeroDragInteraction() {
   return (
     <div 
       ref={containerRef}
-      className="absolute inset-0 z-[20] pointer-events-none"
+      className="absolute inset-0 z-[20] pointer-events-none overflow-hidden"
+      style={{ clipPath: "inset(0)" }}
     >
       <canvas 
         ref={canvasRef} 

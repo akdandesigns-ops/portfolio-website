@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import blogsData from "@/data/blogs.json";
 import MagneticButton from "@/components/MagneticButton";
+import BlogComments from "@/components/BlogComments";
 
 interface Post {
   slug: string;
@@ -60,8 +61,10 @@ export default function BlogPostPage() {
           The article you are looking for does not exist or has been removed.
         </p>
         <MagneticButton>
-          <Link href="/blogs" className="px-8 py-4 brand-bg-gradient text-bg font-mono text-sm uppercase tracking-widest hover:bg-transparent hover:brand-text-gradient border border-transparent hover:brand-border-gradient transition-all duration-300">
-            Back to Journal
+          <Link href="/blogs" className="group px-8 py-4 brand-button transition-all duration-300 flex items-center justify-center min-w-[200px]">
+            <span className="font-mono text-sm uppercase tracking-widest font-bold">
+              Back to Journal
+            </span>
           </Link>
         </MagneticButton>
       </div>
@@ -112,6 +115,9 @@ export default function BlogPostPage() {
           </div>
         ))}
       </div>
+
+      {/* Comment Section */}
+      <BlogComments />
 
       {/* Read More Section */}
       <div className="w-full max-w-[1200px] mt-32 pt-16 border-t border-border flex flex-col">

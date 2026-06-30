@@ -3,6 +3,7 @@
 import { useRef, MouseEvent, ReactNode } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ClickSpark from "./ClickSpark";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -47,7 +48,17 @@ export default function MagneticButton({ children, className = "" }: MagneticBut
       className={`relative inline-block ${className}`}
       data-magnetic="true"
     >
-      {children}
+      <ClickSpark
+        sparkColor="#ffffff"
+        sparkSize={10}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+        easing="ease-out"
+        extraScale={1}
+      >
+        {children}
+      </ClickSpark>
     </div>
   );
 }

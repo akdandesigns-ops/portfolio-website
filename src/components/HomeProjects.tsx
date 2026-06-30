@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedHeading from "./AnimatedHeading";
 import MagneticButton from "./MagneticButton";
 
@@ -42,76 +43,115 @@ const projects = [
 
 export function HomeProjects() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
 
   useGSAP(() => {
-    gsap.utils.toArray<HTMLElement>(".project-card").forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 90%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power3.out",
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const slider = sliderRef.current;
+      if (!slider) return;
+
+      const getScrollAmount = () => {
+        let sliderWidth = slider.scrollWidth;
+        return -(sliderWidth - window.innerWidth);
+      };
+
+      const tween = gsap.to(slider, {
+        x: getScrollAmount,
+        ease: "none",
+      });
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top top",
+        end: () => `+=${slider.scrollWidth}`, // Increased scroll distance to make it smoother and slower
+        pin: true,
+        animation: tween,
+        scrub: 1,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
       });
     });
+
+    return () => mm.revert();
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="w-full flex justify-center py-20 px-6 md:px-12 max-w-[2000px] mx-auto z-10 relative bg-bg">
-      <div className="w-full flex flex-col gap-32">
-        {/* Section Heading */}
-        <div className="w-full border-b border-border pb-8">
+    <section 
+      ref={containerRef} 
+      className="w-full md:h-screen bg-bg relative z-10 flex flex-col md:block"
+    >
+      <div className="w-full overflow-hidden h-full relative">
+        <div className="md:hidden w-full pt-20 px-6">
           <AnimatedHeading 
             text="SELECTED WORKS" 
-            className="font-bebas text-5xl md:text-7xl tracking-wide uppercase"
+            className="font-bebas text-5xl tracking-wide uppercase text-text"
           />
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-          {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="project-card flex flex-col group w-full"
-            >
-              <Link href={project.href} className="w-full flex flex-col gap-6">
-                <div className="w-full aspect-[4/3] md:aspect-[3/4] relative overflow-hidden" data-speed="0.95">
-                  <Image 
-                    src={project.image} 
-                    alt={project.title}
-                    fill
-                    priority={index <= 1}
-                    quality={85}
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] grayscale hover:grayscale-0"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                
-                <div className="flex flex-col gap-2">
-                  <h2 className={`font-bebas text-4xl md:text-5xl uppercase tracking-wide transition-colors duration-300 text-text ${project.hoverColor}`}>
-                    {project.title}
-                  </h2>
-                  <h3 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.1em] text-muted">
-                    {project.type}
-                  </h3>
-                </div>
-              </Link>
-            </div>
-          ))}
+        <div 
+          ref={sliderRef} 
+          className="flex flex-col md:flex-row h-full w-full md:w-max items-center px-6 md:px-[5vw] gap-12 md:gap-24 py-12 md:py-0"
+        >
+        {/* The title for desktop - becomes part of the horizontal scroll track */}
+        <div className="hidden md:flex w-[40vw] shrink-0 flex-col justify-center">
+          <AnimatedHeading 
+            text="SELECTED" 
+            className="font-bebas text-7xl md:text-8xl tracking-wide uppercase text-text leading-none"
+          />
+          <AnimatedHeading 
+            text="WORKS" 
+            className="font-bebas text-7xl md:text-8xl tracking-wide uppercase text-text leading-none ml-12"
+          />
         </div>
-        <div className="w-full flex justify-center mt-12 md:mt-16">
+
+        {projects.map((project, index) => (
+          <Link 
+            key={project.title}
+            href={project.href} 
+            className="group w-full md:w-[35vw] lg:w-[30vw] shrink-0 flex flex-col gap-6"
+          >
+            <div className="w-full aspect-square relative overflow-hidden rounded-[12px] bg-surface/50">
+              <Image 
+                src={project.image} 
+                alt={project.title}
+                fill
+                priority={index <= 1}
+                quality={85}
+                className={`transition-transform duration-700 ease-out group-hover:scale-[1.05] grayscale hover:grayscale-0 ${project.imageFit === "contain" ? "object-contain p-8" : "object-cover"}`}
+                sizes="(max-width: 768px) 100vw, 30vw"
+              />
+            </div>
+            
+            <div className="flex flex-col gap-2">
+              <h2 className={`font-bebas text-4xl md:text-5xl uppercase tracking-wide transition-colors duration-300 text-text ${project.hoverColor}`}>
+                {project.title}
+              </h2>
+              <h3 className="font-mono text-[12px] md:text-[14px] uppercase tracking-[0.1em] text-muted">
+                {project.type}
+              </h3>
+            </div>
+          </Link>
+        ))}
+
+        {/* View All Button inside the slider track */}
+        <div className="w-full md:w-[25vw] shrink-0 flex justify-center md:justify-start items-center pb-12 md:pb-0 pr-[5vw]">
           <MagneticButton>
             <Link 
               href="/works" 
-              className="group px-10 py-5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center min-w-[200px]"
+              className="group px-10 py-5 brand-button transition-all duration-300 flex items-center justify-center min-w-[200px]"
             >
-              <span className="font-mono text-sm uppercase tracking-widest text-bg group-hover:brand-text-gradient font-bold">
+              <span className="font-mono text-sm uppercase tracking-widest font-bold">
                 View All Projects
               </span>
             </Link>
           </MagneticButton>
+        </div>
         </div>
       </div>
     </section>

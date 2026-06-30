@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "@studio-freight/react-lenis": "^0.0.47",
     "@types/nodemailer": "^7.0.11",
     "@types/three": "^0.184.1",
     "clsx": "^2.1.1",
@@ -25,7 +28,7 @@
     "react-dom": "^18",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.5.0",
-    "three": "^0.184.0"
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@types/node": "^20",

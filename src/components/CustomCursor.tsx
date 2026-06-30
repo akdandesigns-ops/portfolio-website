@@ -41,13 +41,13 @@ export default function CustomCursor() {
     const handleLinkHoverStart = () => {
       isHovering = true;
       if (cursorArrowRef.current) gsap.to(cursorArrowRef.current, { opacity: 0, scale: 0, duration: 0.2 });
-      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" });
+      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 1, scale: 1.5, duration: 0.2 });
     };
 
     const handleLinkHoverEnd = () => {
       isHovering = false;
       if (cursorArrowRef.current) gsap.to(cursorArrowRef.current, { opacity: 1, scale: 1, duration: 0.2 });
-      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 0, scale: 0.3, duration: 0.3, ease: "power3.out" });
+      if (cursorCircleRef.current) gsap.to(cursorCircleRef.current, { opacity: 0, scale: 0.3, duration: 0.2 });
     };
 
     window.addEventListener("pointermove", updateMousePosition);

@@ -37,57 +37,69 @@
 
 @layer utilities {
   .brand-text-gradient {
-    background-image: linear-gradient(
-      to right,
-      #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: brand-gradient-cycle 4s linear infinite;
+    color: var(--accent);
   }
 
   .brand-bg-gradient {
-    background-image: linear-gradient(
-      to right,
-      #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
-    );
-    background-size: 200% auto;
-    animation: brand-gradient-cycle 4s linear infinite;
+    background-color: var(--accent);
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
+      linear-gradient(to right, #a8ff78 0%, #0AE448 100%);
+    color: var(--bg);
+    border-radius: 12px;
   }
 
   .brand-border-gradient {
-    border-color: transparent !important;
-    background: 
-      linear-gradient(var(--bg), var(--bg)) padding-box,
-      linear-gradient(
-        to right,
-        #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
-      ) border-box;
-    background-size: 100% 100%, 200% auto;
-    animation: brand-border-cycle 4s linear infinite;
+    border-color: var(--border) !important;
+    border-radius: 12px;
   }
 
   .brand-border-gradient-surface {
-    border-color: transparent !important;
-    background: 
-      linear-gradient(var(--surface), var(--surface)) padding-box,
-      linear-gradient(
-        to right,
-        #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448
-      ) border-box;
-    background-size: 100% 100%, 200% auto;
-    animation: brand-border-cycle 4s linear infinite;
+    border-color: var(--border) !important;
+    border-radius: 12px;
+  }
+
+  .brand-button {
+    position: relative;
+    border-radius: 12px;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
+      linear-gradient(90deg, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448);
+    background-size: auto, 200% auto;
+    animation: brand-gradient-cycle 3s linear infinite;
+    color: var(--bg);
+    border: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .brand-button::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 11px;
+    background-color: var(--bg);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .brand-button:hover::before {
+    opacity: 1;
+  }
+
+  .brand-button:hover {
+    color: var(--text);
+  }
+
+  .brand-button > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
 @keyframes brand-gradient-cycle {
   to { background-position: -200% center; }
-}
-
-@keyframes brand-border-cycle {
-  to { background-position: 0% 0%, -200% center; }
 }
 
 body {
@@ -99,11 +111,10 @@ body {
 
 /* Hide native cursor only on desktop */
 @media (pointer: fine) and (min-width: 768px) {
-  body {
+  * {
     cursor: none;
   }
-
-  a, button {
+  body {
     cursor: none;
   }
 }

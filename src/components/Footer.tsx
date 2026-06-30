@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
 import { GravityGraphic } from "./GravityGraphic";
 
+const Ballpit = dynamic(() => import("./Ballpit"), { ssr: false });
+
 export default function Footer() {
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact";
   return (
     <footer className="w-full bg-bg border-t border-border mt-auto relative overflow-hidden">
-      {/* Background Graphic */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-80">
-        <GravityGraphic />
-      </div>
+
 
       <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10">
         
@@ -40,7 +45,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-text hover:brand-text-gradient transition-colors flex items-center justify-center"
+                className="text-text hover:text-muted hover:scale-110 transition-all duration-300 flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +71,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-text hover:brand-text-gradient transition-colors flex items-center justify-center"
+                className="text-text hover:text-muted hover:scale-110 transition-all duration-300 flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

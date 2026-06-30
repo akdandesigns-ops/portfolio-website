@@ -19,9 +19,9 @@ export function FinalCTA() {
           <MagneticButton>
             <Link 
               href="/contact" 
-              className="group px-10 py-5 brand-bg-gradient hover:brand-border-gradient border border-transparent transition-all duration-300 flex items-center justify-center min-w-[200px]"
+              className="group px-10 py-5 brand-button transition-all duration-300 flex items-center justify-center min-w-[200px]"
             >
-              <span className="font-mono text-sm uppercase tracking-widest text-bg group-hover:brand-text-gradient font-bold">
+              <span className="font-mono text-sm uppercase tracking-widest font-bold">
                 Start a Project
               </span>
             </Link>
