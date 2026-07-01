@@ -123,7 +123,7 @@ export function HomeProjects() {
                 fill
                 priority={true}
                 quality={85}
-                className={`transition-transform duration-700 ease-out group-hover:scale-[1.05] grayscale hover:grayscale-0 ${project.imageFit === "contain" ? "object-contain p-8" : "object-cover"}`}
+                className={`transition-transform duration-700 ease-out grayscale hover:grayscale-0 ${project.imageFit === "contain" ? "object-contain p-8" : "object-cover scale-[1.01] group-hover:scale-[1.05]"}`}
                 sizes="(max-width: 768px) 100vw, 30vw"
               />
             </div>

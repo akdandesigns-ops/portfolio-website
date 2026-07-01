@@ -48,6 +48,21 @@ export function HomeProcess() {
       stagger: 0.15,
       ease: "power3.out"
     });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        scrub: 1,
+        start: "top 50%",
+        end: "bottom 20%",
+      }
+    });
+
+    tl.to("#pin-windmill-svg", {
+      rotation: 900,
+      transformOrigin: "center center",
+      ease: "none"
+    });
   }, { scope: containerRef });
 
   return (
@@ -60,6 +75,38 @@ export function HomeProcess() {
             text="My process is built around consumer perception." 
             className="font-bebas text-5xl md:text-7xl tracking-wide uppercase text-text"
           />
+          <div className="hidden md:flex mt-8 w-full justify-start items-center">
+            <div id="pin-windmill-svg" className="w-[140px] h-[140px] origin-center">
+              <svg 
+                width="140" 
+                height="140" 
+                viewBox="0 0 100 100" 
+              >
+                <defs>
+                  <linearGradient id="windmill-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#E04F26" /> {/* Saffron Spice */}
+                    <stop offset="100%" stopColor="#F3B229" /> {/* Mustard Gold */}
+                  </linearGradient>
+                  <filter id="grain">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.2 0" />
+                    <feComposite in2="SourceGraphic" operator="in" />
+                    <feBlend in2="SourceGraphic" mode="overlay" />
+                  </filter>
+                </defs>
+                <g fill="url(#windmill-grad)" filter="url(#grain)">
+                  {/* Top Left */}
+                  <path d="M 6 6 A 42 42 0 0 1 48 48 A 42 42 0 0 1 6 6 Z" />
+                  {/* Top Right */}
+                  <path d="M 94 6 A 42 42 0 0 0 52 48 A 42 42 0 0 0 94 6 Z" />
+                  {/* Bottom Right */}
+                  <path d="M 94 94 A 42 42 0 0 1 52 52 A 42 42 0 0 1 94 94 Z" />
+                  {/* Bottom Left */}
+                  <path d="M 6 94 A 42 42 0 0 0 48 52 A 42 42 0 0 0 6 94 Z" />
+                </g>
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Right Column: Process Steps */}
