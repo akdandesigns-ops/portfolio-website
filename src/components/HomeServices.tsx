@@ -10,42 +10,38 @@ import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 
 const services = [
   {
-    title: "D2C Brand Identity",
-    desc: "For consumer brands that need a complete identity system before entering or growing in the market.",
+    title: "Brand Identity",
+    desc: "A complete identity system — logo, color, typography, visual language, and brand guidelines — built to make a D2C or hospitality brand look premium and instantly recognizable.",
     image: "/images/service_branding.png",
     color: "#0AE448",
     includes: [
-      "Logo system",
-      "Color palette",
-      "Typography system",
-      "Visual language",
-      "Brand guidelines",
-      "Social media direction"
+      "Logo system (primary + variations)",
+      "Color palette & typography system",
+      "Visual language & art direction",
+      "Brand guidelines document",
+      "Social media application direction"
     ]
   },
   {
-    title: "Packaging & Product Visual Direction",
-    desc: "For FMCG, fashion, sports, and lifestyle brands that need their product to look premium and trustworthy.",
+    title: "Bringing the Identity to Life",
+    desc: "Once the identity exists, I extend it into packaging, product photography, and campaign visuals — so the brand looks consistent everywhere it's seen.",
     image: "/images/service_packaging.png",
     color: "#FF8709",
     includes: [
-      "Packaging visual direction",
-      "Product presentation style",
-      "Label / surface design direction",
+      "Packaging & label visual direction",
+      "AI-assisted product photography",
       "Campaign image direction",
-      "Shelf and marketplace visual thinking"
+      "Shelf & marketplace visual thinking"
     ]
   },
   {
-    title: "Landing Page & Digital Brand Presence",
-    desc: "For D2C brands that need a clean digital presence to explain the product, build trust, and drive enquiries or sales.",
+    title: "Digital Presence",
+    desc: "A landing page or website that carries the same identity system into the digital space — built to explain, build trust, and convert.",
     image: "/images/service_digital.png",
     color: "#00BAE2",
     includes: [
-      "Landing page structure",
-      "UI direction",
+      "Landing page structure & UI direction",
       "Copy hierarchy",
-      "Product-focused layout",
       "Responsive design",
       "Conversion-focused CTA placement"
     ]

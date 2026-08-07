@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Image from "next/image";
+import MediaItem from "./MediaItem";
 import Link from "next/link";
 import worksData from "@/data/works.json";
 import AnimatedHeading from "@/components/AnimatedHeading";
@@ -14,7 +14,8 @@ interface Project {
   slug: string;
   category: string;
   year: string;
-  heroImage: string;
+  heroImage?: string;
+  heroVideo?: string;
   size: "featured" | "half" | "wide" | string;
   imageFit?: "cover" | "contain";
 }
@@ -62,8 +63,8 @@ export default function WorkIndex() {
                 onMouseEnter={() => setHoveredId(p.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <Image
-                  src={p.heroImage}
+                <MediaItem
+                  src={p.heroVideo || p.heroImage || ""}
                   alt={p.name}
                   fill
                   className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${p.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4 md:p-12' : 'object-cover'}`}
@@ -105,8 +106,8 @@ export default function WorkIndex() {
                     onMouseEnter={() => setHoveredId(proj.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
-                    <Image
-                      src={proj.heroImage}
+                    <MediaItem
+                      src={proj.heroVideo || proj.heroImage || ""}
                       alt={proj.name}
                       fill
                       className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${proj.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4' : 'object-cover'}`}
@@ -142,8 +143,8 @@ export default function WorkIndex() {
                 onMouseEnter={() => setHoveredId(p.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <Image
-                  src={p.heroImage}
+                <MediaItem
+                  src={p.heroVideo || p.heroImage || ""}
                   alt={p.name}
                   fill
                   className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03] ${p.imageFit === 'contain' ? 'object-contain bg-surface/5 p-4' : 'object-cover'}`}

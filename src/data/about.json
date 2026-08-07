@@ -1,17 +1,16 @@
 {
   "profileImage": "/profile-image/founder-image.png",
   "philosophyParagraphs": [
-    "I am a self-taught brand identity designer based in Chennai, focused on helping D2C businesses build sharp and memorable visual identities. My work is built around consumer perception — how people see, trust, remember, and choose a brand.",
-    "I got into design the hard way, with no formal classroom and no shortcuts. Just curiosity, countless hours, and a genuine obsession with what makes a brand feel right. In the past two years, I've worked with real clients across industries, helping them go from forgettable to unforgettable through logos, visual identities, and complete brand systems.",
+    "I'm a brand identity designer based in Chennai, focused on helping D2C and hospitality businesses build sharp, memorable visual identities. My work is built around consumer perception — how people see, trust, remember, and choose a brand.",
+    "I got here without a classroom or a shortcut — just curiosity, obsessive attention to detail, and real client work across FMCG, sports, fashion, and food & hospitality brands over the past two years.",
     "I am especially interested in FMCG, sports, fashion, lifestyle, food, wellness, and consumer product brands that sell directly to people.",
     "My approach is simple: I don't have a one-size-fits-all style, because your brand shouldn't look like everyone else's. Every project starts with understanding your business, your audience, and what you're really trying to say, so we can build a visual identity that says it better than words ever could."
   ],
   "services": [
     { "num": "01", "name": "BRAND STRATEGY", "desc": "Positioning, architecture, and narrative design." },
     { "num": "02", "name": "VISUAL IDENTITY", "desc": "Logo systems, typography, color, and art direction." },
-    { "num": "03", "name": "DIGITAL PLATFORMS", "desc": "Immersive WebGL experiences and e-commerce." },
-    { "num": "04", "name": "SPATIAL DESIGN", "desc": "Exhibition, retail, and environmental branding." },
-    { "num": "05", "name": "ANIMATED WEBSITE", "desc": "Highly interactive, motion-driven web experiences." }
+    { "num": "03", "name": "BRAND EXTENSION", "desc": "Packaging, product photography, and campaign visuals." },
+    { "num": "04", "name": "DIGITAL PRESENCE", "desc": "Landing pages and animated website experiences." }
   ],
   "clients": [
     { "name": "LICET", "color": "#FF3366" },

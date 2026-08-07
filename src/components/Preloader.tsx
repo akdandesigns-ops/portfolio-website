@@ -81,10 +81,13 @@ const Squiggle = () => (
   </svg>
 );
 
+import MetallicPaint from "./MetallicPaint";
+
 export default function Preloader() {
   const [show, setShow] = useState(true);
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Always show preloader on first mount (hard reload) for any page
@@ -103,76 +106,34 @@ export default function Preloader() {
       }
     });
 
-    // Enter animation: Rotation and flip individual to each letter/shape
-    tl.fromTo(".char", {
+    // Loading counter animation
+    const progressObj = { value: 0 };
+    tl.to(progressObj, {
+      value: 100,
+      duration: 3.7, // Matches the total hold time (1.2 + 2.5)
+      ease: "power1.inOut",
+      onUpdate: () => {
+        if (progressRef.current) {
+          progressRef.current.textContent = `${Math.round(progressObj.value)}%`;
+        }
+      }
+    }, 0);
+
+    // Animate the MetallicPaint canvas in
+    tl.fromTo(".paint-container", {
       opacity: 0,
-      rotateX: -120,
-      rotateY: 90,
-      rotateZ: -15,
-      scale: 0.3,
-      y: 60,
-      z: -300,
+      scale: 0.9,
     }, {
       opacity: 1,
-      rotateX: 0,
-      rotateY: 0,
-      rotateZ: 0,
       scale: 1,
-      y: 0,
-      z: 0,
       duration: 1.2,
-      stagger: 0.04,
-      ease: "back.out(1.4)",
-    });
+      ease: "power2.out",
+    }, 0);
     
-    const holdTime = tl.duration();
-
-    // Specific shape animations during the hold
-    // Clover: rotate clockwise then anticlockwise
-    tl.to(".shape-clover", {
-      rotationZ: 180,
-      duration: 0.5,
-      ease: "power2.inOut"
-    }, holdTime)
-    .to(".shape-clover", {
-      rotationZ: -90,
-      duration: 0.6,
-      ease: "power2.inOut"
-    }, holdTime + 0.5);
-
-    // Asterisk: wiggle
-    tl.to(".shape-asterisk", {
-      rotationZ: 25,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 7,
-      ease: "sine.inOut"
-    }, holdTime + 0.1);
-
-    // Lightning: strike (scale and CSS brightness)
-    tl.to(".shape-lightning", {
-      scale: 1.25,
-      filter: "brightness(1.5)",
-      duration: 0.08,
-      yoyo: true,
-      repeat: 5,
-      ease: "power4.out"
-    }, holdTime + 0.2);
-
-    // Squiggle: organic stretch
-    tl.to(".shape-squiggle", {
-      scaleY: 1.15,
-      scaleX: 0.85,
-      duration: 0.4,
-      yoyo: true,
-      repeat: 1,
-      ease: "power2.inOut"
-    }, holdTime + 0.1);
-
-    // Ensure we hold a bit before the exit
-    tl.to({}, { duration: 1.5 }, holdTime);
+    // Hold for a moment to let the paint effect play
+    tl.to({}, { duration: 2.5 });
     
-    // Exit animation: Simple screen split and text fade
+    // Exit animation: Simple screen split and fade out
     tl.to(".text-overlay", {
       opacity: 0,
       duration: 0.3,
@@ -204,44 +165,29 @@ export default function Preloader() {
 
       {/* Content Overlay */}
       <div className="text-overlay absolute inset-0 flex flex-col items-center justify-center overflow-hidden pointer-events-none">
-        <SvgDefs />
         
-        {/* Animated Text Container */}
-        <h1 className="preloader-text relative z-10 flex flex-col items-center gap-y-4 md:gap-y-6 font-bebas text-7xl md:text-[120px] lg:text-[160px] leading-none tracking-wide text-[#f3f3ee] select-none text-center px-4 max-w-5xl [perspective:1200px]">
-          
-          <div className="flex items-center gap-x-4 md:gap-x-8">
-            <div className="flex items-center">
-              <span className="char inline-block origin-center transform-style-3d">A</span>
-              <span className="char inline-block origin-center transform-style-3d">K</span>
-            </div>
+        {/* Logo Container (increased size) */}
+        <div className="w-full h-full max-w-[800px] max-h-[800px] flex items-center justify-center pointer-events-auto">
+          <MetallicPaint 
+            imageSrc="/akdan-logo.png"
+            liquid={0.4}
+            speed={0.2}
+            brightness={1.5}
+            scale={5}
+            refraction={0.02}
+            mouseAnimation={true}
+          />
+        </div>
 
-            <div className="flex items-center">
-              <span className="char inline-block origin-center transform-style-3d">D</span>
-              <span className="char inline-block origin-center transform-style-3d"><Asterisk /></span>
-              <span className="char inline-block origin-center transform-style-3d">N</span>
-            </div>
-          </div>
+        {/* Loading Count */}
+        <div 
+          ref={progressRef}
+          className="absolute bottom-[10%] font-mono text-[11px] uppercase tracking-[0.2em] text-[#f3f3ee] opacity-70"
+        >
+          0%
+        </div>
 
-          <div className="flex items-center">
-            <span className="char inline-block origin-center transform-style-3d">D</span>
-            <span className="char inline-block origin-center transform-style-3d">E</span>
-            <span className="char inline-block origin-center transform-style-3d">S</span>
-            <span className="char inline-block origin-center transform-style-3d"><Lightning /></span>
-            <span className="char inline-block origin-center transform-style-3d">G</span>
-            <span className="char inline-block origin-center transform-style-3d"><Squiggle /></span>
-            <span className="char inline-block origin-center transform-style-3d">N</span>
-            <span className="char inline-block origin-center transform-style-3d">S</span>
-            <span className="char inline-block origin-center transform-style-3d"><Clover /></span>
-          </div>
-
-        </h1>
       </div>
-      
-      <style dangerouslySetInnerHTML={{__html: `
-        .transform-style-3d {
-          transform-style: preserve-3d;
-        }
-      `}} />
     </div>
   );
 }

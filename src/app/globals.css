@@ -64,7 +64,7 @@
     border-radius: 12px;
     background-image: 
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E"),
-      linear-gradient(90deg, #0AE448, #FFA6FA, #FF8709, #00BAE2, #0AE448);
+      linear-gradient(90deg, #a8ff78, #0AE448, #009c30, #0AE448, #a8ff78);
     background-size: auto, 200% auto;
     animation: brand-gradient-cycle 3s linear infinite;
     color: var(--bg);
@@ -195,3 +195,4 @@ body {
   50% { background-position: 15px 15px, 0 0; }
   75% { background-position: -5px 25px, 0 0; }
 }
+

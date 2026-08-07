@@ -9,22 +9,22 @@ const cards = [
   {
     title: "FMCG & Food Brands",
     desc: "Identity systems designed to work across packaging, shelves, social media, and digital campaigns.",
-    color: "from-[#FF8709] via-[#ea580c] to-[#9a3412]"
+    color: "#FF8709"
   },
   {
     title: "Sports & Fitness Brands",
     desc: "Bold visual systems built for energy, performance, community, and merchandise.",
-    color: "from-[#3b82f6] via-[#2563eb] to-[#1d4ed8]"
+    color: "#3b82f6"
   },
   {
     title: "Fashion & Lifestyle Brands",
     desc: "Premium identity direction for brands that need style, consistency, and emotional recall.",
-    color: "from-[#FFA6FA] via-[#db2777] to-[#9d174d]"
+    color: "#FFA6FA"
   },
   {
     title: "Consumer Product Startups",
     desc: "Launch-ready branding for products entering competitive markets.",
-    color: "from-[#0AE448] via-[#10b981] to-[#047857]"
+    color: "#0AE448"
   }
 ];
 
@@ -65,33 +65,45 @@ export function HomeD2CFocus() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" style={{ perspective: "1500px" }}>
             {cards.map((card, i) => (
-              <div key={i} className="d2c-card h-full">
-                <div 
-                  className="flex flex-col p-8 rounded-3xl relative overflow-hidden shadow-2xl h-full border border-transparent hover:scale-[1.02] transition-transform duration-500"
-                >
-                  {/* Base Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${card.color} pointer-events-none`} />
-                  
-                  {/* Noise Texture */}
-                  <div 
-                    className="absolute inset-0 opacity-[0.35] pointer-events-none mix-blend-overlay"
-                    style={{
-                      backgroundImage: `url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`
-                    }}
-                  />
-
-                  <div className="relative z-10 flex flex-col h-full gap-6">
-                    <div className="font-mono text-xs uppercase tracking-widest text-white/80 font-bold">
-                      0{i + 1}
+              <div key={i} className="d2c-card min-h-[320px]">
+                <div className="group h-full perspective-[1500px] cursor-pointer">
+                  <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    
+                    {/* ── FRONT ── */}
+                    <div 
+                      className="absolute inset-0 flex flex-col items-center justify-center p-8 rounded-3xl overflow-hidden shadow-2xl bg-[#0a0a0a] border border-white/10 [backface-visibility:hidden]"
+                    >
+                      <h3 
+                        className="font-bebas text-3xl md:text-4xl lg:text-5xl tracking-wide uppercase text-center"
+                        style={{ color: card.color }}
+                      >
+                        {card.title}
+                      </h3>
                     </div>
-                    
-                    <h3 className="font-bebas text-3xl md:text-4xl tracking-wide uppercase text-white">
-                      {card.title}
-                    </h3>
-                    
-                    <p className="font-sans font-medium text-[15px] leading-[1.6] text-white mt-auto pt-8">
-                      {card.desc}
-                    </p>
+
+                    {/* ── BACK ── */}
+                    <div 
+                      className="absolute inset-0 flex flex-col p-8 rounded-3xl overflow-hidden shadow-2xl bg-[#F9F9F4] [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                    >
+                      {/* Grain Texture */}
+                      <div 
+                        className="absolute inset-0 opacity-[0.5] pointer-events-none mix-blend-multiply"
+                        style={{
+                          backgroundImage: `url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`
+                        }}
+                      />
+                      
+                      <div className="relative z-10 flex flex-col h-full gap-4">
+                        <div className="font-mono text-xs uppercase tracking-widest text-black/40 font-bold">
+                          0{i + 1}
+                        </div>
+                        
+                        <p className="font-sans font-medium text-[16px] md:text-[18px] leading-[1.6] text-black text-center my-auto">
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>

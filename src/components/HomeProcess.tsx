@@ -84,8 +84,8 @@ export function HomeProcess() {
               >
                 <defs>
                   <linearGradient id="windmill-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#E04F26" /> {/* Saffron Spice */}
-                    <stop offset="100%" stopColor="#F3B229" /> {/* Mustard Gold */}
+                    <stop offset="0%" stopColor="#15803d" /> {/* Dark Green */}
+                    <stop offset="100%" stopColor="#4ade80" /> {/* Light Green */}
                   </linearGradient>
                   <filter id="grain">
                     <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />

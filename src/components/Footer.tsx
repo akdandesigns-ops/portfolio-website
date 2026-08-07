@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
 import { GravityGraphic } from "./GravityGraphic";
+import TextLoop from "./TextLoop";
 
 const Ballpit = dynamic(() => import("./Ballpit"), { ssr: false });
 
@@ -12,8 +13,18 @@ export default function Footer() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
   return (
-    <footer className="w-full bg-bg border-t border-border mt-auto relative overflow-hidden">
-
+    <footer className="w-full bg-bg border-t border-border mt-auto relative overflow-hidden flex flex-col">
+      <div className="w-full mt-10 md:mt-16 relative z-10 block">
+        <TextLoop 
+          text="DESIGN IS EVERYWHERE" 
+          separator="✦" 
+          color="#ffffff" 
+          ribbonColor="#22c55e" 
+          ribbon={true} 
+          shape="wave" 
+          pauseOnHover={false}
+        />
+      </div>
 
       <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10">
         

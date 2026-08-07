@@ -11,27 +11,34 @@ import { FinalCTA } from "@/components/FinalCTA";
 const servicesList = [
   {
     title: "Brand Identity",
-    description: "I create complete identity systems for D2C brands that need to look clear, premium, and trustworthy across packaging, social media, websites, and campaigns.",
+    description: "The complete foundation: logo system, color palette, typography, visual language, and brand guidelines — built specifically for how your brand will actually be used, from packaging to social media to campaigns.",
+    includes: [
+      "Logo system (primary + variations)",
+      "Color palette & typography system",
+      "Visual language & art direction",
+      "Brand guidelines document",
+      "Social media application direction"
+    ]
   },
   {
-    title: "Visual Identity",
-    description: "I define the color, typography, layout style, and visual language that help a consumer brand become recognizable.",
+    title: "Brand Extension",
+    description: "For brands with an existing or newly built identity that need it carried into the real world — packaging, product photography, and campaign visuals that look premium and stay on-system.",
+    includes: [
+      "Packaging & label visual direction",
+      "AI-assisted product photography",
+      "Campaign image direction",
+      "Shelf & marketplace visual thinking"
+    ]
   },
   {
-    title: "Logo Design",
-    description: "I design simple, memorable, and scalable logos that work across packaging, product labels, social media, merchandise, and digital platforms.",
-  },
-  {
-    title: "AI Product Photography",
-    description: "I create premium AI-assisted product visuals for D2C brands that need high-quality imagery for launches, campaigns, websites, and social media.",
-  },
-  {
-    title: "Landing Page Design",
-    description: "I design clean and responsive landing pages for D2C brands that need to explain their product, build trust, and guide visitors toward action.",
-  },
-  {
-    title: "Branding",
-    description: "I help shape how a consumer brand is perceived — from positioning and identity to visual storytelling and launch presentation.",
+    title: "Digital Presence",
+    description: "A landing page or website that expresses your brand identity digitally — clean, responsive, and built to build trust and drive enquiries.",
+    includes: [
+      "Landing page structure & UI direction",
+      "Copy hierarchy",
+      "Responsive design",
+      "Conversion-focused CTA placement"
+    ]
   }
 ];
 
@@ -62,8 +69,8 @@ export default function ServicesPage() {
           text="SERVICES"
           className="font-bebas text-[clamp(64px,10vw,180px)] leading-[0.85] tracking-[0.02em] w-full"
         />
-        <p className="font-mono text-[13px] md:text-[15px] text-muted tracking-widest mt-8 uppercase max-w-[600px]">
-          I strip away ornamentation until nothing is left but the absolute essence of your identity.
+        <p className="font-mono text-[13px] md:text-[15px] text-muted tracking-widest mt-8 uppercase max-w-[800px] leading-[1.6]">
+          I strip away ornamentation until nothing is left but the absolute essence of your identity. <br className="hidden md:block" /> Every engagement starts with brand identity. From there, I extend the system into whatever your brand needs next — packaging, product visuals, or a digital presence.
         </p>
       </div>
 
@@ -81,10 +88,23 @@ export default function ServicesPage() {
               <p className="font-sans font-light text-[15px] md:text-[18px] text-text/70 leading-[1.6]">
                 {service.description}
               </p>
-              <Link href={`/contact?service=${encodeURIComponent(service.title)}`} className="self-start group/quote">
+              
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-text">Includes:</span>
+                <ul className="flex flex-col gap-2">
+                  {service.includes.map((item, idx) => (
+                    <li key={idx} className="font-sans font-light text-[14px] text-muted flex items-start gap-3">
+                      <span className="text-accent mt-[6px] text-[10px]">✦</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link href={`/contact?service=${encodeURIComponent(service.title)}`} className="self-start group/quote mt-4">
                 <MagneticButton>
                   <div className="relative font-mono text-[12px] uppercase brand-text-gradient tracking-[0.1em] pb-1 flex items-center gap-2 transition-opacity hover:opacity-80">
-                    <span>Get Your Free Quote</span>
+                    <span>Start a Project</span>
                     <span className="group-hover/quote:translate-x-2 transition-transform duration-300">→</span>
                     <div className="absolute bottom-0 left-0 w-full h-[1px] brand-bg-gradient" />
                   </div>

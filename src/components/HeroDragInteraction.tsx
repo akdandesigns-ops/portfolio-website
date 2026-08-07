@@ -371,7 +371,7 @@ export function HeroDragInteraction() {
   return (
     <div 
       ref={containerRef}
-      className="absolute inset-0 z-[20] pointer-events-none overflow-hidden"
+      className="hidden md:block absolute inset-0 z-[20] pointer-events-none overflow-hidden"
       style={{ clipPath: "inset(0)" }}
     >
       <canvas 

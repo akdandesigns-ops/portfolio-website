@@ -4,7 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "@/lib/gsap/SplitText";
-import { HeroDragInteraction } from "./HeroDragInteraction";
+
 import Link from "next/link";
 import MagneticButton from "./MagneticButton";
 
@@ -95,7 +95,8 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative w-full min-h-[100vh] flex flex-col justify-between px-6 md:px-12 max-w-[2000px] mx-auto py-12">
-      <HeroDragInteraction />
+      <div className="absolute inset-0 z-[0] pointer-events-none md:pointer-events-auto opacity-70">
+      </div>
       
       {/* Spacer to push content down */}
       <div className="flex-1 min-h-[60px]" />
@@ -106,37 +107,27 @@ export function Hero() {
         {/* Left Column: Typography */}
         <div className="flex flex-col items-start gap-2 md:gap-3 w-full">
           {/* Top Bar: Label & Interactive Trigger */}
-          <div className="w-full flex items-center justify-between pb-2 md:pb-4">
+          <div className="w-full flex items-center justify-center md:justify-between pb-2 md:pb-4">
             <div className="hero-label font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-muted pl-1 md:pl-2">
-              Independent Designer — Est. 2024
+              Premium Brand Identity Designer, Chennai
             </div>
             
-            {/* Drag / Burst Indicator */}
-            <div 
-              id="mobile-burst-trigger"
-              className="hero-desc flex items-center gap-2 cursor-pointer z-50 pr-2"
-            >
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full brand-bg-gradient animate-pulse" />
-              <div className="font-mono text-[9px] md:text-[11px] tracking-[0.2em] brand-text-gradient uppercase font-semibold pointer-events-none">
-                <span className="hidden md:inline">Click & Drag Anywhere</span>
-                <span className="md:hidden">Tap to See</span>
-              </div>
-            </div>
+
           </div>
 
           {/* Center Huge Text */}
-          <h1 className="hero-heading font-bebas text-[clamp(64px,14vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col uppercase mt-2">
-            <div className="split-line overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
+          <h1 className="hero-heading font-bebas text-[clamp(64px,14vw,180px)] leading-[0.85] tracking-[0.04em] text-text flex flex-col items-center md:items-start uppercase mt-2">
+            <div className="split-line overflow-hidden pb-1 lg:pb-1 flex flex-wrap justify-center md:justify-start gap-x-4 md:gap-x-8 gap-y-2">
               I DESIGN
             </div>
-            <div className="split-line overflow-hidden pb-2 lg:pb-4 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
+            <div className="split-line overflow-hidden pb-1 lg:pb-1 flex flex-wrap justify-center md:justify-start gap-x-4 md:gap-x-8 gap-y-2">
               BRANDS THAT
             </div>
             
             {/* Cycling Phrases */}
-            <div className="gradient-line relative overflow-hidden pb-2 lg:pb-6">
+            <div className="gradient-line relative overflow-hidden pb-1 lg:pb-1 flex justify-center md:justify-start w-full">
                {/* Invisible ghost to establish layout height and width */}
-               <div className="opacity-0 pointer-events-none flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 select-none" aria-hidden="true">
+               <div className="opacity-0 pointer-events-none flex flex-wrap justify-center md:justify-start gap-x-4 md:gap-x-8 gap-y-2 select-none" aria-hidden="true">
                   <span className="inline-block leading-tight pb-1">DEFY</span>
                   <span className="inline-block leading-tight pb-1">GRAVITY.</span>
                </div>
@@ -144,13 +135,12 @@ export function Hero() {
               {PHRASES.map((phrase, i) => (
                 <div 
                   key={i} 
-                  className={`phrase-wrapper absolute top-0 left-0 flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 items-center w-full ${i === 0 ? '' : 'opacity-0'}`}
+                  className={`phrase-wrapper absolute top-0 left-0 flex flex-wrap justify-center md:justify-start gap-x-4 md:gap-x-8 gap-y-2 items-center w-full ${i === 0 ? '' : 'opacity-0'}`}
                 >
                   {phrase.text.split(" ").map((word, wIdx) => (
                     <span 
                       key={wIdx} 
-                      className="inline-block leading-tight pb-1 grain-text"
-                      style={{ '--text-color': `linear-gradient(${phrase.color}, ${phrase.color})` } as React.CSSProperties}
+                      className="inline-block leading-tight pb-1"
                     >
                       {word}
                     </span>
@@ -161,13 +151,13 @@ export function Hero() {
           </h1>
 
           {/* Descriptor */}
-          <div className="hero-desc mt-6 md:mt-10 pl-1 md:pl-2 flex flex-col gap-8 items-start">
-            <p className="font-sans font-light text-[15px] md:text-[18px] leading-[1.6] max-w-[500px] text-text/80">
-              I help D2C brands in FMCG, sports, fashion, lifestyle, and consumer products build sharp brand identities that people notice, trust, and remember.
+          <div className="hero-desc mt-6 md:mt-10 pl-1 md:pl-2 flex flex-col gap-8 items-center md:items-start">
+            <p className="font-sans font-light text-[15px] md:text-[18px] leading-[1.6] max-w-[500px] text-text/80 text-center md:text-left">
+              I help D2C and hospitality brands build brand identities that make them look premium, trusted, and impossible to confuse with the competition — then carry that identity into packaging, campaigns, and digital.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <MagneticButton>
                 <Link href="/contact" className="group px-8 py-3.5 brand-button transition-all duration-300 flex items-center justify-center">
                   <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">

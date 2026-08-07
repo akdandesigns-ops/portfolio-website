@@ -1,5 +1,43 @@
 [
   {
+    "id": "11",
+    "name": "AI Product Hyper Motion Videos",
+    "slug": "ai-product-hyper-motion-videos",
+    "category": "AI Videography",
+    "year": "2026",
+    "size": "featured",
+    "tagline": "Next-generation AI hyper motion videos for product marketing.",
+    "client": "Multiple Clients",
+    "location": "Global",
+    "description": "A collection of AI-generated hyper motion videos showcasing cutting-edge product videography without the need for traditional camera setups.",
+    "approach": "Utilizing advanced AI video synthesis techniques to create dynamic, photorealistic, and highly engaging hyper motion product reels.",
+    "heroVideo": "/works/videos/ai-hyper-motion-videos/tarts - ai reel (smpl).mp4",
+    "imageFit": "cover",
+    "useCuratedGallery": true,
+    "gallery": [
+      {
+        "src": "/works/videos/ai-hyper-motion-videos/chennai Kulfi - corn samosa reel.mp4",
+        "alt": "Corn Samosa Reel",
+        "span": "half",
+        "aspectRatio": "9/16"
+      },
+      {
+        "src": "/works/videos/ai-hyper-motion-videos/chennai kulfi ai reel rose milk v2.mp4",
+        "alt": "Rose Milk Reel",
+        "span": "half",
+        "aspectRatio": "9/16"
+      },
+      {
+        "src": "/works/videos/ai-hyper-motion-videos/tarts - ai reel (smpl).mp4",
+        "alt": "Tarts Reel",
+        "span": "half",
+        "aspectRatio": "9/16"
+      }
+    ],
+    "nextSlug": "licet-15",
+    "nextTitle": "LICET 15"
+  },
+  {
     "id": "01",
     "name": "LICET 15",
     "slug": "licet-15",
@@ -45,12 +83,6 @@
         "src": "/works/licet-15/black t shirt mockup.jpg",
         "alt": "Black T-shirt Mockup",
         "span": "half"
-      },
-      {
-        "src": "/works/licet-15/magazine.jpg",
-        "alt": "College Magazine Cover",
-        "span": "full",
-        "caption": "A magazine spread integrating the anniversary branding into the editorial system."
       }
     ],
     "colors": [
@@ -293,8 +325,8 @@
     "tagline": "Step into the future.\nAI Product Photography.",
     "client": "Footgraphy",
     "location": "Global",
-    "description": "A comprehensive exploration of AI product photography for 'Footgraphy'. This project demonstrates the power of generative AI to create hyper-realistic, high-fidelity shoe concepts. By crafting precise prompts and leveraging AI rendering, we established a visual narrative that merges cinematic global-fashion aesthetic with modern streetwear.",
-    "approach": "The goal was not just to create images of shoes, but to capture an entire mood — dramatic lighting, premium textures, and dynamic angles. Each generated image acts as a standalone piece of editorial photography, proving that AI can deliver commercially viable, striking visuals without a studio.",
+    "description": "A comprehensive exploration of AI product photography for 'Footgraphy'. This project demonstrates the power of generative AI to create hyper-realistic, high-fidelity concepts for slippers and shoes. By crafting precise prompts, we established a visual narrative that seamlessly blends rich South Indian traditional aesthetics with modern, contemporary design.",
+    "approach": "Our approach reimagines cultural heritage for a modern audience. The photography style draws deep inspiration from South Indian traditions—incorporating authentic textures, earthy tones, and cultural motifs—while maintaining the sleek, dramatic lighting of high-end editorial photography. Each generated image acts as a striking, commercially viable piece that elevates everyday footwear.",
     "heroImage": "/works/footgraphy/08.png",
     "imageFit": "contain",
     "useCuratedGallery": false,
@@ -520,7 +552,153 @@
       "cssClass": "font-sans",
       "description": "A characterful modern sans-serif. It carries a subtle quirkiness and weight that feels approachable yet highly contemporary, perfectly balancing tradition with a modern digital presence."
     },
-    "nextSlug": "licet-15",
-    "nextTitle": "LICET 15"
+    "nextSlug": "top-step-constructions",
+    "nextTitle": "TOP STEP CONSTRUCTIONS"
+  },
+  {
+    "id": "06",
+    "name": "Top Step Constructions",
+    "slug": "top-step-constructions",
+    "category": "Logo Design",
+    "year": "2026",
+    "size": "half",
+    "tagline": "Building trust.\nOne step at a time.",
+    "client": "Top Step Constructions",
+    "location": "Global",
+    "description": "Top Step Constructions represents a robust structural engineering brand that values precision and solid foundations.",
+    "approach": "A bold brand identity designed to reflect the strength and foundation of Top Step Constructions. The logomark is clean, precise, and structurally sound.",
+    "heroImage": "/works/top-step-constructions/ChatGPT Image Jul 2, 2026, 05_54_02 AM (4).png",
+    "bannerImage": "/works/top-step-constructions/TOP STEP CONSTRUCTION - LOGO PNG_TOP STEP - PRIMARY LOGO VAR 1 copy.png",
+    "imageFit": "contain",
+    "useCuratedGallery": true,
+    "gallery": [
+      {
+        "src": "/works/top-step-constructions/TOP STEP CONSTRUCTION - LOGO PNG_TOP STEP - PRIMARY LOGO VAR 1 copy.png",
+        "alt": "Top Step Construction Logo",
+        "span": "full",
+        "caption": "The main logomark reflecting structural integrity and precision."
+      },
+      {
+        "src": "/works/top-step-constructions/ChatGPT Image Jul 2, 2026, 05_54_01 AM (1).png",
+        "alt": "Top Step Construction Brand Material 1",
+        "span": "half"
+      },
+      {
+        "src": "/works/top-step-constructions/ChatGPT Image Jul 2, 2026, 05_54_02 AM (3).png",
+        "alt": "Top Step Construction Brand Material 3",
+        "span": "half"
+      },
+      {
+        "src": "/works/top-step-constructions/ChatGPT Image Jul 2, 2026, 05_54_02 AM (5).png",
+        "alt": "Top Step Construction Brand Material 5",
+        "span": "full"
+      },
+      {
+        "src": "/works/top-step-constructions/ChatGPT Image Jul 2, 2026, 05_54_03 AM (7).png",
+        "alt": "Top Step Construction Brand Material 7",
+        "span": "full"
+      },
+      {
+        "src": "/works/top-step-constructions/TOP STEP CONSTRUCTION - LOGO PNG-13.png",
+        "alt": "Top Step Construction Secondary Logo",
+        "span": "half"
+      },
+      {
+        "src": "/works/top-step-constructions/TOP STEP CONSTRUCTION - LOGO PNG-16.png",
+        "alt": "Top Step Construction Logo Icon",
+        "span": "half"
+      }
+    ],
+    "colors": [
+      {
+        "name": "Brown",
+        "hex": "#4A2525",
+        "rgb": "74, 37, 37",
+        "cmyk": "0, 50, 50, 71",
+        "psychology": "Represents earthiness, stability, and reliable foundations, providing a grounded and professional tone."
+      },
+      {
+        "name": "Ivory White",
+        "hex": "#FFFFF0",
+        "rgb": "255, 255, 240",
+        "cmyk": "0, 0, 6, 0",
+        "psychology": "Offers a clean, premium contrast that softens the heavy brown, creating a sophisticated and modern architectural feel."
+      }
+    ],
+    "typography": {
+      "fontFamily": "'Poppins', sans-serif",
+      "fontName": "Poppins Bold",
+      "cssClass": "font-sans font-bold",
+      "description": "Poppins Bold is a geometric sans-serif that stands firm and authoritative. Its robust letterforms mirror architectural stability and structural confidence, perfect for a brand built on trust."
+    },
+    "nextSlug": "antique-shop-photography",
+    "nextTitle": "ANTIQUE SHOP PHOTOGRAPHY"
+  },
+  {
+    "id": "07",
+    "name": "Antique Shop Photography",
+    "slug": "antique-shop-photography",
+    "category": "AI Product Photography",
+    "year": "2026",
+    "size": "half",
+    "tagline": "Timeless elegance.\nCaptured by AI.",
+    "client": "Antique & Decor Shop",
+    "location": "Chennai, India",
+    "description": "An AI-driven product photography project for an antique and decor shop in Chennai. The goal was to generate hyper-realistic, culturally rich visuals that highlight intricate craftsmanship without traditional photoshoots. By carefully crafting AI prompts, we achieved a vintage, cinematic look for Cape Kamoryn, a brand specializing in curated antique decor.",
+    "approach": "We used generative AI to produce high-end editorial visuals. The aesthetic blends South Indian antique warmth—earthy woods, aged brass, and rich textures—with contemporary styling. This approach allowed Cape Kamoryn to showcase their decor pieces in a premium, atmospheric setting, emphasizing their rich heritage.",
+    "heroImage": "/works/ai-product-photography/01.png",
+    "imageFit": "contain",
+    "useCuratedGallery": false,
+    "gallery": [
+      {
+        "src": "/works/ai-product-photography/02.png",
+        "alt": "Antique decor AI photography 2",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/ai-product-photography/03.png",
+        "alt": "Antique decor AI photography 3",
+        "span": "half",
+        "aspectRatio": "3/4"
+      },
+      {
+        "src": "/works/ai-product-photography/04.png",
+        "alt": "Antique decor AI photography 4",
+        "span": "full"
+      },
+      {
+        "src": "/works/ai-product-photography/05.png",
+        "alt": "Antique decor AI photography 5",
+        "span": "half"
+      },
+      {
+        "src": "/works/ai-product-photography/06.png",
+        "alt": "Antique decor AI photography 6",
+        "span": "half"
+      },
+      {
+        "src": "/works/ai-product-photography/07.png",
+        "alt": "Antique decor AI photography 7",
+        "span": "full"
+      },
+      {
+        "src": "/works/ai-product-photography/08.png",
+        "alt": "Antique decor AI photography 8",
+        "span": "half"
+      },
+      {
+        "src": "/works/ai-product-photography/09.png",
+        "alt": "Antique decor AI photography 9",
+        "span": "half"
+      },
+      {
+        "src": "/works/ai-product-photography/10.png",
+        "alt": "Antique decor AI photography 10",
+        "span": "full"
+      }
+    ],
+    "nextSlug": "ai-product-hyper-motion-videos",
+    "nextTitle": "AI PRODUCT HYPER MOTION VIDEOS"
   }
 ]

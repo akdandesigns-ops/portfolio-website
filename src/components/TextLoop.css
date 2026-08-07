@@ -1,0 +1,23 @@
+.text-loop {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.text-loop-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text-loop-measure {
+  visibility: hidden;
+}
+
+.text-loop-text {
+  pointer-events: none;
+  user-select: none;
+}

@@ -10,6 +10,8 @@ const idToSlug: Record<string, string> = {
   "02": "sans-badminton",
   "03": "solstice-pick",
   "04": "footgraphy",
+  "05": "tarak-food",
+  "06": "top-step-constructions",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -33,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: project.description.substring(0, 160),
       images: [
         {
-          url: project.heroImage,
+          url: project.heroImage || project.heroVideo || "",
           width: 1200,
           height: 630,
           alt: project.name,
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${project.name} | akdandesigns`,
       description: project.description.substring(0, 160),
-      images: [project.heroImage],
+      images: [project.heroImage || project.heroVideo || ""],
     },
   };
 }
