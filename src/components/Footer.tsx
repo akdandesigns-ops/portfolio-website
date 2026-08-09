@@ -27,7 +27,7 @@ export default function Footer() {
         />
       </div>
 
-      <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10 pointer-events-none">
+      <div className="max-w-[2000px] mx-auto px-6 md:px-12 pt-12 pb-32 md:pb-64 flex flex-col items-center md:items-start relative z-10 pointer-events-none">
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mb-12 gap-8">
           <div className="font-bebas text-[28px] tracking-[0.05em] text-text">
@@ -142,9 +142,10 @@ export default function Footer() {
       </div>
 
       {/* Particle Text Background (Half visible at bottom) */}
-      <div className="absolute bottom-0 translate-y-[45%] md:translate-y-[35%] left-0 w-full h-[250px] md:h-[600px] z-0 flex items-center justify-center pointer-events-none opacity-80 overflow-hidden">
+      <div className="absolute bottom-0 translate-y-[30%] md:translate-y-[35%] left-0 w-full h-[300px] md:h-[600px] z-0 flex items-center justify-center pointer-events-none opacity-80 overflow-hidden">
         <div className="w-full h-full font-bebas pointer-events-auto flex items-center justify-center">
           <ParticleText
+            style={{}}
             text="AK DAN DESIGNS"
             particleSize={4}
             density={8}
@@ -157,7 +158,7 @@ export default function Footer() {
             repelRadius={120}
             idleDrift={0.5}
             trigger="mount"
-            fontSize="clamp(12rem, 35vw, 40rem)"
+            fontSize="clamp(5rem, 20vw, 40rem)"
             fontWeight={400}
             fontFamily="inherit"
             glow={false}
