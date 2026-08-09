@@ -384,7 +384,13 @@ export default function MetallicPaint({
 
     const canvas = canvasRef.current;
     const gl = glRef.current;
-    const side = 1000 * devicePixelRatio;
+    
+    // Optimize resolution based on device type to prevent stuttering on mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const baseSize = isMobile ? Math.min(window.innerWidth, 500) : 1000;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2); // Cap pixel ratio
+    const side = Math.floor(baseSize * pixelRatio);
+
     canvas.width = side;
     canvas.height = side;
     gl.viewport(0, 0, side, side);

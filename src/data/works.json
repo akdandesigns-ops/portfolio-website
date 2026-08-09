@@ -8,7 +8,7 @@
     "size": "featured",
     "tagline": "Next-generation AI hyper motion videos for product marketing.",
     "client": "Multiple Clients",
-    "location": "Global",
+    "location": "Chennai",
     "description": "A collection of AI-generated hyper motion videos showcasing cutting-edge product videography without the need for traditional camera setups.",
     "approach": "Utilizing advanced AI video synthesis techniques to create dynamic, photorealistic, and highly engaging hyper motion product reels.",
     "heroVideo": "/works/videos/ai-hyper-motion-videos/tarts - ai reel (smpl).mp4",
@@ -16,13 +16,13 @@
     "useCuratedGallery": true,
     "gallery": [
       {
-        "src": "/works/videos/ai-hyper-motion-videos/chennai Kulfi - corn samosa reel.mp4",
+        "src": "/works/videos/ai-hyper-motion-videos/samosa reel - sample.mp4",
         "alt": "Corn Samosa Reel",
         "span": "half",
         "aspectRatio": "9/16"
       },
       {
-        "src": "/works/videos/ai-hyper-motion-videos/chennai kulfi ai reel rose milk v2.mp4",
+        "src": "/works/videos/ai-hyper-motion-videos/rose milk ai video (sample).mp4",
         "alt": "Rose Milk Reel",
         "span": "half",
         "aspectRatio": "9/16"

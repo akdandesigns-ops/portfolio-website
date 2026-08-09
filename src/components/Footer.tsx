@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
 import { GravityGraphic } from "./GravityGraphic";
 import TextLoop from "./TextLoop";
+import ParticleText from "./ParticleText";
 
 const Ballpit = dynamic(() => import("./Ballpit"), { ssr: false });
 
@@ -26,14 +27,14 @@ export default function Footer() {
         />
       </div>
 
-      <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10">
+      <div className="max-w-[2000px] mx-auto px-6 md:px-12 py-12 flex flex-col items-center md:items-start relative z-10 pointer-events-none">
         
         <div className="flex flex-col md:flex-row w-full justify-between items-center mb-12 gap-8">
           <div className="font-bebas text-[28px] tracking-[0.05em] text-text">
             AK DAN DESIGNS
           </div>
           
-          <nav className="flex flex-wrap justify-center gap-4 md:gap-12 text-center">
+          <nav className="flex flex-wrap justify-center gap-4 md:gap-12 text-center pointer-events-auto">
             {["HOME", "WORKS", "BLOGS", "ABOUT", "SERVICES", "BOOK A CALL"].map((label) => {
               const href = label === "HOME" ? "/" : label === "BOOK A CALL" ? "/contact" : `/${label.toLowerCase()}`;
               return (
@@ -49,7 +50,7 @@ export default function Footer() {
             })}
           </nav>
           
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-6 items-center pointer-events-auto">
             <MagneticButton>
               <a
                 href="https://www.instagram.com/the_akdan/"
@@ -106,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col md:flex-row w-full justify-center items-center gap-6 md:gap-12 mb-10 text-text/80">
+        <div className="flex flex-col md:flex-row w-full justify-center items-center gap-6 md:gap-12 mb-10 text-text/80 pointer-events-auto">
           <MagneticButton>
             <a 
               href="mailto:design@akdandesigns.in" 
@@ -138,6 +139,30 @@ export default function Footer() {
           </span>
         </div>
 
+      </div>
+
+      {/* Particle Text Background (Half visible at bottom) */}
+      <div className="absolute bottom-0 translate-y-[45%] md:translate-y-[35%] left-0 w-full h-[250px] md:h-[600px] z-0 flex items-center justify-center pointer-events-none opacity-80 overflow-hidden">
+        <div className="w-full h-full font-bebas pointer-events-auto flex items-center justify-center">
+          <ParticleText
+            text="AK DAN DESIGNS"
+            particleSize={4}
+            density={8}
+            color="#0AE448"
+            highlightColor="#0AE448"
+            scatter={190}
+            gatherDuration={1600}
+            stagger={420}
+            pointerRepel={42}
+            repelRadius={120}
+            idleDrift={0.5}
+            trigger="mount"
+            fontSize="clamp(12rem, 35vw, 40rem)"
+            fontWeight={400}
+            fontFamily="inherit"
+            glow={false}
+          />
+        </div>
       </div>
     </footer>
   );

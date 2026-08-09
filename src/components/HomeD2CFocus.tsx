@@ -1,50 +1,61 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import AnimatedHeading from "./AnimatedHeading";
+import Image from "next/image";
 
-const cards = [
+const categories = [
   {
-    title: "FMCG & Food Brands",
+    title: "FMCG & Food",
     desc: "Identity systems designed to work across packaging, shelves, social media, and digital campaigns.",
+    image: "/categories/fmcg.png?v=2",
     color: "#FF8709"
   },
   {
-    title: "Sports & Fitness Brands",
-    desc: "Bold visual systems built for energy, performance, community, and merchandise.",
-    color: "#3b82f6"
+    title: "Sports & Fitness",
+    desc: "High-energy branding that captures movement, intensity, and a relentless drive.",
+    image: "/categories/sports.png?v=2",
+    color: "#00BAE2"
   },
   {
-    title: "Fashion & Lifestyle Brands",
+    title: "Fashion & Lifestyle",
     desc: "Premium identity direction for brands that need style, consistency, and emotional recall.",
+    image: "/categories/fashion.png?v=2",
     color: "#FFA6FA"
   },
   {
-    title: "Consumer Product Startups",
+    title: "Consumer Startups",
     desc: "Launch-ready branding for products entering competitive markets.",
+    image: "/categories/tech.png",
     color: "#0AE448"
   }
 ];
 
 export function HomeD2CFocus() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(0); // Default to first item expanded
 
   useGSAP(() => {
-    gsap.from(".d2c-card", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
+    gsap.fromTo(".d2c-accordion-item", 
+      { 
+        y: 60, 
+        opacity: 0 
       },
-      y: 60,
-      rotationY: 90,
-      opacity: 0,
-      duration: 1.2,
-      stagger: 0.15,
-      ease: "back.out(1.2)",
-      transformOrigin: "center center"
-    });
+      {
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: "top 85%",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out"
+      }
+    );
   }, { scope: containerRef });
 
   return (
@@ -63,51 +74,53 @@ export function HomeD2CFocus() {
             className="font-bebas text-5xl md:text-7xl tracking-wide uppercase text-text mb-12 max-w-3xl"
           />
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" style={{ perspective: "1500px" }}>
-            {cards.map((card, i) => (
-              <div key={i} className="d2c-card min-h-[320px]">
-                <div className="group h-full perspective-[1500px] cursor-pointer">
-                  <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                    
-                    {/* ── FRONT ── */}
-                    <div 
-                      className="absolute inset-0 flex flex-col items-center justify-center p-8 rounded-3xl overflow-hidden shadow-2xl bg-[#0a0a0a] border border-white/10 [backface-visibility:hidden]"
-                    >
-                      <h3 
-                        className="font-bebas text-3xl md:text-4xl lg:text-5xl tracking-wide uppercase text-center"
-                        style={{ color: card.color }}
-                      >
-                        {card.title}
+          <div ref={cardsRef} className="w-full flex flex-col lg:flex-row h-auto lg:h-[600px] gap-2 lg:gap-4 overflow-hidden rounded-3xl">
+            {categories.map((cat, i) => {
+              const isHovered = hoveredIdx === i;
+              
+              return (
+                <div 
+                  key={i} 
+                  className={`d2c-accordion-item relative flex flex-col justify-end overflow-hidden rounded-2xl transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer ${
+                    isHovered ? "lg:flex-[3] h-[300px] lg:h-full" : "lg:flex-[1] h-[100px] lg:h-full"
+                  }`}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onFocus={() => setHoveredIdx(i)}
+                  tabIndex={0}
+                >
+                  {/* Background Image */}
+                  <Image 
+                    src={cat.image} 
+                    alt={cat.title}
+                    fill
+                    className={`object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isHovered ? 'scale-100 opacity-100' : 'scale-110 opacity-40 grayscale brightness-75'}`}
+                  />
+                  
+                  {/* Gradient Overlay for Text Readability */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-1000 ${isHovered ? 'opacity-100' : 'opacity-60'}`} />
+
+                  {/* Content Container */}
+                  <div className="relative z-10 p-6 md:p-8 flex flex-col gap-2 transition-opacity duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                    <div className="flex items-center gap-4">
+                      <span className="font-mono text-xs text-white/50 tracking-widest hidden md:block transition-colors duration-1000">0{i + 1}</span>
+                      <h3 className="font-bebas text-3xl md:text-5xl uppercase tracking-wide transition-colors duration-[1200ms] ease-out line-clamp-1 text-white">
+                        {cat.title}
                       </h3>
                     </div>
-
-                    {/* ── BACK ── */}
+                    
                     <div 
-                      className="absolute inset-0 flex flex-col p-8 rounded-3xl overflow-hidden shadow-2xl bg-[#F9F9F4] [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                      className={`grid transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        isHovered ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 mt-0"
+                      }`}
                     >
-                      {/* Grain Texture */}
-                      <div 
-                        className="absolute inset-0 opacity-[0.5] pointer-events-none mix-blend-multiply"
-                        style={{
-                          backgroundImage: `url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`
-                        }}
-                      />
-                      
-                      <div className="relative z-10 flex flex-col h-full gap-4">
-                        <div className="font-mono text-xs uppercase tracking-widest text-black/40 font-bold">
-                          0{i + 1}
-                        </div>
-                        
-                        <p className="font-sans font-medium text-[16px] md:text-[18px] leading-[1.6] text-black text-center my-auto">
-                          {card.desc}
-                        </p>
-                      </div>
+                      <p className="font-sans font-light text-base md:text-lg text-white/90 overflow-hidden max-w-md leading-relaxed">
+                        {cat.desc}
+                      </p>
                     </div>
-
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

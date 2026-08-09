@@ -17,7 +17,7 @@
 :root {
   --bg: #0e100f;
   --surface: #1c1e1d;
-  --text: #fffce1;
+  --text: #ffffff;
   --muted: #9ba09e;
   --border: #2e302f;
   --accent: #0ae448;
@@ -26,13 +26,13 @@
 }
 
 .light {
-  --bg: #fffce1;
-  --surface: #f3f0d1;
+  --bg: #ffffff;
+  --surface: #f5f5f5;
   --text: #0e100f;
   --muted: #666867;
-  --border: #e0ddc0;
+  --border: #e5e5e5;
   --accent: #0ae448;
-  --overlay: rgba(255, 252, 225, 0.85);
+  --overlay: rgba(255, 255, 255, 0.85);
 }
 
 @layer utilities {

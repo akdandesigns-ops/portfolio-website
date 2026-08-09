@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     images: ["/works/licet-15/display mockup.jpg"],
   },
   icons: {
-    icon: "/icon.svg",
+    icon: "/favicon.png",
   },
   robots: {
     index: true,

@@ -175,7 +175,7 @@ export default function Preloader() {
             brightness={1.5}
             scale={5}
             refraction={0.02}
-            mouseAnimation={true}
+            mouseAnimation={false}
           />
         </div>
 
