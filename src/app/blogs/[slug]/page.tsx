@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import blogsData from "@/data/blogs.json";
+import ReactMarkdown from "react-markdown";
 import MagneticButton from "@/components/MagneticButton";
 interface Post {
   slug: string;
@@ -102,7 +103,19 @@ export default function BlogPostPage() {
         {/* Render paragraphs, injecting the pull quote after the 2nd paragraph if possible */}
         {post.paragraphs.map((para, index) => (
           <div key={index} className="flex flex-col gap-8">
-            <p>{para}</p>
+            <ReactMarkdown
+              components={{
+                h2: ({node, ...props}) => <h2 className="font-bebas text-4xl md:text-5xl tracking-wide uppercase mt-8 mb-4 text-text" {...props} />,
+                h3: ({node, ...props}) => <h3 className="font-bebas text-3xl md:text-4xl tracking-wide uppercase mt-6 mb-3 text-text" {...props} />,
+                strong: ({node, ...props}) => <strong className="font-medium text-text" {...props} />,
+                ul: ({node, ...props}) => <ul className="list-disc pl-6 my-4 flex flex-col gap-2" {...props} />,
+                li: ({node, ...props}) => <li className="pl-2" {...props} />,
+                blockquote: ({node, ...props}) => <blockquote className="pl-6 border-l-4 brand-border-gradient italic my-6 text-text/90 font-bebas text-2xl uppercase tracking-wide" {...props} />,
+                p: ({node, ...props}) => <p className="mb-4" {...props} />
+              }}
+            >
+              {para}
+            </ReactMarkdown>
             {index === 1 && post.quote && (
               <blockquote className="my-8 md:my-12 pl-8 py-2 border-l-4 brand-border-gradient">
                 <p className="font-bebas text-4xl md:text-5xl italic text-text leading-none tracking-wide uppercase">
@@ -125,7 +138,7 @@ export default function BlogPostPage() {
           <Link href="/blogs/written-by-rivers" className="group flex flex-col gap-4">
             <div className="aspect-[3/2] relative w-full overflow-hidden">
               <Image 
-                src="/blogs/written-by-rivers/hero-aerial.png" 
+                src="/blogs/written-by-rivers/hero-aerial.avif" 
                 fill 
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105" 
                 alt="Related" 
